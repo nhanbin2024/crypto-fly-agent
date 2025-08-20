@@ -6,6 +6,11 @@ from fastapi_cache.decorator import cache
 
 app = FastAPI(title="Crypto Fly Agent")
 
+# Root endpoint cho Railway healthcheck
+@app.get("/")
+def root():
+    return {"message": "Crypto Fly Agent is running 🚀"}
+
 # Khởi tạo cache
 @app.on_event("startup")
 async def startup():
@@ -13,7 +18,7 @@ async def startup():
 
 # Endpoint lấy giá coin với cache 60 giây
 @app.get("/coin/{symbol}")
-@cache(expire=60)  # cache 60 giây
+@cache(expire=60)
 async def get_coin(symbol: str):
     url = f"https://api.coingecko.com/api/v3/simple/price?ids={symbol}&vs_currencies=usd"
     async with httpx.AsyncClient() as client:
@@ -22,7 +27,7 @@ async def get_coin(symbol: str):
 
 # Endpoint lấy top 100 coins, cache 120 giây
 @app.get("/coins")
-@cache(expire=120)  # cache 120 giây
+@cache(expire=120)
 async def get_top_coins():
     url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1"
     async with httpx.AsyncClient() as client:
