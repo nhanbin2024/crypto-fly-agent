@@ -1,6 +1,4 @@
 fastapi
 uvicorn
-requests
-fastapi-cache2
-aioredis
 httpx
+fastapi-cache2
