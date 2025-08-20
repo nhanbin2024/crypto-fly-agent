@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "crypto-fly-agent-local": {
+      "command": "python",
+      "args": ["server.py"]
+    },
+    "crypto-fly-agent-railway": {
+      "command": "uvx",
+      "args": ["@modelcontextprotocol/server-http", "--url", "https://crypto-fly-agent-production-6cdc.up.railway.app"]
+    }
+  }
+}
