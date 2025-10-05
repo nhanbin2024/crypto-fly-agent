@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - Pointy Corner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #150816;
+        }
+
+        .reviews-container {
+            width: 100%;
+            max-width: 400px;
+            height: 100%; /* Displays 4 reviews at a time */
+            overflow: hidden;
+            border-radius: 10px;
+            background-color:#150816;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .reviews {
+            display: flex;
+            flex-direction: column;
+            height: 2000px; /* Set a high value for all reviews */
+            animation: scrollReviews 24s linear infinite;
+        }
+
+        @keyframes scrollReviews {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-1600px); /* Scroll up by total height minus visible height */
+            }
+        }
+
+        .review-card {
+            background-color: #2A2737;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Elevation */
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(84, 84, 197);
+            color: #FDE4FF;
+            /* Adding pointy bottom-left corner */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 90%);
+        }
+
+        .review p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .review .customer-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="reviews-container">
+    <div class="reviews" id="reviews">
+        <!-- Placeholder for dynamically added reviews -->
+    </div>
+</div>
+
+<script>
+    const reviewsData = [
+        {text: "The auto-complete feature is spot on! It saved me hours of manual coding.", name: "David Brooks"},
+        {text: "Debugging has never been easier. I was able to pinpoint issues in minutes.", name: "Laura Peterson"},
+        {text: "The chat assistant is so responsive! It's like having a coding buddy 24/7.", name: "Michael Zhang"},
+        {text: "Linking JIRA with my extension has streamlined my workflow significantly.", name: "Emily Thompson"},
+        {text: "I love the code optimization suggestions. My code has never been this clean!", name: "Chris Daniels"},
+        {text: "Having the AI assist with my JIRA tasks directly from VS Code is a game-changer.", name: "Sophie Harrison"},
+        {text: "It's like having a personal assistant for coding. The AI is super intelligent!", name: "Daniel Lopez"},
+        {text: "The extension catches errors I would’ve missed. Perfect for debugging!", name: "Sarah Williams"},
+        {text: "I’m blown away by the autocomplete accuracy, especially with complex functions.", name: "Nathan Mitchell"},
+        {text: "Managing my JIRA tasks has never been so easy. It integrates flawlessly.", name: "James Rivera"},
+        {text: "I was skeptical, but this AI tool has transformed the way I code.", name: "Rebecca Scott"},
+        {text: "I linked my JIRA tasks in seconds! The workflow improvements are incredible.", name: "Henry Turner"},
+        {text: "The debug feature is very intuitive. I solved problems faster than ever.", name: "Lucas Reed"},
+        {text: "This extension optimizes code beautifully. My team is adopting it too.", name: "Elena Morales"},
+        {text: "The assistant feels like an extra pair of hands while coding.", name: "Aaron Hughes"},
+        {text: "The chat is incredibly helpful! It even provides coding tips.", name: "Tina Anderson"},
+        {text: "I use the extension daily, especially for debugging and code completion.", name: "Oscar Bennett"},
+        {text: "JIRA integration and auto-complete have saved me so much time!", name: "Leo Knight"},
+        {text: "Optimized my code on the go. I'm extremely satisfied!", name: "Nina Davis"},
+        {text: "It's like having an AI-powered teammate helping out with code reviews.", name: "Frank Carter"},
+    ];
+
+    const reviewsContainer = document.getElementById("reviews");
+
+    // Function to dynamically add reviews to the DOM
+    function addReviews() {
+        reviewsData.forEach(review => {
+            const reviewCard = document.createElement("div");
+            reviewCard.classList.add("review-card");
+            reviewCard.innerHTML = `
+                <p>${review.text}</p>
+                <p class="customer-name">- ${review.name}</p>
+            `;
+            reviewsContainer.appendChild(reviewCard);
+        });
+    }
+
+    // Add reviews on page load
+    addReviews();
+</script>
+
+</body>
+</html>

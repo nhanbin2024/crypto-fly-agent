@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+		<Metadata>
+			<Identity Language="en-US" Id="sixth-ai" Version="0.0.19" Publisher="Sixth" />
+			<DisplayName>Claude 4, DeepSeek R1, ChatGPT, Copilot and Cursor AI, AI Agents, AI Copilot, and Debugger, Code Assistants,Code Completion, Code Chat, Code Generator,  Autocomplete, Codestral, Generative AI and Code Search and Reviewer for Javascript, Python, Typescript, PHP, Java, Go, C#, C, C++, R, Rust, HTML, CSS &amp; more, Tabnine, Cursor, CodeWhisperer Alternative , Github Copilot : Sixth AI intellisense and Debugger</DisplayName>
+			<Description xml:space="preserve">Claude 4, DeepSeek R1, AI Coding Assistant is a lightweight for helping developers automate all the boring stuff like writing code, real-time code completion, debugging, auto generating doc string and many more. Trusted by 100K+ devs from Amazon, Apple, Google, &amp; more. Offers all the same features as Copilot, Cursor, ChatGPT. </Description>
+			<Tags>ai,autocomplete,assistant,bash,database,ChatGPT,Cursor,Cursor AI,Github Copilot,Tabnine,Blackbox AI,Claude,Cheap Alternative to Cursor AI,Cheap Alternative to Cursor,Mistral AI,Cheap Alternative to Mistral AI,Anthropic,Amazon CodeWhisperer,CodeWhisperer,Gemini,co-pilot,Cheap Alternative to Gemini,Cheap Alternative to CodeWhisperer,Cheap Alternative to Amazon CodeWhisperer,Cheap Alternative to Blackbox AI,Cheap Alternative to Blackbox,Cheap Alternative to Tabnine,Cheap Alternative to Github Copilot,Cheap Alternative to Copilot,Cheap Alternative to Windsurf,Copilot,Coding Assistant,o1,o1 preview,o1 preview api,GPT4,GPT3,GPT3-turbo,GPT3.5-turbo,GPT4-turbo,Claude 4,gemini 2.5 pro,Gemini 2.5 Pro,Gemini-2.5-pro,Gemini-2.5-Pro,Gemini 2.5 pro,Gemini2.5 Pro,Gemini 2.5Pro,gemini 2.5 flash,Gemini 2.5 Flash,Gemini-2.5-flash,Gemini 2.5 flash,Gemini2.5 flash,Gemini 2.flash,Gemini 2.5flash,gemini 2.5 flas lite,Gemini 2.5 Flash Lite,Gemini-2.5-flash-lite,Gemini 2.5 flash lite,Gemini2.5 flash lite,Gemini 2.flash lite,Gemini 2.5flash lite,gpt-4.1,GPT 4.1,o4-mini,o4 Mini,o4 mini,o1-preview,o1-mini,o1 mini,gpt 4.5,gpt 4.5 preview,gpt-4.5-preview,Claude Sonnet 4,claude sonnet4,claude-sonnet-4,claude-3-sonnet,claude 3 sonnet,claude 3 sonnet beta,claude-3-sonnet-beta,claude-3.5-sonnet,claude 3.5 sonnet,claude 3.5 sonnet beta,claude-3.5-sonnet-beta,claude-3.5-haiku,GPT40,GPT4-o,GPTs,GPT,DALLE,DALL.E,BARD,c,c#,c++,chat,css,code-recommendation,code completion,cpp,csharp,documentation,go,golang,haskell,html,java,intellicode,intellisense,javascript,julia,keybindings,kite,kotlin,node,domination,node.js,lua,method-completetion,ocaml,python,react,sql,sqlite,refeactor,ruby,rust,snippets,swift,typescript,highlighting,syntax,syntax-checker,cybersecurity,OWASP,CWE,CVE,SQL Injection,XSS,highlighter,debuggers,interactive,frontend,backend,tutorial,education,Learning,learn,Debugger,Code debugger,code-debugger,code reviewer,Data structure,Framework,Machine learning,cli,CLI,Linter,Linux,Bootstrap,Algorithm,API,Database,Design Pattern,Design,Design Patterns,Design Patterns in C++,bug,Deployment,Git,Github,Http,Https,Languages,Programming Languages,Operating system,Text editor,web design,build a website,how to design a website,build an app,jupyter,windsurf,Devin AI,Composer,Bug Finder,Bug Fixing,Bug Fix,Bug Fixing AI,AI Agent,deepseek r1,GPT4.5,gpt4.5,Qwen,Qwen AI,Qwen AI Assistant,Qwen AI Agent,Qwen AI Autocomplete,Qwen AI Completion,DeepSeek,DeepSeek AI,DeepSeek AI Assistant,DeepSeek AI Agent,DeepSeek AI Autocomplete,DeepSeek AI Completion,Cline,Cline AI,Cline AI Assistant,Cline AI Agent,Cline AI Autocomplete,Cline AI Completion,codeGPT,codeGPT AI,codeGPT AI Assistant,codeGPT AI Agent,codeGPT AI Autocomplete,codeGPT AI Completion,Codestral,Prompt Language,promptLanguage,sonnet,sonnet AI,sonnet AI Assistant,sonnet AI Agent,sonnet AI Autocomplete,sonnet AI Completion,json,jsonc,Agent,Langchain,MCP,MCP Server,mcp server,Claude 3.7,Claude 3.7 sonnet,Cohere,HuggingFace,Nomic,Voyage AI,analysis,anthropic,bot,codecompletion,code-coverage,codegen,code-integrity,codesuggestion,contentassist,developertools,hinting,code hint,o3,o3 preview,Gpt 4.1,gpt-4.1-mini,gpt 4.0,Windsurf,Windsurf AI,Windsurf AI Assistant,Windsurf AI Agent,Windsurf AI Autocomplete,Windsurf AI Completion,Pair Programmer,LLM,Duet,snippet</Tags>
+			<Categories>Other,Snippets,Programming Languages,Debuggers,SCM Providers,Extension Packs,Machine Learning,Visualization,Education,Testing</Categories>
+			<GalleryFlags>Public</GalleryFlags>
+			
+			<Properties>
+				<Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.43.0" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="workspace" />
+				<Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value="" />
+				
+				
+				<Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/SixHq/GPT4-AI-Realtime-code-scanner-Autocomplete-and-Highlighter-for-Javascript-Py-JS-Java-Php-Sixth-SAST.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/SixHq/GPT4-AI-Realtime-code-scanner-Autocomplete-and-Highlighter-for-Javascript-Py-JS-Java-Php-Sixth-SAST.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/SixHq/GPT4-AI-Realtime-code-scanner-Autocomplete-and-Highlighter-for-Javascript-Py-JS-Java-Php-Sixth-SAST.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/SixHq/GPT4-AI-Realtime-code-scanner-Autocomplete-and-Highlighter-for-Javascript-Py-JS-Java-Php-Sixth-SAST/issues" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://github.com/SixHq/GPT4-AI-Realtime-code-scanner-Autocomplete-and-Highlighter-for-Javascript-Py-JS-Java-Php-Sixth-SAST#readme" />
+				<Property Id="Microsoft.VisualStudio.Services.Branding.Color" Value="#808080" />
+				<Property Id="Microsoft.VisualStudio.Services.Branding.Theme" Value="dark" />
+				<Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+				<Property Id="Microsoft.VisualStudio.Services.Content.Pricing" Value="Free"/>
+
+				
+				
+			</Properties>
+			<License>extension/LICENSE.txt</License>
+			<Icon>extension/waves.png</Icon>
+		</Metadata>
+		<Installation>
+			<InstallationTarget Id="Microsoft.VisualStudio.Code"/>
+		</Installation>
+		<Dependencies/>
+		<Assets>
+			<Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+			<Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Content.Changelog" Path="extension/CHANGELOG.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE.txt" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/waves.png" Addressable="true" />
+		</Assets>
+	</PackageManifest>

@@ -1,0 +1,293 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+        <style>
+            body {
+                padding: 24px;
+                background:  #150816;
+                font-family: "Poppins";
+            }
+            .main {
+                background: transparent;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+            }
+            .thread {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                justify-content: start;
+            }
+
+            .upper {
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .title {
+                color: #F1E4FF;
+                margin: 0px;
+            }
+            .sub {
+                color: #F1E4FF;
+                opacity: 0.5;
+            }
+            .skeleton-loader {
+                display: flex;
+                align-items: center;
+                padding-top: 20px;
+                border-radius: 10px;
+                background-color: transparent;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .skeleton-avatar {
+                width: 60px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #F1E4FF;
+                margin-right: 20px;
+                animation: skeleton-loading 1.5s infinite;
+            }
+
+            .skeleton-text {
+                flex: 1;
+            }
+
+            .skeleton-line {
+                height: 10px;
+                background-color: #e0e0e0;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                animation: skeleton-loading 1.5s infinite;
+            }
+
+            .skeleton-line:last-child {
+                width: 80%;
+                margin-bottom: 0;
+            }
+
+            @keyframes skeleton-loading {
+                0% {
+                    background-color: #F1E4FF;
+                }
+                50% {
+                    background-color: #D1B8FF;
+                }
+                100% {
+                    background-color: #F1E4FF;
+                }
+            }
+            .thread-container{
+                display: flex;
+                width: 100%;
+                justify-content: start;
+                margin-top: 24px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display: flex; flex-direction: row;">
+            <div id="back-button" onclick="onClick('navigate_back', 'restore_html')" style="width: 38px; height: 38px;cursor: pointer;" >
+                <svg  fill="#F1E4FF" height="16px" width="24px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    viewBox="0 0 26.676 26.676" xml:space="preserve">
+                <g>
+                    <path d="M26.105,21.891c-0.229,0-0.439-0.131-0.529-0.346l0,0c-0.066-0.156-1.716-3.857-7.885-4.59
+                        c-1.285-0.156-2.824-0.236-4.693-0.25v4.613c0,0.213-0.115,0.406-0.304,0.508c-0.188,0.098-0.413,0.084-0.588-0.033L0.254,13.815
+                        C0.094,13.708,0,13.528,0,13.339c0-0.191,0.094-0.365,0.254-0.477l11.857-7.979c0.175-0.121,0.398-0.129,0.588-0.029
+                        c0.19,0.102,0.303,0.295,0.303,0.502v4.293c2.578,0.336,13.674,2.33,13.674,11.674c0,0.271-0.191,0.508-0.459,0.562
+                        C26.18,21.891,26.141,21.891,26.105,21.891z"/>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                </g>
+            </svg>
+            </div>
+            
+            <span class="title">
+                History
+            </span>
+            
+        </div>
+        
+        <div class="loader" id="loader"  >
+            <div class="skeleton-loader">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+            <div class="skeleton-loader">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+            <div class="skeleton-loader">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+            <div class="skeleton-loader">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+            <div class="skeleton-loader">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+            <div class="skeleton-loader">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="main" id="main"  style="display: none;">
+        </div>
+
+    <script>
+        vscode = acquireVsCodeApi();
+
+        var back_button = document.getElementById("back-button")
+        back_button.addEventListener('click', (e)=>{
+            onClick('navigate_back', 'restore_html')
+        })
+
+        function onClick(command, value){
+            vscode.postMessage({
+                command: command, 
+                value: value
+            })
+        }
+
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+            switch (message.command) {
+                case "fill_history":
+                    var loader = document.getElementById("loader")
+                    loader.style.display = "none"
+
+                    var main = document.getElementById("main")
+                    main.style.display = "flex"
+
+                    var threads = message.value;
+                    threads.sort((a, b) => b.created_at- a.created_at);
+                   
+                    for (var thread of threads) {
+                        vscode.postMessage({
+                        'command': "log_event",
+                        'value': thread
+                    })
+                        createThreads(thread["id"], thread["name"], convertTimestampToDate(thread["created_at"]), "", thread["last_message"])
+                    }
+            }
+        })
+
+        function convertTimestampToDate(timestamp) {
+            let date = new Date(timestamp * 1000); // Convert to milliseconds
+            let now = new Date();
+            
+            // Helper functions
+            const pad = (n) => n < 10 ? '0' + n : n; // Pads single digits with leading zero
+            const isToday = (someDate) => someDate.toDateString() === now.toDateString();
+            const isYesterday = (someDate) => {
+                let yesterday = new Date();
+                yesterday.setDate(now.getDate() - 1);
+                return someDate.toDateString() === yesterday.toDateString();
+            };
+            
+            if (isToday(date)) {
+                // Format as hh:mm if the date is today
+                return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+            } else if (isYesterday(date)) {
+                // Return "yesterday" if the date was yesterday
+                return "yesterday";
+            } else {
+                // Format as dd/mm/yyyy for any other date
+                return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
+            }
+        }
+
+        
+        function createThreads(id, title, time, avatar, last_message){
+            const threadContainer = document.createElement("div");
+            threadContainer.className = "thread-container";
+            threadContainer.id = id;
+            const avatarPic = document.createElement("div");
+            avatarPic.className = "skeleton-avatar";
+            threadContainer.appendChild(avatarPic)
+            const mainThread = document.createElement("div");
+            mainThread.className = "thread"
+            threadContainer.appendChild(mainThread)
+            const upper = document.createElement("div");
+            upper.className = "upper";
+            mainThread.appendChild(upper)
+            const titleText = document.createElement("span")
+            titleText.className = "title";
+            let truncatedStr = last_message[0].code.length > 25 ? last_message[0].code.split('').slice(0, 100).join('') + "..." : last_message[0].code;
+            titleText.textContent = truncatedStr;
+            upper.appendChild(titleText)
+            const sub = document.createElement("span")
+            sub.className = "sub";
+            sub.textContent = time;
+            upper.appendChild(sub)
+            const lastMessage = document.createElement("span")
+            lastMessage.className = "sub";
+            lastMessage.textContent = " ";
+            mainThread.append(lastMessage)
+
+            threadContainer.addEventListener("click", (event)=>{
+                onClick("open_thread", threadContainer.id)
+            });
+
+            const mainDiv = document.getElementById("main")
+            mainDiv.appendChild(threadContainer)
+        }
+    </script>
+    </body>
+</html>

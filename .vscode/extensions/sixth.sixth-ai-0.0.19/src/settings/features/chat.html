@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Settings</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #150816;
+            color: #eee;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #150816;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #eee;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-button i {
+            margin-right: 0px;
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .account-status {
+            font-size: 14px;
+            font-weight: normal;
+            color: #b3b3b3;
+            margin-left: 10px;
+        }
+
+        .account-email {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin-bottom: 15px;
+        }
+
+        .account-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .account-actions button {
+            background-color: #3e4452;
+            border: none;
+            color: #eee;
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .account-actions button:hover {
+            background-color: #51596b;
+            transform: scale(1.05);
+        }
+
+        .account-actions button i {
+            margin-left: 0px;
+            font-size: 18px;
+        }
+
+        .upgrade-button {
+            background-color: #2a6099;
+        }
+
+        .upgrade-button:hover {
+            background-color: #3879b8;
+        }
+
+  /* ...your existing styles... */
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: none; /* Initially hidden */
+    align-items: center;
+    justify-content: center;
+    z-index: 100; /* Ensure it's on top */
+}
+
+.modal {
+    background-color: #282c34; /* Dark modal background */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: #eee; /* Light text color */
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.field-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #eee; /* Light text color */
+}
+
+.field-icon {
+    color: #999; /* Slightly darker icon color */
+    margin-right: 5px;
+}
+
+.field-input {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #555; /* Darker border */
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #333; /* Dark input background */
+    color: #eee; /* Light text color */
+}
+
+.share-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.share-icon {
+    color: #999; /* Slightly darker icon color */
+    margin-right: 5px;
+}
+
+.share-label {
+    font-size: 14px;
+    margin-right: auto; /* Push toggle to the right */
+    color: #eee; /* Light text color */
+}
+
+/* Toggle Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #e03a3a; /* Red when on */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.toggle-label {
+    font-size: 14px;
+    margin-left: 10px;
+    color: #777; /* Lighter text color */
+}
+
+.modal-actions {
+    text-align: right;
+}
+
+.confirm-button {
+    background-color: #5454C5; /*  button */
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.confirm-button:hover {
+    background-color: #5a2a71;
+}
+
+.back-icon {
+    margin-right: 5px;
+}
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .account-actions {
+                flex-direction: column;
+                gap: 20px;  /* More space between buttons */
+            }
+
+            .account-actions button {
+                width: 100%;  /* Full width for better tap area */
+                font-size: 18px; /* Larger font for mobile */
+                padding: 15px 0; /* Taller buttons for better touch targets */
+            }
+
+            .account-actions button i {
+                margin-left: 10px;
+                font-size: 18px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                max-width: 90%;
+            }
+        }
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background-color: #1E1B2E;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: 1px solid #5454C5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-button:hover {
+            background-color: #5454C5;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1E1B2E;
+            min-width: 200px;
+            border: 1px solid #5454C5;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #5454C5;
+            color: white;
+        }
+
+        .dropdown-item:not(:last-child) {
+            border-bottom: 1px solid #2A2A3C;
+        }
+        .doc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.doc-prop{
+   display: flex; 
+   align-items: center;
+}
+
+.doc-name {
+    font-size: 16px;
+}
+
+.doc-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.doc-status-pending{
+    background-color: #E6952E;
+    padding:5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.doc-status-done{
+    background-color: #32B76C;
+    padding:5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.doc-actions button {
+    background: none;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #888; /* Icon color */
+}
+
+.doc-actions button:hover {
+    color:white;
+    background-color: #5454C5;
+}
+
+.doc-actions .fas {
+    font-size: 16px;
+}
+
+.add-doc-button {
+    background-color: transparent;
+    border: none;
+    color: #777;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.add-github-button{
+    background-color: transparent;
+    border: none;
+    color: #777;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.add-doc-button:hover {
+    color:white;
+    background-color: #5454C5;
+}
+
+.add-github-button:hover {
+    color:white;
+    background-color: #5454C5;
+}
+
+/* Responsive Styles */
+@media (max-width: 500px) {
+    .doc-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .doc-actions {
+        margin-top: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button id="backButton" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1>Chat Settings</h1>
+        </div>
+        <div class="section dropdown-section">
+            <h2 class="section-title">Default Chat Context</h2>
+            <p class="account-email">Choose a default context whenever you're using the chat to help give better answers</p>
+            <div class="dropdown-container">
+                <button class="dropdown-button" id="dropdown-button-id" onclick="toggleDropdown()">Select Option</button>
+                <div class="dropdown-menu" id="dropdown-menu">
+                    <!-- The first item is always Codebase -->
+                    <a href="#" class="dropdown-item">Codebase</a>
+                    <!-- Other items will be added here -->
+                </div>
+            </div>
+        </div>
+        <div class="section external-context-section">
+            <h2 class="section-title">External Contexts</h2>
+            <p class="account-email">Manage all external context that you've added</p>
+            <ul id="docs-list" class="docs-list">
+                    <!--<li class="doc-item">
+                        <span class="doc-name">PyTorch</span>
+                        <div class="doc-actions">
+                            <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="preview-button"><i class="fas fa-book-open"></i></button>
+                            <button class="delete-button"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </li>-->
+            </ul>
+    
+            <button class="add-doc-button">+ Add new Doc context</button>
+            <button class="add-github-button">+ Add new Github context</button>
+        </div>
+
+        <!-- Add Doc Modal -->
+        <div class="modal-overlay" id="addDocModal">
+            <div class="modal">
+                <h2 class="modal-title">Add new Doc Context</h2>
+                <div class="form-field">
+                    <label for="doc-prefix" class="field-label">
+                        <i class="fas fa-folder field-icon"></i> Doc Link
+                    </label>
+                    <input type="text" id="doc-prefix" class="field-input" placeholder="e.g https://threejs.org/docs/">
+                </div>
+                <div class="form-field">
+                    <label for="doc-name" class="field-label">
+                        <i class="fas fa-tag field-icon"></i> Name
+                    </label>
+                    <input type="text" id="doc-name" class="field-input" placeholder="e.g Threejs">
+                </div>
+                <div class="modal-actions">
+                    <button class="confirm-button" id="confirm-add-doc">
+                        <i class="fas fa-check confirm-icon"></i> Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Github Modal -->
+        <div class="modal-overlay" id="addGithubModal">
+            <div class="modal">
+                <h2 class="modal-title">Add new Github Context</h2>
+                <div class="form-field">
+                    <label for="github-repo" class="field-label">
+                        <i class="fas fa-folder field-icon"></i> Github Repo
+                    </label>
+                    <input type="text" id="github-repo" class="field-input" placeholder="e.g https://github.com/mrdoob/three.js">
+                </div>
+                <!--<div class="form-field">
+                    <label for="github-account" class="field-label">
+                        <i class="fas fa-tag field-icon"></i> Github Repo Account
+                    </label>
+                    <input type="text" id="github-account" class="field-input" placeholder="e.g mrdoob">
+                </div>-->
+                <div class="form-field">
+                    <label for="github-branch" class="field-label">
+                        <i class="fas fa-tag field-icon"></i> Github Branch(Optional)
+                    </label>
+                    <input type="text" id="github-branch" class="field-input" placeholder="e.g main">
+                </div>
+                <div class="modal-actions">
+                    <button class="confirm-button" id="confirm-add-github">
+                        <i class="fas fa-check confirm-icon"></i> Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Doc Edit Modal -->
+        <div class="modal-overlay" id="addDocEditModal">
+            <div class="modal">
+                <h2 class="modal-title">Add new Doc Context</h2>
+                <div class="form-field">
+                    <label for="doc-prefix" class="field-label">
+                        <i class="fas fa-folder field-icon"></i> Doc Link
+                    </label>
+                    <input type="text" id="doc-edit-prefix" class="field-input" placeholder="e.g https://threejs.org/docs/">
+                </div>
+                <div class="form-field">
+                    <label for="doc-name" class="field-label">
+                        <i class="fas fa-tag field-icon"></i> Name
+                    </label>
+                    <input type="text" id="doc-edit-name" class="field-input" placeholder="e.g Threejs">
+                </div>
+                <div class="modal-actions">
+                    <button class="confirm-button" id="confirm-edit-doc">
+                        <i class="fas fa-check confirm-icon"></i> Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Github Edit Modal -->
+        <div class="modal-overlay" id="addGithubEditModal">
+            <div class="modal">
+                <h2 class="modal-title">Add new Github Context</h2>
+                <div class="form-field">
+                    <label for="github-repo" class="field-label">
+                        <i class="fas fa-folder field-icon"></i> Github Repo
+                    </label>
+                    <input type="text" id="github-edit-repo" class="field-input" placeholder="e.g https://github.com/mrdoob/three.js.git">
+                </div>
+                <!--<div class="form-field">
+                    <label for="github-account" class="field-label">
+                        <i class="fas fa-tag field-icon"></i> Github Repo Account
+                    </label>
+                    <input type="text" id="github-edit-account" class="field-input" placeholder="e.g mrdoob">
+                </div>-->
+                <div class="form-field">
+                    <label for="github-branch" class="field-label">
+                        <i class="fas fa-tag field-icon"></i> Github Branch
+                    </label>
+                    <input type="text" id="github-edit-branch" class="field-input" placeholder="e.g main">
+                </div>
+                <div class="modal-actions">
+                    <button class="confirm-button" id="confirm-edit-github">
+                        <i class="fas fa-check confirm-icon"></i> Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+    <script>
+        const vscode = acquireVsCodeApi();
+         let cachedContextOptions = [];
+         let cachedContextObj={};
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            dropdownMenu.classList.toggle('show');
+        }
+
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function (e) {
+            const dropdown = document.querySelector('.dropdown-container');
+            if (!dropdown.contains(e.target)) {
+                document.getElementById('dropdown-menu').classList.remove('show');
+            }
+        });
+
+        document.getElementById('backButton').addEventListener('click', () => {
+            vscode.postMessage({
+                command: 'UpdateHTML',
+                value: 'back'
+            });
+        });
+
+        // Open the modal
+        const addDocButton = document.querySelector('.add-doc-button');
+        const addGithubButton = document.querySelector('.add-github-button');
+        const addDocModal = document.getElementById('addDocModal');
+        const addGithubModal = document.getElementById('addGithubModal');
+
+        addDocButton.addEventListener('click', () => {
+            addDocModal.style.display = 'flex';
+
+            // Close the modal when clicking outside of it
+            addDocModal.addEventListener('click', function(event) {
+                if (event.target === addDocModal) {
+                    addDocModal.style.display = 'none';
+                }
+            });
+
+            document.getElementById('confirm-add-doc').addEventListener('click', () => {
+            console.log("clicked oh?");
+            const docPrefix = document.getElementById('doc-prefix').value;
+            const docName = document.getElementById('doc-name').value;
+
+            // Send the data to the extension
+            vscode.postMessage({
+                command: 'SEND_NEW_CONTEXT',
+                value: {
+                    type: 'doc', // To distinguish between doc and github context
+                    prefix: docPrefix,
+                    name: docName
+                }
+            });
+
+            // Close the modal
+            addDocModal.style.display = 'none';
+        });
+        });
+
+        addGithubButton.addEventListener('click', () => {
+            addGithubModal.style.display = 'flex';
+
+            // Close the modal when clicking outside of it
+            addGithubModal.addEventListener('click', function(event) {
+                    if (event.target === addGithubModal) {
+                        addGithubModal.style.display = 'none';
+                    }
+                });
+            // Confirm Add Github Logic
+            document.getElementById('confirm-add-github').addEventListener('click', () => {
+                const githubRepo = document.getElementById('github-repo').value;
+                let githubBranch = document.getElementById('github-branch').value;
+                if(githubBranch===null||githubBranch===undefined){
+                    githubBranch='main';
+                }else if(githubBranch.length===0){
+                    githubBranch='main';
+                }
+
+
+                // Send the data to the extension
+                vscode.postMessage({
+                    command: 'SEND_NEW_CONTEXT',
+                    value: {
+                        type: 'github', // To distinguish between doc and github context
+                        github_url: githubRepo,
+                        branch: githubBranch
+                    }
+                });
+
+                // Close the modal
+                addGithubModal.style.display = 'none';
+            });
+        });
+
+        // Close the modal (you can add a close button or click outside to close functionality)
+        // ...
+
+        // Toggle switch logic
+        //const shareToggle = document.getElementById('share-toggle');
+        //const toggleLabel = document.getElementById('toggleLabel');
+
+        /*shareToggle.addEventListener('change', () => {
+            if (shareToggle.checked) {
+                toggleLabel.textContent = 'On';
+            } else {
+                toggleLabel.textContent = 'Off';
+            }
+        });*/
+
+            // Function for the Edit Doc Modal
+        function openEditDocModal(docPrefix, docName) {
+            // Get the input fields
+            const docPrefixInput = document.getElementById('doc-edit-prefix');
+            const docNameInput = document.getElementById('doc-edit-name');
+
+            // Fill the input fields with the initial values
+            docPrefixInput.value = docPrefix;
+            docNameInput.value = docName;
+
+            // Make doc-edit-prefix uneditable and grayed out
+            docPrefixInput.disabled = true;
+            docPrefixInput.style.color = '#777';
+
+            // Allow doc-edit-name to be editable (no changes needed here)
+
+            // Show the modal
+            const addDocEditModal = document.getElementById('addDocEditModal');
+            addDocEditModal.style.display = 'flex';
+
+            // Close the modal when clicking outside of it
+            addDocEditModal.addEventListener('click', function(event) {
+                if (event.target === addDocEditModal) {
+                    addDocEditModal.style.display = 'none';
+                }
+            });
+
+            // Handle the Edit confirmation
+            document.getElementById('confirm-edit-doc').onclick = () => {
+                const editedDocPrefix = docPrefixInput.value; // Will be the same as original docPrefix
+                const editedDocName = docNameInput.value;     // Could be different if the user edits it
+
+                // Send the edited data to the extension
+                vscode.postMessage({
+                    command: 'EDIT_CONTEXT',
+                    value: {
+                        type: 'doc',
+                        prefix: editedDocPrefix, // Still the original prefix
+                        name: editedDocName,     // Now the potentially edited name
+                        originalDocName: docName  // Keep the original name (same as name in this case)
+                    }
+                });
+
+                // Close the modal
+                addDocEditModal.style.display = 'none';
+            };
+        }
+
+        // Function for the Edit Github Modal
+        function openEditGithubModal(githubRepo, githubBranch) {
+            // Get the input fields
+            const githubRepoInput = document.getElementById('github-edit-repo');
+            const githubBranchInput = document.getElementById('github-edit-branch');
+
+            // Fill the input fields with the initial values and make them uneditable
+            githubRepoInput.value = githubRepo;
+            githubRepoInput.disabled = true;
+            githubRepoInput.style.color = '#777'; // Gray out the text
+
+            githubBranchInput.value = githubBranch;
+            githubBranchInput.disabled = true;
+            githubBranchInput.style.color = '#777'; // Gray out the text
+
+            // Show the modal
+            const addGithubEditModal = document.getElementById('addGithubEditModal');
+            addGithubEditModal.style.display = 'flex';
+
+            // Close the modal when clicking outside of it
+            addGithubEditModal.addEventListener('click', function(event) {
+                if (event.target === addGithubEditModal) {
+                    addGithubEditModal.style.display = 'none';
+                }
+            });
+
+            // Handle the Edit confirmation (Keep this if you still need the button for other actions)
+            document.getElementById('confirm-edit-github').onclick = () => {
+                // ... Your existing logic to send a message to the extension ...
+                // Note: You might not need to send the edited values anymore since they are uneditable
+                // but you might want to keep sending the originalRepo value.
+
+                // Close the modal
+                addGithubEditModal.style.display = 'none';
+            };
+        }
+
+        
+
+
+        function updateContextMenu(contextOptions) {
+            const dropDownBtn=document.getElementById('dropdown-button-id');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            dropdownMenu.innerHTML = ''; // Clear existing items
+
+            // Always add Codebase as the first item
+            const codebaseItem = document.createElement('a');
+            codebaseItem.href = '#';
+            codebaseItem.className = 'dropdown-item';
+            codebaseItem.textContent = 'Codebase';
+            codebaseItem.addEventListener('click', function() {
+                // Handle the selection of Codebase
+                console.log('Codebase selected');
+                selectContextOption('Codebase');
+                dropDownBtn.textContent='Codebase';
+
+                // Close the dropdown
+                dropdownMenu.classList.remove('show');
+            });
+            dropdownMenu.appendChild(codebaseItem);
+
+            // Add other context options
+            contextOptions.forEach(option => {
+                const item = document.createElement('a');
+                item.href = '#';
+                item.className = 'dropdown-item';
+                item.textContent = option;
+                item.addEventListener('click', function() {
+                    // Handle the selection of other options
+                    console.log(`${option} selected`);
+                    selectContextOption(option);
+                    dropDownBtn.textContent=option;
+
+                    // Close the dropdown
+                    dropdownMenu.classList.remove('show');
+                });
+                dropdownMenu.appendChild(item);
+            });
+        }
+
+        function updateDocsList(contextData) {
+            const docsList = document.getElementById('docs-list');
+            docsList.innerHTML = ''; // Clear the list
+
+            for (const key in contextData) {
+                const context = contextData[key];
+
+                const docItem = document.createElement('li');
+                docItem.className = 'doc-item';
+
+                const docName = document.createElement('span');
+                docName.className = 'doc-name';
+                docName.textContent = key;
+
+                const docStatus= document.createElement('span');
+                if(!context.DONE){
+                    docStatus.className = 'doc-status-pending';
+                    docStatus.textContent= 'Pending...'
+                }else{
+                    docStatus.className = 'doc-status-done';
+                    docStatus.textContent= 'Done'
+                }
+
+                const docProp=document.createElement('div');
+                docProp.className='doc-prop';
+                docProp.appendChild(docName);
+                docProp.appendChild(docStatus);
+
+                const docActions = document.createElement('div');
+                docActions.className = 'doc-actions';
+
+                const editButton = document.createElement('button');
+                editButton.className = 'edit-button';
+                editButton.innerHTML = '<i class="fas fa-pencil-alt"></i>';
+                editButton.addEventListener('click', () => {
+                    // Handle edit action
+                    console.log('Edit:', context);
+                    if (context.link !== null && context.link !== undefined) {
+                        openEditDocModal(context.link, key);
+                    } else if (context.repo !== null&& context.repo !== undefined) {
+                        const githubLink=`https://github.com/${context.owner}/${context.repo}`;
+                        openEditGithubModal(githubLink, context.branch);
+                    }
+                    
+                });
+
+                const previewButton = document.createElement('button');
+                previewButton.className = 'preview-button';
+                previewButton.innerHTML = '<i class="fas fa-book-open"></i>';
+                previewButton.addEventListener('click', () => {
+                    // Handle preview action
+                    console.log('Preview:', key);
+                    if (context.link !== null && context.link !== undefined) {
+                        openEditDocModal(context.link, key);
+                    } else if (context.repo !== null&& context.repo !== undefined) {
+                        const githubLink=`https://github.com/${context.owner}/${context.repo}`;
+                        openEditGithubModal(githubLink, context.branch);
+                    }
+                });
+
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-button';
+                deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+                deleteButton.addEventListener('click', () => {
+                    // Handle delete action
+                    console.log('Delete:', key);
+                    // Send a message to the extension to delete the context
+                    vscode.postMessage({
+                        command: 'DELETE_CONTEXT',
+                        value: {'data':context,'key':key}
+                    });
+
+                    // Remove the doc item from the list
+                    docItem.remove();
+                });
+
+                docActions.appendChild(editButton);
+                docActions.appendChild(previewButton);
+                docActions.appendChild(deleteButton);
+
+                docItem.appendChild(docProp);
+                docItem.appendChild(docActions);
+
+                docsList.appendChild(docItem);
+            }
+        }
+
+        function selectContextOption(option) {
+            if(cachedContextObj[option]!==null){
+                if(option!=='Codebase'){
+                    vscode.postMessage({
+                command: 'SELECT_CONTEXT_OPTION',
+                value: {'key':option,'vector_store_id':cachedContextObj[option]['vector_store_id']}
+            });
+                }else{
+                    vscode.postMessage({
+                command: 'SELECT_CONTEXT_OPTION',
+                value: {'key':option,'vector_store_id':null}
+            });
+                }
+            }else{
+                // Send the selected option to the extension
+            vscode.postMessage({
+                command: 'SELECT_CONTEXT_OPTION',
+                value: {'key':option,'vector_store_id':null}
+            });
+            }
+            
+        }
+        /*window.addEventListener('load', () => {
+            updateContextMenu(cachedContextOptions);
+        });*/
+
+        window.addEventListener('message', event => {
+            console.log("Received message:", event.data);
+            const message = event.data; // The JSON data from the extension
+
+            switch (message.command) {
+                case 'CONTEXT_OPTIONS':
+                    cachedContextOptions = Object.keys(message.value);
+                    if (document.readyState === 'complete') {
+                        console.log("e no see am?");
+                        //updateContextMenu(Object.keys(message.value));
+                        updateContextMenu(
+                            Object.keys(message.value).filter(key => message.value[key]?.DONE === true)
+                            );
+                        updateDocsList(message.value);
+                        cachedContextObj=message.value;
+                    } else {
+                        window.addEventListener('load', () => {
+                            //updateContextMenu(Object.keys(message.value));
+                            updateContextMenu(
+                                Object.keys(message.value).filter(key => message.value[key]?.DONE === true)
+                                );
+                            updateDocsList(message.value);
+                        });
+                    }
+                    break;
+
+                case 'LOAD_DEFAULT_OPTION':
+                    const dropDownBtn=document.getElementById('dropdown-button-id');
+                    dropDownBtn.textContent=message.value;
+            }
+        });
+    </script>
+</body>
+</html>

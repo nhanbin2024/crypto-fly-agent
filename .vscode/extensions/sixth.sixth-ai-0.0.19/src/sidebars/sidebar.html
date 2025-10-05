@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Sixth
+    </title>
+    <style>
+        :root {
+            /* Core colors from theme */
+            --editor-background: #1E1E1E;
+            --editor-foreground: #D4D4D4;
+            --button-background: #007ACC;
+            --button-foreground: #FFFFFF;
+            --input-background: #3C3C3C;
+            --input-foreground: #9399B2; 
+            --panel-background: #252526;
+        }
+
+        body {
+            background: var(--editor-background);
+            color: var(--input-foreground);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--editor-foreground);
+            font-size: 14px;
+        }
+
+        .regular_text {
+            color: var(--editor-foreground);
+        }
+
+        .left {
+        }
+
+        .fade_text {
+            color: var(--input-foreground);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .nav_icon:hover {
+            background: var(--input-background);
+
+            .fade_text {
+                color: var(--editor-foreground);
+            }
+
+            .regular_text {
+                text-decoration: underline;
+            }
+            .normal_icon{
+                display: none;
+            }
+            .houver_icon
+            {
+                display: inline;
+            }
+            
+
+        }
+
+        .nav_field {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        h3 {
+            color: var(--input-foreground);
+            font-size: 12px;
+        }
+        p {
+          font-size: 12px;
+          color: var(--input-foreground);
+        }
+        .social_nav{
+            display: flex;
+            margin: 0px;
+            justify-content: space-between;
+        }
+
+        .nav_icon {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+
+        }
+        .normal_icon{
+            padding: 0px;
+            margin: 0px;
+            display: block;
+
+        }
+        .houver_icon
+        {
+            padding: 0px;
+            margin: 0px;
+            display: none;
+
+        }
+        .icon{
+            display: inline;
+        }
+        .icon:hover{
+            background: var(--input-background);
+        }
+        #main_nav{
+            width:100%;
+            padding: 0px;
+            margin: 0px;
+
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <div class="left">
+      <div class="social_nav left" style="margin-top: 16px; margin-bottom: 8px; width: 100%; display: flex; justify-content: space-between;">
+
+        
+        <div class="nav_field">
+            <div class="icon">
+              <a href="https://twitter.com/sixth_hq" target="_blank">
+              <svg href="https://vscode.trysixth.com"   fill="#8494A5" height="14px" width="14px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  viewBox="0 0 310 310" xml:space="preserve">
+              <g id="XMLID_826_">
+                <path id="XMLID_827_" d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73
+                  c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783
+                  c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598
+                  C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467
+                  c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977
+                  c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889
+                  c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597
+                  c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961
+                  c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895
+                  c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367
+                  c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998
+                  C307.394,57.037,305.009,56.486,302.973,57.388z"/>
+              </g>
+              </svg>
+            </a>
+            </div>
+            <div class="icon">
+              <a href="https://discord.com/channels/1195367541317582918/1195367542005440574" target="_blank">
+                <?xml version="1.0" encoding="UTF-8"?>
+                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                <svg width="14px" height="14px" fill="#8494A5" viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+                    <g>
+                        <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="#8494A5" fill-rule="nonzero">
+                </path>
+                    </g>
+                </svg>
+            </a>
+            </div>
+            <div class="icon">
+              <a href="https://marketplace.visualstudio.com/items?itemName=Sixth.sixth" target="_blank">
+                <?xml version="1.0" encoding="UTF-8"?>
+                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                <svg height="14px" viewBox="-11.9 -2 1003.9 995.6" width="14px" xmlns="http://www.w3.org/2000/svg"><path d="m12.1 353.9s-24-17.3 4.8-40.4l67.1-60s19.2-20.2 39.5-2.6l619.2 468.8v224.8s-.3 35.3-45.6 31.4z" fill="#2489ca"/><path d="m171.7 498.8-159.6 145.1s-16.4 12.2 0 34l74.1 67.4s17.6 18.9 43.6-2.6l169.2-128.3z" fill="#1070b3"/><path d="m451.9 500 292.7-223.5-1.9-223.6s-12.5-48.8-54.2-23.4l-389.5 354.5z" fill="#0877b9"/><path d="m697.1 976.2c17 17.4 37.6 11.7 37.6 11.7l228.1-112.4c29.2-19.9 25.1-44.6 25.1-44.6v-671.2c0-29.5-30.2-39.7-30.2-39.7l-197.7-95.3c-43.2-26.7-71.5 4.8-71.5 4.8s36.4-26.2 54.2 23.4v887.5c0 6.1-1.3 12.1-3.9 17.5-5.2 10.5-16.5 20.3-43.6 16.2z" fill="#3c99d4"/></svg>
+            </a>
+            </div>
+            <a href="https://vscode.trysixth.com" target="_blank">
+
+              <svg fill="#8494A5" height="14px" width="14px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+              viewBox="0 0 512 512" xml:space="preserve">
+              <g>
+              <g>
+              <path d="M256,0C114.842,0,0,114.842,0,256s114.842,256,256,256s256-114.842,256-256S397.158,0,256,0z M194.27,34.43
+                c-10.879,10.942-20.817,25.328-29.403,43.945c-6.558,14.217-12.228,30.589-16.964,46.343H67.21
+                C97.373,81.395,142.101,49,194.27,34.43z M51.43,150.974h89.971c-6.111,28.882-9.67,60.39-10.408,91.897H26.607
+                C28.398,210.051,37.15,179.856,51.43,150.974z M26.673,269.128h104.35c0.8,32.82,4.418,64.328,10.6,91.897H51.98
+                C37.534,333.456,28.614,303.262,26.673,269.128z M67.933,387.282h80.266c4.676,17.067,10.245,31.772,16.666,45.693
+                c8.413,18.238,18.206,32.647,28.936,43.817C142.251,462.276,97.995,430.605,67.933,387.282z M242.872,483.601
+                c-24.944-8.623-51.007-42.493-67.465-96.319h67.465V483.601z M242.872,361.026H168.34c-6.236-26.256-10.214-57.764-11.062-91.897
+                h85.593V361.026z M242.872,242.872h-85.613c0.776-31.508,4.54-63.015,11.001-91.897h74.612V242.872z M242.872,124.718H175.26
+                c3.898-11.815,8.174-24.25,13.232-35.216c15.353-33.288,34.687-54.59,54.38-61.13V124.718z M485.393,242.872H381.007
+                c-0.738-31.508-4.296-63.015-10.408-91.897h89.971C474.85,179.856,483.602,210.051,485.393,242.872z M444.79,124.718h-80.693
+                c-4.737-15.754-10.405-31.996-16.963-46.213c-8.524-18.481-18.091-33.049-28.51-43.962
+                C370.411,49.232,414.799,82.708,444.79,124.718z M269.128,28.652c19.692,6.875,38.816,28.047,53.946,60.849
+                c5.058,10.966,9.767,23.401,13.665,35.216h-67.612V28.652z M269.128,150.974h74.612c6.46,28.882,10.226,60.39,11.001,91.897
+                h-85.613V150.974z M269.128,269.128h85.593c-0.848,34.133-4.826,65.641-11.062,91.897h-74.531V269.128z M269.128,483.316v-96.034
+                h67.465C320.319,439.795,295.385,474.221,269.128,483.316z M319.588,476.525c10.013-11.117,19.234-25.659,27.546-43.68
+                c6.421-13.921,11.99-28.496,16.666-45.563h80.266C414.275,430.605,370.545,461.827,319.588,476.525z M460.02,361.026h-89.642
+                c6.181-27.569,9.8-59.077,10.6-91.897h104.35C483.386,303.262,474.466,333.456,460.02,361.026z"/>
+              </g>
+              </g>
+              </svg>
+        </a>
+        </div>
+
+        <div class="icon">
+          <div style="width: 100%; display: flex; justify-content: end;">
+            <div style="
+            background-color:#3c454e; 
+            color: rgb(255, 255, 255); 
+            font-weight: 500; 
+            border-radius: 8px; 
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;" id="tier">DAYS_LEFT ✨</div>
+          </div>
+        </div>
+        
+
+        
+    </div>
+        <div id="main_nav">
+        
+        </div>
+        
+    </div>
+    <div>
+       
+        <script>
+          let level = 0;
+          vscode = acquireVsCodeApi();
+          var sideBar = REPLACE_THIS;
+          const themeColors = THEME_COLORS_JSON;
+          document.documentElement.style.setProperty('--editor-background', themeColors['editor.background']);
+          document.documentElement.style.setProperty('--editor-foreground', themeColors['editor.foreground']);
+          document.documentElement.style.setProperty('--button-background', themeColors['button.background']);
+          document.documentElement.style.setProperty('--button-foreground', themeColors['button.foreground']);
+          document.documentElement.style.setProperty('--input-background', themeColors['input.background']);
+          document.documentElement.style.setProperty('--input-foreground', themeColors['input.foreground']);
+          document.documentElement.style.setProperty('--panel-background', themeColors['panel.background']);
+
+          vscode.postMessage({
+            command: "log_event",
+            value: "Theme colors initializedsss " + themeColors
+          })
+          
+          
+          window.addEventListener('message', event => {
+
+            const message = event.data; // The JSON data our extension sent
+
+            switch (message.command) {
+                case 'refactor':
+                    count = Math.ceil(count * 0.5);
+                    counter.textContent = count;
+                    break;
+                case 'upgrade_tier':
+                  const tier = document.getElementById("DAYS_LEFT")
+                  tier.innerHTML = "Standard tier"
+            }
+            });
+          const navigation = [
+          {
+              name: "ChatGPT4 Code Assistant 🔥(Now Live)",
+              open: function ShowNav(name = "ChatGPT4 Code Assistant 🔥(Now Live)") {
+                  nav = document.getElementById(name)
+                  nav_icon = document.getElementById(name + "nav")
+
+                  if (nav.style.display == "none") {
+
+                      nav.style.display = "inline"
+                      nav_icon.style.transform = 'rotate(180deg)'
+
+                  }
+                  else {
+                      nav.style.display = "none"
+                      nav_icon.style.transform = 'rotate(0deg)'
+                  }
+
+              },
+              open_navIcon: `<svg width="24px" height="24px" fill="#8494A5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <rect x="0" fill="none" width="24" height="24"/>
+                                  <g>
+                                  <path d="M7 10l5 5 5-5"/>
+                                  </g>
+                              </svg>`,
+
+
+              sub_nav: sideBar
+              ,is_tail: true
+              ,onclick: function logOut(){
+                  vscode.postMessage({command: "open_chat", value:"OpenChat"})
+                }
+            },
+          {
+            name: "Configurations",
+              open: function ShowNav(name = "Configurations") {
+                  nav = document.getElementById(name)
+                  nav_icon = document.getElementById(name + "nav")
+
+                   if (nav.style.display == "none") {
+
+                      nav.style.display = "inline"
+                      nav_icon.style.transform = 'rotate(180deg)'
+
+                  }
+                  else {
+                      nav.style.display = "none"
+                      nav_icon.style.transform = 'rotate(0deg)'
+                  }
+
+              },
+              open_navIcon: `<svg width="24px" height="24px" fill="#8494A5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <rect x="0" fill="none" width="24" height="24"/>
+                                  <g>
+                                  <path d="M7 10l5 5 5-5"/>
+                                  </g>
+                              </svg>`,
+              sub_nav: [
+                              {
+                                nav_name: "Manage Subscription",
+                                class_name: "fade_text",
+                                sub_nav_for_nav: [],
+                                is_tail: true,
+                                onclick: function onClick(){
+                                  vscode.postMessage({ command: 'update_billing', value: {
+                                    
+                                  } });
+                                },
+                                icon: `
+
+                                  <div style="margin-right: 8px">
+                                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.5 13.75C9.5 14.72 10.25 15.5 11.17 15.5H13.05C13.85 15.5 14.5 14.82 14.5 13.97C14.5 13.06 14.1 12.73 13.51 12.52L10.5 11.47C9.91 11.26 9.51001 10.94 9.51001 10.02C9.51001 9.17999 10.16 8.48999 10.96 8.48999H12.84C13.76 8.48999 14.51 9.26999 14.51 10.24" stroke="#8494A5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M12 7.5V16.5" stroke="#8494A5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2" stroke="#8494A5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M22 6V2H18" stroke="#8494A5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M17 7L22 2" stroke="#8494A5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  </div>
+                                `
+
+                              }
+                            ]
+              ,is_tail: false
+              ,onclick: null
+              },
+              {
+                name: "Teams ✨",
+                open: null, 
+                open_navIcon: ``,
+                sub_nav:[], 
+                is_tail: true, 
+                onclick: function logOut(){
+                  vscode.postMessage({command: "comming_soon", value:"TEAMS"})
+                }
+              },
+
+              {
+                name: "Check indexing status",
+                open: null, 
+                open_navIcon: ``,
+                sub_nav:[], 
+                is_tail: true, 
+                onclick: function logOut(){
+                  vscode.postMessage({command: "index_page", value:"index_page"})
+                }
+              },
+              {
+                name: "Enterprise ✨",
+                open: null, 
+                open_navIcon: ``,
+                sub_nav:[], 
+                is_tail: true, 
+                onclick: function logOut(){
+                  vscode.postMessage({command: "comming_soon", value:"ENTERPRISE"})
+                }
+              },
+              {
+                name: "Settings",
+                open: null, 
+                open_navIcon: ``,
+                sub_nav:[], 
+                is_tail: true, 
+                onclick: function logOut(){
+                  vscode.postMessage({command: "settings", value:"settings"})
+                }
+              },
+              {
+                name: "Help",
+                open: null, 
+                open_navIcon: ``,
+                sub_nav:[], 
+                is_tail: true, 
+                onclick: function logOut(){
+                  vscode.postMessage({command: "help", value:"help"})
+                }
+              }
+            ]
+
+        function loadNaviagtion(navigation){
+          const container = document.getElementById("main_nav")
+          container.innerHTML= "";
+           navigation.forEach(element => {
+
+          const mainNav = document.createElement('div')
+          const field = document.createElement('div')
+          field.className = 'nav_field head_nav'
+
+
+          const openNav = document.createElement("div")
+          openNav.innerHTML = element.open_navIcon;
+          openNav.id = element.name + "nav"
+          field.append(openNav)
+          const name = document.createElement("h3")
+          name.append(element.name)
+          const nav = document.createElement('div')
+          nav.style.display = "none";
+
+          nav.id = element.name;
+
+          field.append(name)
+          field.addEventListener('mouseenter', function() {
+          // Change color on hover
+            field.style.backgroundColor = '#252D35';
+            name.style.textDecoration = 'underline';
+            name.style.color = "#ffffff"
+            name.style.transition="color 0.3s ease, text-decoration 0.3s ease";
+          });
+
+          field.addEventListener('mouseleave', function() {
+              // Revert to the initial color when not hovering
+              field.style.backgroundColor = 'transparent';
+              name.style.textDecoration = 'none';
+              name.style.color = "#8494A5"
+              name.style.transition="color 0.3s ease, text-decoration 0.3s ease";
+          });
+
+          mainNav.append(field)
+
+          if (element.is_tail){
+            field.addEventListener("click", (e)=> element.onclick())
+          }else{
+            field.addEventListener("click", (e) => element.open())
+          }
+
+
+          element.sub_nav.forEach(element => {
+              const new_level = level +1;
+
+              
+
+              const header = document.createElement('p')
+             
+              header.innerHTML = element.icon +"  " +element.nav_name;
+              const newOpenNav = document.createElement("div")
+              if (!element.is_tail){
+                
+                newOpenNav.innerHTML = element.open_navIcon;
+                newOpenNav.id = "testnavistestingnav"
+                header.insertBefore(newOpenNav, header.firstChild)
+              }
+              header.style.backgroundColor="transparent"
+              header.style.display = "flex";
+              header.style.alignItems ="center";
+              
+
+
+              header.className = element.class_name;
+
+
+              const nav_bar = document.createElement('div')
+
+              nav_bar.className = "nav"
+              const nav_body = document.createElement('div')
+              nav_body.style.display = "flex"
+              nav_body.style.flexDirection = "column"
+              nav_body.id = "testnavistesting"
+              nav_body.style.backgroundColor="transparent"
+              header.style.paddingLeft = "32px"
+              header.style.paddingTop = "0px"
+             
+
+              header.addEventListener('mouseenter', function() {
+                // Change color on hover
+              
+                header.style.backgroundColor = '#252D35';
+                header.style.textDecoration = 'underline';
+                header.style.color = "#ffffff"
+                header.style.transition="color 0.3s ease, text-decoration 0.3s ease";
+              });
+
+              header.addEventListener('mouseleave', function() {
+                  // Revert to the initial color when not hovering
+                  header.style.backgroundColor = 'transparent';
+                  header.style.textDecoration = 'none';
+                  header.style.color = "#8494A5"
+                  header.style.transition="color 0.3s ease, text-decoration 0.3s ease";
+                  
+              });
+
+               if (!element.is_tail){
+                 nav_body.style.display = "none"
+               }
+              if (element.is_tail){
+                header.addEventListener("click", (e)=> element.onclick())
+              }else{
+                header.addEventListener("click", (e) =>{
+                  if (nav_body.style.display == "none") {
+
+                    nav_body.style.display = "inline"
+                    newOpenNav.style.transform = 'rotate(180deg)'
+
+                  }
+                  else {
+                      nav_body.style.display = "none"
+                      newOpenNav.style.transform = 'rotate(0deg)'
+                  }
+                   
+                  })
+              }
+
+              nav.append(header);
+              nav.append(nav_body);
+              mainNav.append(nav);
+
+
+              element.sub_nav_for_nav.forEach(sub_element => {
+
+                  const nav_Field = document.createElement("div")
+                  nav_Field.className = "nav_field"
+                  nav_Field.style.margin="0px";
+                  nav_Field.style.paddingLeft = "3.2rem"
+
+                  const nav_icon = document.createElement("div")
+                  nav_icon.innerHTML += sub_element.icon;
+                  nav_Field.append(nav_icon);
+
+                  const Field_name = document.createElement("p")
+                  Field_name.style.display = "flex"
+                  Field_name.style.alignItems="center"
+                  Field_name.innerHTML += sub_element.name;
+                  Field_name.className = "regular_text"
+                  Field_name.style.color = "#66CBD6"
+                  const code  = document.createElement("p")
+                  code.innerHTML += " (..) {...}"
+                  code.className = "regular_text"
+                  code.style.color = "yellow"
+                  Field_name.append(code)
+                  nav_Field.append(Field_name)
+
+
+               
+
+                  if (sub_element.is_tail){
+                    nav_Field.addEventListener("click", (e)=> {
+                      log_event("log_event", "Testing if clicked")
+                      log_event("fix_code", {
+                        "fileName": sub_element.fileName, 
+                        "funcName": sub_element.name
+                      })
+                    })
+                  }else{
+                    nav_Field.addEventListener("click", (e) => {
+                      log_event("log_event", "You clicked")
+                    })
+                  }
+
+                  nav_Field.addEventListener('mouseenter', function() {
+                      log_event("log_event", "Testing if clicked")
+                      nav_Field.style.backgroundColor = '#252D35';
+                    });
+
+                    nav_Field.addEventListener('mouseleave', function() {
+                        // Revert to the initial color when not hovering
+                        nav_Field.style.backgroundColor = 'transparent';
+                    });
+
+
+                  nav_body.append(nav_Field)
+                
+
+
+
+              }
+              )
+
+
+          });
+
+          const container = document.getElementById("main_nav")
+          container.append(mainNav);
+
+
+
+});
+
+
+        }
+        loadNaviagtion(navigation);
+
+        function log_event(command, data){
+          vscode.postMessage({ command: command, value: data });
+        }
+        var checking = REPLACE_THIS;
+         // Initialize theme colors
+       
+            // Handle the message inside the webview
+        </script>
+
+</body>
+
+
+</html>

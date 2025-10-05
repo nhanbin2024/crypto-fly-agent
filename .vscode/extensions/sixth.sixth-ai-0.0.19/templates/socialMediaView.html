@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace File Hierarchy</title>
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+ul li.directory {
+  font-weight: bold;
+  width: fit-content;
+}
+
+ul li.file {
+  color: #666;
+  width: fit-content;
+}
+
+.indicator::before {
+  content: '▶';
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.expanded > .indicator::before {
+  content: '▼';
+}
+
+.collapsed > .indicator::before {
+  content: '▶';
+}
+
+  </style>
+</head>
+<body>
+  <div id="fileTree"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const fileTree = document.getElementById("fileTree");
+
+  // Function to display file hierarchy
+  function displayFileHierarchy() {
+    // Clear existing content
+    fileTree.innerHTML = "";
+
+    // Get all file paths in the workspace
+    const files = [
+      "path/to/ope/file1.txt",
+      "path/to/file2.txt",
+      "path/to/dir/file3.txt",
+      "path/to/dir/file4.txt",
+      "path/to/dir2/file5.txt",
+      "ope/main.py"
+    ];
+
+    const folderDiv = document.createElement("div");
+    folderDiv.style.width = "150px";
+    folderDiv.style.display = "flex";
+    folderDiv.style.justifyContent = "space-between";
+    folderDiv.style.flexDirection = 'row';
+    // Create a nested list for the file hierarchy
+    const fileList = document.createElement("ul");
+
+    // Create a map to group files by directory path
+    const fileMap = {};
+
+    // Iterate over each file path
+    files.forEach(filePath => {
+      const pathParts = filePath.split("/");
+      let currentMap = fileMap;
+
+      // Traverse the file path and create a nested map
+      pathParts.forEach((part, index) => {
+        if (!currentMap[part]) {
+          // Create a new object if it doesn't exist
+          currentMap[part] = {};
+        }
+        currentMap = currentMap[part];
+      });
+    });
+
+    // Recursively create the file hierarchy from the file map
+    createFileHierarchy(fileList, fileMap);
+
+    // Append the file hierarchy to the fileTree element
+    fileTree.appendChild(fileList);
+  }
+
+  // Function to recursively create the file hierarchy
+  function createFileHierarchy(parentElement, fileMap) {
+    for (const fileName in fileMap) {
+      const folderDiv = document.createElement("div");
+      folderDiv.style.width = "150px";
+      folderDiv.style.display = "flex";
+      folderDiv.style.justifyContent = "space-between";
+      folderDiv.style.flexDirection = 'row';
+      
+      const listItem = document.createElement("li");
+      listItem.textContent = fileName;
+      listItem.classList.add("directory");
+      const plusIcon = document.createElement("p");
+      plusIcon.textContent = "+";
+      const nestedList = document.createElement("ul");
+      listItem.appendChild(nestedList);
+      folderDiv.appendChild(listItem);
+      folderDiv.appendChild(plusIcon);
+      parentElement.appendChild(folderDiv);
+
+      // Check if the value is an object (subdirectory)
+      if (typeof fileMap[fileName] === "object") {
+        // Add event listener to toggle visibility of child nodes
+        listItem.addEventListener("click", function() {
+          toggleDirectoryExpansion(listItem);
+        });
+
+        createFileHierarchy(nestedList, fileMap[fileName]);
+      } else {
+        // Create a file node
+        const fileItem = document.createElement("li");
+        fileItem.textContent = fileMap[fileName];
+        fileItem.classList.add("file");
+        nestedList.appendChild(fileItem);
+      }
+    }
+  }
+
+  // Function to toggle expansion of directory
+  function toggleDirectoryExpansion(listItem) {
+    // Toggle the class to expand or collapse the directory
+    listItem.classList.toggle("collapsed");
+
+    // Get the nested list corresponding to the directory
+    const nestedList = listItem.querySelector("ul");
+
+    // If the directory is expanded, collapse it; otherwise, expand it
+    if (nestedList) {
+      nestedList.style.display = listItem.classList.contains("collapsed") ? "none" : "block";
+    }
+  }
+
+  // Call the function to display file hierarchy
+  displayFileHierarchy();
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,874 @@
+<html>
+	
+	<head>
+        <script src="https://js.stripe.com/v3/"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			div {
+				background-color: transparent;
+			}
+			input:focus {
+				outline-style: none;
+				border: 2.5px solid rgba(129, 61, 232, 1);
+	
+			}
+	
+			input:hover {
+				outline-style: none;
+				border: 2.5px solid rgba(129, 61, 232, 0.7);
+	
+			}
+	
+			input {
+				height: 80px;
+				width: 70%;
+				border-radius: 10px;
+	
+				text-decoration: none;
+				border: 2px solid rgba(129, 61, 232, 0.5);
+				margin-top: 20px;
+				margin-bottom: 20px;
+				font-family: Poppins;
+				color: rgb(255, 255, 255);
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 21px;
+				letter-spacing: 0em;
+				text-align: left;
+				padding-left: 20px;
+				background: #18191F;
+			}
+
+            .CardNumberField-input {
+                color: #ffffff; /* Change this to your desired color */
+            }
+
+            /* Change text color for the expiration date */
+            .CardExpiryField-input {
+                color: #ffffff; /* Change this to your desired color */
+            }
+
+            /* Change text color for the CVC */
+            .CardCvcField-input {
+                color: #ffffff; /* Change this to your desired color */
+            }
+	
+	
+			.checkbox input:checked~.checkbox::before {
+				opacity: 1;
+				border: 10px solid;
+	
+			}
+	
+			.checkbox-wrapper-42 {
+				width: 70%;
+			}
+	
+			.checkbox-wrapper-42 input[type="checkbox"] {
+				display: none;
+				visibility: hidden;
+	
+			}
+	
+			.checkbox-wrapper-42 label {
+				display: inline-block;
+			}
+	
+			.checkbox-wrapper-42 .cbx {
+				position: relative;
+				top: 1px;
+				width: 30px;
+				height: 30px;
+				border: 1px solid rgba(129, 61, 232, 0.7);
+				border-radius: 3px;
+				vertical-align: middle;
+				transition: background 0.1s ease;
+				cursor: pointer;
+			}
+	
+			.checkbox-wrapper-42 .cbx:after {
+				content: '';
+				position: absolute;
+				top: 1px;
+				left: 9px;
+				width: 9px;
+				height: 25px;
+				opacity: 0;
+				transform: rotate(45deg) scale(0);
+				border-right: 2px solid #fff;
+				border-bottom: 2px solid #fff;
+				transition: all 0.3s ease;
+				transition-delay: 0.15s;
+			}
+	
+			.checkbox-wrapper-42 .lbl {
+				margin-left: 5px;
+				vertical-align: middle;
+				cursor: pointer;
+				font-family: Poppins;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 24px;
+				letter-spacing: 0em;
+				text-align: left;
+			}
+			.background-image-container{
+				background: #150816;
+			}
+			.new-image{
+				width: 53%;
+				height: 45px;
+				object-fit: fill;
+				margin-top: 24px;
+			}
+	
+			.checkbox-wrapper-42 input[type="checkbox"]:checked~.cbx {
+				border-color: transparent;
+				background: #8C30F5;
+				animation: jelly-42 0.6s ease;
+			}
+	
+			.checkbox-wrapper-42 input[type="checkbox"]:checked~.cbx:after {
+				opacity: 1;
+				transform: rotate(45deg) scale(1);
+			}
+	
+			.checkbox-wrapper-42 .cntr {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 100%;
+				text-align: center;
+			}
+            
+		
+
+	@keyframes scroll {
+		to {
+			transform: translateX(calc(-100% - var(--gap)));
+		}
+	}
+	
+	@-moz-keyframes jelly-42 {
+		from {
+			transform: scale(1, 1);
+		}
+
+		30% {
+			transform: scale(1.25, 0.75);
+		}
+
+		40% {
+			transform: scale(0.75, 1.25);
+		}
+
+		50% {
+			transform: scale(1.15, 0.85);
+		}
+
+		65% {
+			transform: scale(0.95, 1.05);
+		}
+
+		75% {
+			transform: scale(1.05, 0.95);
+		}
+
+		to {
+			transform: scale(1, 1);
+		}
+	}
+
+	@-webkit-keyframes jelly-42 {
+		from {
+			transform: scale(1, 1);
+		}
+
+		30% {
+			transform: scale(1.25, 0.75);
+		}
+
+		40% {
+			transform: scale(0.75, 1.25);
+		}
+
+		50% {
+			transform: scale(1.15, 0.85);
+		}
+
+		65% {
+			transform: scale(0.95, 1.05);
+		}
+
+		75% {
+			transform: scale(1.05, 0.95);
+		}
+
+		to {
+			transform: scale(1, 1);
+		}
+	}
+
+	@-o-keyframes jelly-42 {
+		from {
+			transform: scale(1, 1);
+		}
+
+		30% {
+			transform: scale(1.25, 0.75);
+		}
+
+		40% {
+			transform: scale(0.75, 1.25);
+		}
+
+		50% {
+			transform: scale(1.15, 0.85);
+		}
+
+		65% {
+			transform: scale(0.95, 1.05);
+		}
+
+		75% {
+			transform: scale(1.05, 0.95);
+		}
+
+		to {
+			transform: scale(1, 1);
+		}
+	}
+
+	@keyframes jelly-42 {
+		from {
+			transform: scale(1, 1);
+		}
+
+		30% {
+			transform: scale(1.25, 0.75);
+		}
+
+		40% {
+			transform: scale(0.75, 1.25);
+		}
+
+		50% {
+			transform: scale(1.15, 0.85);
+		}
+
+		65% {
+			transform: scale(0.95, 1.05);
+		}
+
+		75% {
+			transform: scale(1.05, 0.95);
+		}
+
+		to {
+			transform: scale(1, 1);
+		}
+	}
+	
+	button {
+		margin-top: 20px;
+		width: 75%;
+		height: 40px;
+		margin-bottom: 8px;
+		margin-top: 24px;
+		outline: none;
+		text-decoration: none;
+		border-radius: 5px;
+		border: 1.5px solid rgba(129, 61, 232, 1);
+		background: rgba(129, 61, 232, 1);
+		font-family: Manrope;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 22px;
+		letter-spacing: 0em;
+		text-align: center;
+		color: #ffffff;
+
+	}
+
+	button:hover {
+		background: #9463cb;
+		border: 1.5px solid #9463cb;
+		color: white;
+	}
+
+	
+
+	.main{
+		width: 60%;
+		height: 48%;
+		display: flex;
+		justify-content: flex-start;
+		flex-direction: column;
+		align-items: center;
+		max-width: 600px;
+		min-width: 500px;        
+		padding-top: 24px;
+		box-shadow:0px -1px 8px 8px #0000000D;
+		background-color: #150816;
+		margin-top: 48px;	
+		border: 1px solid rgba(84, 84, 197, .6);
+		border-radius: 5px;
+	}
+	#card-element {
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	}
+	a {
+		text-decoration: underline;
+		color: #ea3eb4; /* Change this to your desired color */
+		}
+
+	/* Change underline color for hover state */
+	a:hover {
+		text-decoration: underline;
+		color: #0056b3; /* Change this to your desired hover color */
+	}
+	span.new {
+		text-decoration: underline;
+	}
+
+	span:hover{
+		text-decoration: underline;
+		color: #0056b3;
+	}
+
+	.person_review{
+		width: 24px;
+		height: 24px;
+		border-radius: 25px;
+		
+		margin-right: 16px;
+	}
+
+	.review_section{
+			margin-top: 18px;
+		}
+
+		.review_div {
+			font-size: 15px;
+			padding-block: 8px;
+			overflow: hidden;
+			user-select: none;
+			--gap: 20px;
+			display: flex;
+			gap: var(--gap);
+			margin-top: 8px;
+
+		}
+
+		.review_content {
+			list-style: none;
+			flex-shrink: 0;
+			min-width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: var(--gap);
+			animation: scroll 60s linear infinite;
+
+		}
+
+		.review_item {
+			border-radius:24px;
+			width: 350px;
+			padding: .7rem 1rem;
+			font-weight: 500;
+			color: #FDE4FF;
+			font-size: 0.7em;
+			background: #150816;
+			border: 1px solid rgba(84, 84, 197, .6);
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			display: flex;
+			flex-direction: row;	
+			align-items: center;		
+		}
+
+		.trusted_by_1{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.6rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			height: 60px;
+			margin-bottom: 8px;
+		}
+
+		.trusted_by_2{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.6rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			height: 60px;
+			margin-top: 8px;
+		}
+
+		.trusted_by_3{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.6rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			height: 60px;
+			margin-top: 8px;
+		}
+
+		.trusted_by_4{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.6rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			height: 60px;
+			margin-top: 8px;
+		}
+
+
+		.review_text{
+			
+		}
+
+		.review_item_small {
+			border-radius:24px;
+			min-width: 220px;
+			padding: .7rem 1rem;
+			font-weight: 400;
+			color: #FDE4FF;
+			font-size: 0.7em;
+			background: #150816;
+			border: 1px solid rgba(84, 84, 197, .6);
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			display: flex;
+			flex-direction: row;
+			align-items: center;			
+		}
+
+		.scrolling-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            animation: scrollText 12s linear infinite;
+        }
+
+        @keyframes scrollText {
+			0% {
+                transform: translateY(0);
+            }
+			
+			20% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-100%);
+            }
+			45% {
+                transform: translateY(-100%);
+            }
+            50% {
+                transform: translateY(-200%);
+            }
+			70% {
+				transform: translateY(-200%);
+			}
+			75%{
+				transform: translateY(-300%);
+			}
+			95% {
+				transform: translateY(-300%);
+			}
+			100% {
+				transform: translateY(-400%);
+			}
+			
+			0% {
+                transform: translateY(0);
+            }
+			
+        }
+
+       
+		
+
+	</style>
+	
+	</head>
+	<body style="height: 100%; width:100%;" class="background-image-container" >
+		<div 
+		style="
+		justify-content: start;
+		align-items: center;
+		height: 100vh;
+		width: 100vw;" >
+					<div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+					font-size: 30px;
+					font-weight: 700;
+					line-height: 45px;
+					letter-spacing: 0em;
+					text-align: left;
+					display: flex;
+					background-color: transparent;
+					"><div style="width: 40px;height: 40px; padding-top: 24px;"> <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<g filter="url(#filter0_i_1316_1121)">
+					<rect width="35" height="34" fill="url(#pattern0)"/>
+					</g>
+					<defs>
+					<filter id="filter0_i_1316_1121" x="0" y="0" width="35" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+					<feOffset dy="4"/>
+					<feGaussianBlur stdDeviation="2"/>
+					<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+					<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+					<feBlend mode="normal" in2="shape" result="effect1_innerShadow_1316_1121"/>
+					</filter>
+					<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use xlink:href="#image0_1316_1121" transform="matrix(0.00390625 0 0 0.00402114 0 -0.0147059)"/>
+					</pattern>
+
+					
+					<image 
+					id="image0_1316_1121" width="256" height="256" style="background-color: transparent; color: #FDE4FF;" xlink:href="data:image/png;base64,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"/>
+					</defs>
+					</svg>
+						</div > <span style="color: #FDE4FF; margin-top:16px;">sixth</span></div>
+                        
+					<div class="review_section">
+						<div style="display: flex; width: 100%; position: relative; justify-content: center; flex-direction: row; overflow: hidden; height: 70px;">
+							<div class="scrolling-text">
+								<span id="trusted_by" class="trusted_by_1">
+									Trusted by 50,000+ developers all over <br/> the world!
+								</span>
+	
+								<span class="trusted_by_2">
+									ChatGPT that sees and understands <br> your entire codebase
+								</span>	
+								<span id="trusted_by" class="trusted_by_3">
+									Powerful code assistant <br> to help boost your productivity!
+								</span>
+								<span id="trusted_by" class="trusted_by_4">
+									GPT to help debug and <br/> run your code at lightening speed
+								</span>
+								<span id="trusted_by" class="trusted_by_1" style="margin-top: 8px;">
+									Trusted by 50,000+ developers all over <br/> the world!
+								</span>
+								
+							</div>
+							
+						</div>
+						
+					<div class="review_div">
+					<div class="review_content">
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+							<div style="display: flex; flex-direction: column;">
+								<span class="review_text"> Awesome and super helpful extension! </span> 
+							</div>
+							
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+							<span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+							
+							<span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+							<span> Nice vscode extension!, the chatbot is really helpful </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+							<span class="review_text"> Really like using the tool to debug and fix my code </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+							<span class="review_text"> Completed my assignments overnight thanks to this</span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+							<span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+						</div>
+					</div>
+					<div class="review_content">
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+							<div style="display: flex; flex-direction: column;">
+								<span class="review_text"> Awesome and super helpful extension! </span> 
+							</div>
+							
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+							<span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+							
+							<span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+							<span> Nice vscode extension!, the chatbot is really helpful </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+							<span class="review_text"> Really like using the tool to debug and fix my code </span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+							<span class="review_text"> Completed my assignments overnight thanks to this</span> 
+						</div>
+						<div class="review_item">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+							<span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+						</div>
+					</div>
+
+					</div>
+
+					
+					<div class="review_div">
+					<div class="review_content">
+						<div class="review_item_small">
+							<img class="person_review" src=https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+							<span class="review_text"> Worth the 10 bucks! </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+							<span class="review_text"> Super fast support </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+							<span class="review_text"> Love the discord community </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji10.png?alt=media&token=8a237761-3838-4103-bc79-b8e0463eca41"/>
+							<span class="review_text"> Solid alternative to co-pilot </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+							<span class="review_text"> debugs my code super fast </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji9.png?alt=media&token=2d1388ed-1720-44fd-b9fc-59e3425ffd4f"/>
+							<span class="review_text"> use it to generate doc-strings </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+							<span class="review_text"> Love the auto-complete! </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+							<span class="review_text"> My efficiency has doubled </span> 
+						</div>
+						
+
+					</div>
+					<div class="review_content">
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+							<span class="review_text"> Worth the 5 bucks! </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+							<span class="review_text"> Super fast support </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+							<span class="review_text"> Love the discord community </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji10.png?alt=media&token=8a237761-3838-4103-bc79-b8e0463eca41"/>
+							<span class="review_text"> Solid alternative to co-pilot </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+							<span class="review_text"> debugs my code super fast </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji9.png?alt=media&token=2d1388ed-1720-44fd-b9fc-59e3425ffd4f"/>
+							<span class="review_text"> use it to generate doc-strings </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+							<span class="review_text"> Love the auto-complete! </span> 
+						</div>
+						<div class="review_item_small">
+							<img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+							<span class="review_text"> My efficiency has doubled </span> 
+						</div>
+						
+
+					</div>
+
+					</div>
+					</div>
+
+						<div
+						style="display: flex;
+						justify-content: center;
+						
+						background-color: transparent;
+						height: 100%;
+						width: 100%;">
+							<div class="main">
+					
+								<h2 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+								font-size: 24px;
+								font-weight: 600;
+								line-height: 36px;
+								letter-spacing: 0em;
+								text-align: left;
+								margin-bottom: 0px;
+								color: #FDE4FF;
+				
+								">Billing Info</h2>
+								<h4 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+								font-size: 16px;
+								font-weight: 300;
+								line-height: 36px;
+								letter-spacing: 0em;
+								text-align: left;
+								margin-bottom: 0px;
+								margin-top: 0px;
+								color: #FDE4FF;
+				
+								">Add your card details</h4>
+								
+					
+								<form id="payment-form" style="width: 73%; color: #fff; margin-top: 24px;">
+                                    <div id="card-element" style="color: #ffffff;">
+                                        <!-- A Stripe Element will be inserted here. -->
+                                    </div>
+                                    <!-- Used to display form errors. -->
+                                    <div id="card-errors" role="alert"></div>
+                                </form>
+
+								<div style="display: flex; justify-content: space-between; width: 73%; margin-bottom: 16px; padding: 0px; ">
+									<h4 style="margin: 0px; font-size: 12px;padding: 0px;  color: #FDE4FF; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue'; font-weight: 300;">💫 $${pricing} Billed once every ${duration}</h4>
+									<a href="https://vscode.trysixth.com/pricing" style="font-size: 12px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue'; text-align: start; width: 28.5%
+									;">Here's why</a>
+								</div>
+								<div style="display: flex; justify-content: space-between; width: 73%; margin-bottom: 8px; padding: 0px; ">
+									<h4 style="margin: 0px; font-size: 12px;padding: 0px;  color: #FDE4FF; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue'; font-weight: 300;">💫 Doubting if it's worth it? Don't take my words for it</h4>
+									<a href="https://vscode.trysixth.com/pricing" style="font-size: 12px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue'; text-align: start; width: 28.5%
+									;">Watch this < 40 sec quick demo </a>
+								</div>
+								<button id="submit" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue'" disabled onclick=submitCardDetails()>Finish</button>
+								
+							</div>
+						</div>
+		</div>
+		<script>
+
+			function increase_developer_count(){
+				var trusted_by = document.getElementById("trusted_by");
+				let currentNumber = 0;
+				const targetNumber = 50000;
+				const incrementSpeed = 1;  // Speed of increment (in milliseconds)
+				const incrementAmount = 1250; // Increment value per interval
+
+				const interval = setInterval(() => {
+					currentNumber += incrementAmount;
+					if (currentNumber >= targetNumber) {
+						currentNumber = targetNumber;
+						clearInterval(interval); // Stop the interval when the target is reached
+					}
+					document.getElementById("trusted_by").innerHTML = "Trusted by " +currentNumber.toLocaleString() + "+ developers <br/> all over the world!";
+				}, incrementSpeed);
+			}
+			
+
+			vscode = acquireVsCodeApi();
+            var stripe = Stripe('pk_live_51NezbOHHcvRSE91Fo1MFhlRAVgw2fBvDcI75qJnKQvVzO7FXTrHy8PprjSksIv653HcjwiAzWkYUVpoDDq66wfoQ00nfI1ygUi');
+            var elements = stripe.elements();
+			var style = {
+			base: {
+				color: '#ffffff', // Change this to your desired text color
+				// You can also customize other base styles here
+				}
+			};
+
+            // Create an instance of the card Element.
+            var card = elements.create('card', {style:style});
+
+			
+            card.mount('#card-element');
+            card.update({ disabled: false });
+
+            card.addEventListener('change', function (event) {
+				var displayError = document.getElementById('card-errors');
+				var submitButton = document.getElementById('submit');
+				if (event.error) {
+					displayError.textContent = event.error.message;
+					submitButton.disabled = true;
+				} else {
+					displayError.textContent = '';
+					submitButton.disabled = false;
+				}
+			});
+
+            // Handle form submission.
+            var form = document.getElementById('payment-form');
+            function submitCardDetails(){
+				document.getElementById("submit").disabled = true;
+
+				vscode.postMessage({
+					command: "show_info_message", 
+					value: "Loading Your billing details...."
+				})
+                event.preventDefault();
+
+				stripe.createPaymentMethod({
+						type: 'card',
+						card: card,
+						billing_details: {
+						name: 'Sixth',
+						},
+					})
+					.then(function(result) {
+						if (result.error) {
+                        // Inform the user if there was an error.
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+						} else {
+							// Send the token to your server.
+							
+							vscode.postMessage({
+							command: "billing_submit", 
+							value: {
+								"id":result.paymentMethod.id
+							}
+						})
+						}
+					});
+			}
+				
+            
+			function showLoginPanel(){
+				vscode.postMessage({ command: 'showLoginPanel', value: {
+					show:"true"
+				} });
+			}
+		</script>
+	
+	</body>
+	
+	</html>
+
+
+
+	

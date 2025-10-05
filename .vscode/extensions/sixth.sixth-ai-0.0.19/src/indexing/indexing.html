@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Indexing Page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            :root {
+                /* Core colors from theme */
+                --editor-background: #1E1E1E;
+                --editor-foreground: #D4D4D4;
+                --button-background: #007ACC;
+                --button-foreground: #FFFFFF;
+                --input-background: #3C3C3C;
+                --input-foreground: #9399B2; 
+                --panel-background: #252526;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                height: 100%;
+            }
+
+            body {
+                font-family: 'Poppins';
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                background: var(--editor-background);
+                width:100%;
+                height: auto;
+                padding: 20px;
+                color: var(--editor-foreground);
+            }
+
+            .main-body{
+                display:block;
+                width:100%;
+                height:auto;
+            }
+
+            .alt-body{
+                display:none;
+                width:100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .alt-body-content{
+                text-align: center;
+                
+            }
+
+            .alt-text-color{
+                color: var(--editor-foreground);
+            }
+
+            .sub-header-text{
+                margin: bottom 30px;
+            }
+
+            .index-parent-div{
+                width:100%;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 50px;
+            }
+            .index-heading{
+                width:100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .index-progress-bar-background{
+                position: relative;
+                background: transparent;
+                width:100%;
+                height: 30px;
+                margin-bottom: 10px;
+            }
+            .index-progress-bar{
+                background: #A73CFF;
+                position: absolute;
+                top:0;
+                left: 0;
+                bottom: 0;
+                right:100%;
+                transition: right 0.5s ease; /* Adjust duration and easing as needed */
+                
+            }
+            .index-button-div{
+                display:flex;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .index-resync-btn{
+                padding:10px;
+                margin-right:10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: var(--button-background);
+                color: var(--button-foreground);
+                border-radius: 4px;
+                font-size:12px;
+                font-weight: 600;
+                border:0;
+                cursor: pointer;
+                outline:none;
+
+            }
+
+            .index-delete-btn{
+                padding:10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #CF1B1B;
+                color: var(--button-foreground);
+                border-radius: 4px;
+                font-size:12px;
+                font-weight: 600;
+                border:0;
+                cursor: pointer;
+                outline:none;
+            }
+
+
+            .index-info-sec-div{
+                width:100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            
+
+            .index-sec-icon{
+                font-size:12px;
+                font-weight: 500;
+            }
+
+            ul {
+            list-style-type: none; /* Removes bullets from <ul> */
+            padding: 0; /* Optional: Removes default padding from <ul> */
+            margin: 0; /* Optional: Removes default margin from <ul> */
+            }
+
+            li {
+                list-style: none;
+            }
+
+            .index-sec-smaller-text{
+                font-size: 12px;
+                
+            }
+
+            .index-resync-btn:disabled,
+            .index-delete-btn:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+
+            /* Optional: Style for spinner inside button */
+            .index-resync-btn .spinner,
+            .index-delete-btn .spinner {
+                 margin-left: 5px; /* Space between icon/text and spinner */
+            }
+             .spinner {
+                display: inline-block; /* Make spinner inline */
+                border: 2px solid var(--button-foreground); /* Use button text color */
+                border-top: 2px solid transparent; /* Make top transparent for spinning effect */
+                border-radius: 50%;
+                width: 12px; /* Smaller spinner for buttons */
+                height: 12px;
+                animation: spin 0.7s linear infinite;
+             }
+
+             @keyframes spin {
+                 0% { transform: rotate(0deg); }
+                 100% { transform: rotate(360deg); }
+             }
+
+             /* Style for status indicators */
+             .status-indicator {
+                 margin-left: 10px;
+                 font-size: 12px;
+                 font-style: italic;
+             }
+             .status-polling { color: #F1C40F; } /* Yellow/Orange for polling */
+             .status-complete { color: #2ECC71; } /* Green for complete */
+             .status-error { color: #E74C3C; } /* Red for error */
+
+
+
+
+
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <button onclick="goBackToMenu()" class="index-resync-btn" style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left index-sec-icon" aria-hidden="true"></i>&nbsp;Back
+            </button>
+        </div>
+        <div id="alt-body" class="alt-body">
+            <h4 class="alt-body-content">You currently don't have any workspace open,open a workspace then try checking index status again.</h4>
+        </div>
+        <div id="main-body" class="main-body">
+            <h2 style="color: var(--input-foreground);" id="project-name-sec">Codebase Indexing (Project Name)</h2>
+            <h4 class="sub-header-text alt-text-color">Indexing allows you to ask codebase-wide questions from sixth AI.</h4>
+            <div class="index-parent-div">
+                <div class="index-heading">
+                    <h4 class="alt-text-color">Indexing Progress <span id="status-indicator" class="status-indicator"></span></h4>
+                    <h4 id="progress-percentage" class="alt-text-color">0%</h4>
+                </div>
+                <div class="index-progress-bar-background">
+                    <div id="progress-bar" class="index-progress-bar"></div>
+                </div>
+                <div class="index-button-div">
+                     <!-- Add original content storage for buttons -->
+                    <button id="reSyncBtn" class="index-resync-btn" data-original-html='<i class="fa fa-refresh index-sec-icon" aria-hidden="true"></i> &nbsp; Resync Index'>
+                        <i class="fa fa-refresh index-sec-icon" aria-hidden="true"></i>  &nbsp;  Resync Index
+                    </button>
+                    <button id="deleteIndexBtn" class="index-delete-btn" data-original-html='<i class="fas fa-trash index-sec-icon" aria-hidden="true"></i>  &nbsp;   Delete Index'>
+                        <i class="fas fa-trash index-sec-icon" aria-hidden="true"></i>  &nbsp;  Delete Index
+                    </button>
+                </div>
+            </div>
+            <h3>Indexing Details</h3>
+            <div class="index-info-sec-div">
+                <canvas id="indexingChart" width="400" height="400"></canvas>
+                <div class="index-sec-smaller-text">File upload breakdown</div>
+            </div>
+            
+            
+
+            
+            <!--
+                <h3 style="margin-top: 20px;">Additional Settings</h3>
+                <div class="index-info-sec-dropdown-div">
+                <div id="unsupported-files-div" class="index-info-sec-header index-sec-smaller-text">
+                    <i id="unsupported-files-dropdown" class="fa fa-chevron-down index-sec-icon" aria-hidden="true"></i> &nbsp;&nbsp; <div>Unsupported Files</div>
+                </div>
+            </div>
+            
+            <div class="index-info-sec-dropdown-div">
+                <div id="ignored-files-div" class="index-info-sec-header index-sec-smaller-text">
+                    <i id="unsupported-files-dropdown" class="fa fa-chevron-down index-sec-icon" aria-hidden="true"></i> &nbsp;&nbsp; <div>Ignored Files and Folders</div>
+                </div>
+            </div>-->
+
+
+
+        </div>
+
+    </body>
+    <script>
+        const vscode = acquireVsCodeApi();
+        let indexingChartInstance = null; // To hold the chart instance
+
+        // --- Elements ---
+        const reSyncBtn = document.getElementById('reSyncBtn');
+        const deleteIndexBtn = document.getElementById('deleteIndexBtn');
+        const progressPercentElement = document.getElementById('progress-percentage');
+        const progressBarElement = document.getElementById('progress-bar');
+        const projectNameElement = document.getElementById('project-name-sec');
+        const chartCanvas = document.getElementById('indexingChart');
+        const statusIndicator = document.getElementById('status-indicator');
+
+
+        // --- Functions ---
+        function updateChart(summaryData) {
+            if (!chartCanvas) return;
+            const ctx = chartCanvas.getContext('2d');
+
+            let { success = 0, failures = 0, pending = 0, total = 0 } = summaryData || {};
+
+            // Ensure total is reasonable
+            let actualTotal = Math.max(total, success + failures + pending);
+
+            const failedToIndex = failures;
+            const indexedSuccessfully = success;
+            const pendingFiles = pending; // Use pending count from summary
+            const totalSupportedFiles = failedToIndex + indexedSuccessfully + pendingFiles;
+            const noDataColor = 'rgba(128, 128, 128, 0.3)';
+
+            let chartData;
+            let chartOptions = {
+                responsive: false, // Keep fixed size
+                maintainAspectRatio: false,
+                 plugins: {
+                    legend: {
+                        position: 'right',
+                         labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--editor-foreground').trim() || '#ffffff' } // Use CSS variable
+                    },
+                    tooltip: {
+                         callbacks: {
+                             label: function(context) {
+                                 const label = context.label || '';
+                                 const value = context.raw || 0;
+                                 if (totalSupportedFiles === 0 && label !== 'No Data Available') {
+                                     return `${label}: 0`; // Show 0 if no data but labels exist
+                                 }
+                                 if(label === 'No Data Available'){
+                                    return 'No indexing data available';
+                                 }
+                                 // Calculate percentage based on the sum of displayed parts
+                                 const currentTotalDisplayed = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                 const percentage = currentTotalDisplayed > 0 ? ((value / currentTotalDisplayed) * 100).toFixed(1) : 0;
+                                 return `${label}: ${value} (${percentage}%)`;
+                             }
+                         }
+                     }
+                 }
+            };
+
+
+            if (totalSupportedFiles === 0 && actualTotal === 0) { // Only show "No Data" if everything is zero
+                chartData = {
+                    labels: ['No Data Available'],
+                    datasets: [{ data: [1], backgroundColor: [noDataColor], borderWidth: 0 }] // Minimal border
+                };
+            } else {
+                 chartData = {
+                     labels: ['Files Failed to Index', 'Files Indexed Successfully', 'Pending Files'],
+                     datasets: [{
+                         data: [failedToIndex, indexedSuccessfully, pendingFiles],
+                         backgroundColor: ['#E74C3C', '#2ECC71', '#F1C40F'], // Red, Green, Yellow
+                         borderColor: [getComputedStyle(document.documentElement).getPropertyValue('--editor-background').trim() || '#1E1E1E'], // Use editor background for border
+                         borderWidth: 1
+                     }]
+                 };
+            }
+
+
+            if (indexingChartInstance) {
+                // Update existing chart
+                indexingChartInstance.data = chartData;
+                indexingChartInstance.options = chartOptions; // Update options in case theme changed
+                indexingChartInstance.update();
+            } else {
+                // Create new chart
+                indexingChartInstance = new Chart(ctx, {
+                    type: 'pie',
+                    data: chartData,
+                    options: chartOptions
+                });
+            }
+        }
+
+        function updateProgressUI(summaryData) {
+            if (!progressPercentElement || !progressBarElement) return;
+
+            let { success = 0, failures = 0, total = 0, pending = 0 } = summaryData || {};
+
+            // Calculate total processed relative to the *reported* total, or sum if total is unreliable
+            let denominator = Math.max(1, total); // Avoid division by zero, use reported total if > 0
+            if (total === 0 && (success + failures + pending > 0)) {
+                denominator = success + failures + pending; // Use sum as total if reported total is 0 but parts exist
+            }
+
+
+            let processedCount = success + failures;
+            let calPercent = Math.min(
+                Math.floor((processedCount / denominator) * 100),
+                100
+            );
+            calPercent = Math.max(calPercent, 0); // Ensure non-negative
+
+            const displayPercent = `${calPercent}%`;
+            progressPercentElement.textContent = displayPercent;
+            // Progress bar moves from right to left, so 'right' is (100 - percentage)
+            progressBarElement.style.right = `${100 - calPercent}%`;
+        }
+
+        function setStatus(text, className = '') {
+            if (statusIndicator) {
+                statusIndicator.textContent = text;
+                statusIndicator.className = `status-indicator ${className}`; // Reset classes and add new one
+            }
+        }
+
+        function resetButton(buttonElement) {
+             if (buttonElement) {
+                buttonElement.disabled = false;
+                // Restore original HTML content stored in data attribute
+                buttonElement.innerHTML = buttonElement.dataset.originalHtml || 'Action';
+             }
+        }
+
+        function setButtonLoading(buttonElement, loadingText = 'Processing...') {
+             if (buttonElement) {
+                buttonElement.disabled = true;
+                // Use original HTML to preserve icons/structure + add spinner
+                const originalContent = buttonElement.dataset.originalHtml || '';
+                buttonElement.innerHTML = `${originalContent.replace(' ', '')} <div class="spinner"></div>`; // Basic loading state
+             }
+        }
+
+
+        // --- Event Listener for Messages ---
+        window.addEventListener('message', event => {
+            const message = event.data;
+            switch (message.command) {
+                case 'fill_summary':
+                    // vscode.postMessage({ command: "log_event", value: "Webview: Received fill_summary" });
+                    try {
+                        if (message.value) {
+                            updateProgressUI(message.value);
+                            updateChart(message.value);
+                            // Infer polling status if progress < 100 and no specific status set
+                            const { success = 0, failures = 0, total = 0, pending = 0 } = message.value;
+                            const isComplete = (total > 0 && (success + failures) >= total && pending === 0);
+                             if (!isComplete && statusIndicator.textContent === '') { // Set polling status if not complete and no other status set
+                                setStatus('Monitoring...', 'status-polling');
+                             }
+                        } else {
+                            // Handle null summary (e.g., after deletion or error)
+                            updateProgressUI(null);
+                            updateChart(null);
+                             setStatus('No data', '');
+                        }
+                    } catch (err) {
+                        vscode.postMessage({ command: "log_event", value: "Webview Error (fill_summary): " + err });
+                    }
+                    break;
+
+                case 'restore_delete_button':
+                    resetButton(deleteIndexBtn);
+                     // Also reset status if delete was clicked
+                     // setStatus(''); // Or fetch summary again
+                    break;
+
+                case 'reenable_resync_button':
+                    resetButton(reSyncBtn);
+                    // Clear status only if it wasn't 'Complete' or 'Error'
+                    if (statusIndicator.className.indexOf('status-complete') === -1 && statusIndicator.className.indexOf('status-error') === -1) {
+                        setStatus(''); // Clear polling status
+                    }
+                    break;
+
+                case 'indexing_complete':
+                     setStatus('Complete', 'status-complete');
+                     resetButton(reSyncBtn); // Re-enable sync button on completion
+                     // Maybe disable delete briefly? Or keep enabled.
+                    break;
+
+                 case 'polling_error':
+                     setStatus('Error updating progress', 'status-error');
+                     resetButton(reSyncBtn); // Allow retry on error
+                    break;
+
+                // Handle 'fill_info_section' if needed for dynamic lists
+                case 'fill_info_section':
+                     // console.log("Info Section:", message.value);
+                     // Add code here to dynamically populate unsupported/ignored lists if you uncomment them
+                    break;
+            }
+        });
+
+        // --- Initial Setup and Event Listeners ---
+        document.addEventListener("DOMContentLoaded", function () {
+            try {
+                const workspacePath = "REPLACE_THIS"; // Injected workspace path
+                if (workspacePath === "empty") {
+                    document.getElementById("main-body").style.display = 'none';
+                    document.getElementById("alt-body").style.display = 'flex';
+                } else {
+                     document.getElementById("main-body").style.display = 'block'; // Ensure main body is visible
+                     document.getElementById("alt-body").style.display = 'none';
+                    projectNameElement.textContent = `Codebase Indexing (${workspacePath.split(/[/\\]/).pop()})`;
+                    projectNameElement.dataset.project_path = workspacePath; // Store full path for reindex command
+                }
+
+                
+
+                // Add button listeners
+                reSyncBtn.addEventListener('click', () => {
+                    setButtonLoading(reSyncBtn, 'Syncing...');
+                    setStatus('Initiating...', 'status-polling'); // Initial status
+                    vscode.postMessage({
+                        command: "reindex",
+                        value: projectNameElement.dataset.project_path
+                    });
+                });
+
+                deleteIndexBtn.addEventListener('click', () => {
+                     setButtonLoading(deleteIndexBtn, 'Deleting...');
+                     setStatus('Deleting index...', 'status-error'); // Use error color for delete action
+                    vscode.postMessage({
+                        command: "delete_index",
+                        value: "" // No value needed, uses workspace from provider
+                    });
+                });
+
+                // Request initial summary from extension after DOM is ready
+                // The extension now sends this automatically after HTML load, so this might be redundant
+                // vscode.postMessage({ command: "request_initial_summary" });
+
+                // Initialize theme colors (already in your code)
+                const themeColors = THEME_COLORS_JSON;
+                // Initialize theme colors
+                document.documentElement.style.setProperty('--editor-background', themeColors['editor.background']);
+                document.documentElement.style.setProperty('--editor-foreground', themeColors['editor.foreground']);
+                document.documentElement.style.setProperty('--button-background', themeColors['button.background']);
+                document.documentElement.style.setProperty('--button-foreground', themeColors['button.foreground']);
+                document.documentElement.style.setProperty('--input-background', themeColors['input.background']);
+                document.documentElement.style.setProperty('--input-foreground', themeColors['input.foreground']);
+                document.documentElement.style.setProperty('--panel-background', themeColors['panel.background']);
+
+            } catch (err) {
+                vscode.postMessage({
+                    command: "log_event",
+                    value: "Webview Error (DOMContentLoaded): " + err
+                });
+            }
+        });
+
+        function goBackToMenu() {
+            vscode.postMessage({
+                command: "go_back_to_menu"
+            });
+        }
+    </script>
+    
+</html>

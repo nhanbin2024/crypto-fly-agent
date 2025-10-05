@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chatbot</title>
+    <link rel="icon" href="bot.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    
+
+   <!-- Prism.js Core CSS -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+   <!-- Prism.js Core JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+<style>
+   * {
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Poppins';
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #150816;
+        color:white;
+
+    }
+    .chat-container{
+        height: 100vh;
+        width:100%;
+        padding:0 10px;
+        overflow: hidden;
+        flex-direction: column;
+        background-color: #150816;
+    }
+    
+    /* Header */
+    .chat-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px; /* Fixed height for header */
+    background-color: #150816; /* Dark header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20; /* Ensure it stays on top */
+    /*box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);  Subtle shadow */
+    padding:10px;
+    box-sizing: border-box;
+    }
+
+    .chat-box{
+        width: 100%;
+        height:80%;
+        overflow-y: auto; /* Enable scrolling when content overflows */
+        padding-top: 10px;
+        padding-bottom: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        margin-top: 60px;
+        
+        /* Scrollbar customization */
+        scrollbar-width: thin; /* For Firefox */
+        scrollbar-color: #c1c1c1 transparent; /* Scrollbar color for Firefox */
+    }
+
+    .chat-box::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width for Chrome, Safari, Edge */
+    }
+
+    .chat-box::-webkit-scrollbar-track {
+        background: transparent; /* Background of the track */
+    }
+
+    .chat-box::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1; /* Scrollbar color */
+        border-radius: 4px; /* Rounded scrollbar */
+        border: 2px solid transparent; /* Space between the scrollbar and track */
+        background-clip: padding-box; /* Ensures transparency on the border */
+    }
+
+    .chat-box::-webkit-scrollbar-thumb:hover {
+        background-color: #a0a0a0; /* Darker color on hover */
+    }
+
+    .chat-message{
+        position: relative;
+        width:100%;
+        height: auto;
+        min-height: 100%;
+        border: 1px solid #643185;
+        border-radius: 8px;
+        padding:15px;
+        box-sizing: border-box;
+        background-color: #270f29;
+        margin-bottom: 10px;
+    }
+
+    .chat-message-main{
+        width:100%;
+        height: auto;
+        min-height: 100%;
+        margin-bottom:30px; 
+        border-radius: 8px 8px 0 0;
+        /* E0C7E2*/
+    }
+
+    .chat-message-main-user-msg{
+        width:100%;
+        margin-bottom:30px;
+        background-color: transparent;
+        color: #E0C7E2;
+        font-size:16px;
+        font-weight: 500;
+    }
+
+    .chat-message-main-ai-msg{
+        width:100%;
+        background-color: transparent;
+        color: white;
+        font-size:14px;
+        font-weight: 400;
+    }
+
+    .chat-message-footer{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width:100%;
+        height: 40px;
+        font-weight: 400;
+        font-size: 12px;
+        background-color: #150816;
+        border-radius: 0 0 8px 8px;
+        z-index: 10;
+        color: #E0C7E2;
+        display: flex;
+        padding:5px;
+        align-items: center;
+        border-top:1px solid #643185;
+        box-sizing: border-box;
+    }
+
+    .accept-or-reject-changes-div{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .accept-or-reject-changes-btn-div{
+        display: flex;
+        align-items: center;
+    }
+
+    .accept-changes-btn{
+        padding:8px;
+        margin-right:10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #7E7EE0;
+        color: white;
+        border-radius: 4px;
+        font-size:11px;
+        font-weight: 600;
+        border:0;
+        outline:none;
+    }
+
+    .reject-changes-btn{
+        padding:8px;
+        margin-right:10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #CF1B1B;
+        color: white;
+        border-radius: 4px;
+        font-size:11px;
+        font-weight: 600;
+        border:0;
+        outline:none;
+    }
+
+
+    /* Footer */
+    .chat-footer {
+    position: fixed;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    background-color: #150816; /* Dark footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    z-index: 20;
+    /*box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);  Subtle shadow */
+    box-sizing: border-box;
+    }
+    .chat-main-input-div{
+        width:100%;
+        border-radius:8px;
+        background:#1E0D26;
+        border: 1px solid #3A1C4D;
+        box-sizing: border-box;
+    }
+    .top-chat-div{
+        background:#1E0D26;
+        width:100%;
+        display:flex;
+        flex-wrap: wrap; /* Allows items to wrap to the next row */
+        gap: 5px; /* Optional: Adds space between items */
+        align-items: center;
+        padding:10px;
+        border-radius: 8px 8px 0px 0px;
+        box-sizing: border-box;
+
+    }
+    .chat-parent-input-div{
+        background-color: #281234;
+        width:100%;
+        height: 70%;
+        border-radius: 0px 0px 8px 8px;
+
+    }
+    .chat-input{
+        width:100%;
+        padding:8px;
+        background-color: transparent;
+        border:none;
+        outline: none;
+        color: white;
+        max-height: 150px; /* Maximum height */
+        min-height: 30px; /* Minimum height */
+        overflow-y: scroll; /* Enable scrolling */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        line-height: 1.5;
+        resize:none;
+        font-family: 'Poppins';
+        box-sizing: border-box;
+
+    }
+    .chat-input::placeholder{
+        color: #9E9E9E;
+    }
+    .chat-input:focus{
+        outline:none;
+    }
+    .chat-input::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+    .chat-btns{
+        width:100%;
+        padding:5px;
+        display:flex;
+        background-color: transparent;
+        justify-content: space-between;
+
+    }
+    .sub-chat-btn-div{
+        display: flex;
+    }
+    .btn-icon{
+        margin:10px;
+        font-size:16px;
+    }
+    .btn-item{
+        background-color: #9B6CD3;
+        border-radius: 4px;
+        display:flex;
+        align-items: center;
+        padding:3px;
+        border: 1px solid #3A1C4D;
+        outline:none;
+        cursor: pointer;
+    }
+
+    .btn-tran-item{
+        background-color: transparent;
+        color:white;
+        border-radius: 4px;
+        font-size:18px;
+        padding:3px;
+        border:none;
+        outline:none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .btn-tran-two-item{
+        background-color: transparent;
+        color:#969496;
+        border-radius: 4px;
+        font-size:18px;
+        padding:3px;
+        border:none;
+        outline:none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    .file-upload-modal-overlay{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display:none;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7); /* or rgba(0, 0, 0, 0.8) */
+                z-index: 40; /* Ensure it's above other content */
+    }
+    .file-upload-modal{
+        position: relative;
+        width:50%;
+        height:300px;
+        background-color: #D1C4E9;
+        border-radius: 8px;
+        border: 1px solid #170a1f;
+        color:black;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-close-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #6D28D9;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+    .file-upload-modal h5 {
+    max-width: 60%; /* Set the maximum width for the text */
+    margin: 0 auto; /* Center the element horizontally */
+    text-align: center; /* Center-align the text */
+    word-wrap: break-word; /* Allow text to wrap to the next line */
+    overflow-wrap: break-word; /* Ensures breaking works for longer words */
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+    .modal-btn-div{
+        width:80%;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .file-upload-file-btn{
+        width:45%;
+        padding:10px;
+        border-radius: 8px;
+        color:white;
+        font-size:12px;
+        font-weight: 500;
+        border:none;
+        outline:none;
+        background-color: #6D28D9;
+        cursor: pointer;
+    }
+
+    .clone-upload-file-btn{
+        width:70%;
+        padding:15px;
+        border-radius: 8px;
+        color:white;
+        font-size:12px;
+        font-weight: 500;
+        border:none;
+        outline:none;
+        background-color: #6D28D9;
+        cursor: pointer;
+    }
+
+    .new-file-name-input{
+        width:70%;
+        padding:10px;
+        border-radius: 8px;
+        color:black;
+        margin: 10px 0;
+        font-size:14px;
+        border:2px solid #6D28D9;
+        outline:none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .new-file-name-input::placeholder{
+        font-size: 12px;
+        color: rgb(48, 47, 47);
+    }
+
+    .file-upload-modal-icon{
+        font-size:50px;
+        color:#6D28D9;
+    }
+
+    .picked-folder{
+        display:flex;
+        align-items: center;
+        color:black;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .file-progress-div{
+        background-color: #1E0D26;
+        display:flex;
+        align-items: center;
+        padding:10px;
+        margin-bottom: 10px;
+    }
+
+    .file-progress-write{
+        color:#4CAF50;
+        font-size:16px;
+        font-weight: 500;
+
+    }
+
+    .file-progress-update{
+        color:#FFEB3B;
+        font-size:16px;
+        font-weight: 500;
+
+    }
+
+    .file-progress-name-div{
+        display:flex;
+        align-items: center;
+        margin-left:10px;
+    }
+
+    .file-progress-name-write{
+        font-weight: bold;
+        margin-left:5px;
+        color:#4CAF50;
+        cursor: pointer;
+
+    }
+
+    .file-progress-name-update{
+        font-weight: bold;
+        margin-left:5px;
+        color:#FFEB3B;
+        cursor: pointer;
+
+    }
+
+    .spinner {
+    width: 30px;
+    height: 30px;
+    border: 5px solid #3e2a47; /* Darker border color */
+    border-top: 5px solid #ff8c00; /* A contrasting bright color for the rotating part */
+    border-radius: 50%; /* Circle shape */
+    animation: spin 1s linear infinite; /* Infinite spinning animation */
+    }
+
+    /* Keyframes for the spinning effect */
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loading {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    }
+
+    .dots::after {
+    content: "";
+    animation: dots 1.5s steps(3, end) infinite;
+    }
+
+    @keyframes dots {
+    0% {
+        content: "";
+    }
+    33% {
+        content: ".";
+    }
+    66% {
+        content: "..";
+    }
+    100% {
+        content: "...";
+    }
+    }
+
+    .code-block {
+                        position: relative;
+                        background: black; /* Dark background color for the code block #595858 */
+                        border-radius: 8px; /* Rounded corners */
+                        margin-top:0.6rem;
+                        margin-bottom:0.6rem;
+                        margin-right:1rem;
+                        overflow: hidden;
+                        padding-top:2rem!important;
+                        box-sizing: border-box;
+                    }
+            
+            .code-toolbarr {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        background: #333;
+                        color: #fff;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0.5rem;
+                        font-family: 'Roboto', sans-serif;
+                        z-index: 10;
+                        box-sizing: border-box;
+                    }
+            
+            .code-toolbarr .toolbar-actions {
+                        display: flex;
+                        gap: 0.5rem;
+                        box-sizing: border-box;
+                    }
+            
+            .code-toolbarr button {
+                        background: transparent;
+                        display:flex;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        padding: 0.5rem;
+                        cursor: pointer;
+                        box-sizing: border-box;
+                    }
+            
+            .code-toolbarr button:hover {
+                        background: transparent;
+                    }
+            
+            .code-toolbarr .language-name {
+                        font-weight: 400;
+                        color:#a3a2a2;
+                    }
+
+                    
+                    pre[class*="language-"] {
+                        background-color: transparent;
+                        padding: 1rem;
+                        box-sizing: border-box;
+                      }
+                    code[class*="language-"]{
+                        background-color: transparent;
+                        
+                        
+                    }
+                    .scroll-to-bottom {
+                    position: fixed;
+                    bottom: 20%;
+                    right: 50%;
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    height: 30px;
+                    width: 30px;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 20px;
+                    display: none; /* Initially hidden */
+                    cursor: pointer;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                    z-index: 1000;
+                }
+
+
+    
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
+</head>
+<body>
+    <div id="file-upload-modal-overlay" class="file-upload-modal-overlay">
+        <div id="file-upload-modal" class="file-upload-modal">
+            <button id="close-modal-btn" class="modal-close-btn" onclick="closeModal()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            <i class="fa fa-cloud-upload file-upload-modal-icon" aria-hidden="true"></i>
+            <h4>Upload File or Create New File?</h4>
+            <div class="modal-btn-div">
+                <button id="modal-upload-file" class="file-upload-file-btn" onclick="setUploadFile()">Upload File</button>
+                <button id="modal-create-file" class="file-upload-file-btn" onclick="setCreateFile()">Create File</button>
+            </div>
+        </div>
+    </div>
+    <div class="chat-container">
+        <div id="chat-header" class="chat-header">
+            <h4>Multi File Editing</h4>
+        </div>
+        <div id="chat-box" class="chat-box">
+           <!-- <div class="chat-message">
+                <div class="chat-message-main">
+                    <div class="chat-message-main-user-msg"></div>
+                    <div class="chat-message-main-ai-msg"></div>
+                </div>
+                <div id="bottom_log" class="chat-message-footer"></div>
+            </div>-->
+        </div>
+        <button id="scroll-to-bottom" class="scroll-to-bottom"><i class="fa-solid fa-arrow-down"></i></button>
+        <div id="chat-footer" class="chat-footer">
+            <div class="chat-main-input-div">
+                <div id="top-chat-div" class="top-chat-div">
+                    <!--<button class="btn-item">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>-->
+                </div>
+                    <div class="chat-parent-input-div">
+                        <textarea id="input" class="chat-input" placeholder="Edit files in your workspace"></textarea>
+                        <div class="chat-btns">
+                            <div class="sub-chat-btn-div">
+                                <button id="file-upload-btn" class="btn-tran-item">
+                                    <i class="fa-solid fa-paperclip btn-icon"></i>
+                                </button>
+                            </div>
+                            <div class="sub-chat-btn-div">
+                                <button id="send-button" disabled="true" class="btn-tran-two-item">
+                                    <i class="far fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Prism.js Autoloader Plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        vscode = acquireVsCodeApi();
+
+
+        const fileExtensionToIcon = {
+            "js": "devicon-javascript-plain",
+            "ts": "devicon-typescript-plain",
+            "py": "devicon-python-plain",
+            "java": "devicon-java-plain",
+            "cpp": "devicon-cplusplus-plain",
+            "c": "devicon-c-plain",
+            "cs": "devicon-csharp-plain",
+            "php": "devicon-php-plain",
+            "html": "devicon-html5-plain",
+            "css": "devicon-css3-plain",
+            "json": "devicon-json-plain",
+            "rb": "devicon-ruby-plain",
+            "go": "devicon-go-plain",
+            "rs": "devicon-rust-plain",
+            "swift": "devicon-swift-plain",
+            "kt": "devicon-kotlin-plain",
+            "dart": "devicon-dart-plain",
+            "sh": "devicon-bash-plain",
+            "r": "devicon-r-plain",
+            "scala": "devicon-scala-plain",
+            "lua": "devicon-lua-plain",
+            "sql": "devicon-mysql-plain",
+            "xml": "devicon-xml-plain",
+            "yml": "devicon-yaml-plain",
+            "md": "devicon-markdown-plain",
+            "perl": "devicon-perl-plain",
+            "h": "devicon-cplusplus-plain", // Header file, commonly associated with C/C++
+            "vue": "devicon-vuejs-plain",
+            "react": "devicon-react-original",
+            "angular": "devicon-angularjs-plain",
+            "dockerfile": "devicon-docker-plain",
+            "yaml": "devicon-yaml-plain",
+            "pl": "devicon-perl-plain",
+            "rb": "devicon-ruby-plain",
+            "tf": "devicon-terraform-plain",
+            "groovy": "devicon-groovy-plain"
+        };
+
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Body and HTML fully loaded");
+            const uploadButton = document.getElementById("file-upload-btn");
+            if (uploadButton) {
+                uploadButton.addEventListener("click", () => {
+                    console.log("File upload button clicked!");
+                    setUploadFile()
+                });
+            } else {
+                console.error("Button with ID 'file-upload-btn' not found!");
+            }
+        });
+
+        const chatContainer = document.getElementById('chat-box');
+        const scrollToBottomButton = document.getElementById('scroll-to-bottom');
+
+        // Function to check if the user is at the bottom
+        function isAtBottom() {
+            return (
+                chatContainer.scrollHeight - chatContainer.scrollTop <= chatContainer.clientHeight + 30
+            );
+        }
+
+        // Event listener for scrolling
+        chatContainer.addEventListener('scroll', () => {
+            if (isAtBottom()) {
+                scrollToBottomButton.style.display = 'none'; // Hide the button
+            } else {
+                scrollToBottomButton.style.display = 'flex'; // Show the button
+            }
+        });
+
+        // Event listener for button click
+        scrollToBottomButton.addEventListener('click', () => {
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+            scrollToBottomButton.style.display = 'none'; // Hide the button
+        });
+
+        const textarea = document.getElementById("input");
+        const sendBtn = document.getElementById("send-button");
+
+        // Define the shared event handler
+        const handleTextareaEvents = (event) => {
+            if (textarea.value.trim().length > 0) {
+                sendBtn.style.color = "white";
+                sendBtn.disabled = false;
+            } else {
+                sendBtn.style.color = "#bfbdbf";
+                sendBtn.disabled = true;
+                textarea.style.height = "auto";
+                textarea.style.height = "30px"; // Reset to the original height when empty
+                return; // Exit the event handler
+            }
+
+            // Adjust textarea height dynamically
+            textarea.style.height = "auto"; // Reset height to calculate the new height
+            textarea.style.height = `${textarea.scrollHeight}px`; // Set new height
+
+            // Handle Enter key press without Shift
+            if (event.type === "keydown" && event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault(); // Prevent default newline behavior
+                sendBtn.click(); // Trigger send button click
+            }
+        };
+
+            // Attach event listeners
+            ["input", "keydown"].forEach((eventType) => {
+                textarea.addEventListener(eventType, handleTextareaEvents);
+            });
+
+
+
+
+        function generateRandomString(length) {
+        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var result = '';
+        for (var i = 0; i < length; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
+
+    function reSend(){
+        const user_prompt=localStorage.getItem('temp_prompt');
+        const session_id=localStorage.getItem('temp_session_id');
+        const bottomLog=document.getElementById(session_id+'bottom_log');
+        bottomLog.innerHTML=`Generating<span class="dots"></span>`;
+        vscode.postMessage({
+                    command:"send_message",
+                    value:{'user_prompt':user_prompt,'session_id':session_id}
+                });
+    }
+
+    
+
+    document.getElementById('send-button').addEventListener('click',()=>{
+            const user_prompt=textarea.value;
+            const session_id=generateRandomString(16);
+            console.log("send message",session_id)
+            const chatBox=document.getElementById('chat-box');
+            const newUserMsg=document.createElement('div');
+            newUserMsg.classList.add('chat-message');
+            const newUserMsgId=session_id+'chat-message-main';
+            const newUserMsgIds=session_id+'chat-message-main-user-msg';
+            const newAiMsgId=session_id+'chat-message-main-ai-msg';
+            const newBottomLog=session_id+'bottom_log';
+            newUserMsg.innerHTML=`
+            <div id=${newUserMsgId} class="chat-message-main">
+                    <div id=${newUserMsgIds} class="chat-message-main-user-msg">${user_prompt}</div>
+                    <div id=${newAiMsgId} class="chat-message-main-ai-msg"></div>
+            </div>
+            `;
+            localStorage.setItem('temp_prompt',user_prompt);
+            localStorage.setItem('temp_session_id',session_id);
+            const bottomLog=document.createElement('div');
+            bottomLog.id=newBottomLog;
+            bottomLog.classList.add('chat-message-footer');
+            newUserMsg.appendChild(bottomLog);
+            chatBox.appendChild(newUserMsg);
+            
+            bottomLog.innerHTML=`Generating<span class="dots"></span>`;
+            vscode.postMessage({
+                    command:"send_message",
+                    value:{'user_prompt':user_prompt,'session_id':session_id}
+                });
+            textarea.value='';
+            textarea.style.height='auto';
+            textarea.style.height = "30px";
+            textarea.setAttribute('disabled', 'disabled');
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+        })
+
+       function getLastPartOfPath(path) {
+        if (typeof path !== "string") {
+            throw new Error("Invalid path. Expected a string.");
+        }
+        // Split the path by the "/" character and get the last segment
+        const parts = path.split('/');
+        return parts[parts.length - 1] || '';
+    }
+
+       function setUploadFile(){
+        //localStorage.setItem('setFiles',true);
+        vscode.postMessage({
+                    command:"upload_file"
+                });
+        const modal=document.getElementById('file-upload-modal-overlay');
+        modal.style.display='none';
+       }
+
+       function setCreateFile(){
+        //localStorage.setItem('setFiles',true);
+        const modal=document.getElementById('file-upload-modal');
+        modal.innerHTML=`
+        <button id="close-modal-btn" class="modal-close-btn" onclick="closeModal()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <i class="fas fa-folder file-upload-modal-icon"></i>
+        <h5 style="text-align:center;">
+            Pick the folder path you want your new file to be stored
+        </h5>
+        <button id="pick-folder" class="file-upload-file-btn">
+            <i class="fas fa-folder"></i>
+            Select folder
+        </button>
+        `;
+        document.getElementById('pick-folder').addEventListener('click', selectFolder);
+       }
+
+       function closeModal() {
+            // Get the modal overlay element
+            const modal = document.getElementById('file-upload-modal-overlay');
+            if (!modal) {
+                console.error("Modal element not found.");
+                return;
+            }
+
+            // Hide the modal
+            modal.style.display = 'none';
+
+            // Reset the modal content
+            modal.innerHTML = `
+                <div id="file-upload-modal" class="file-upload-modal">
+                    <button id="close-modal-btn" class="modal-close-btn" onclick="closeModal()">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <i class="fa fa-cloud-upload file-upload-modal-icon" aria-hidden="true"></i>
+                    <h4>Upload File or Create New File?</h4>
+                    <div class="modal-btn-div">
+                        <button id="modal-upload-file" class="file-upload-file-btn" onclick="setUploadFile()">Upload File</button>
+                        <button id="modal-create-file" class="file-upload-file-btn" onclick="setCreateFile()">Create File</button>
+                    </div>
+                </div>
+            `;
+        }
+
+
+       function selectFolder(){
+        vscode.postMessage({
+                    command:"select_folder"
+                });
+       }
+
+       function getFileExtension(fileName) {
+            // Check if the file name contains a period
+            if (fileName.includes('.')) {
+                // Extract and return the extension after the last period
+                return fileName.substring(fileName.lastIndexOf('.') + 1);
+            }
+            // Return an empty string if no extension exists
+            return '';
+        }
+
+        function copyToClipboard(button,task) {
+                        // Find the closest code block and select the <code> element within it
+                        const codeBlock = button.closest('.code-block');
+                        const codeElement = codeBlock.querySelector('pre code');
+                        
+                    
+                        // Copy the code content to the clipboard
+                        if (navigator.clipboard) {
+                            if(task==="copy"){
+                                navigator.clipboard.writeText(codeElement.textContent)
+                                .then(() => {
+                                    // Change button text to indicate success
+                                    button.innerHTML = '<i class="fas fa-check"></i> &nbsp; Copied!';
+                                    setTimeout(() => {
+                                        button.innerHTML = '<i class="fas fa-clipboard"></i> &nbsp; Copy Code';
+                                    }, 2000); // Reset the button text after 2 seconds
+                                })
+                                .catch((err) => {
+                                    console.error('Failed to copy text: ', err);
+                                });
+                            }else if(task==="create"){
+                                createFile(button.dataset.filename,codeElement.textContent);
+                            }else if (task==="add"){
+                                //console.log("called copy clipboard",codeElement,codeElement.textContent);
+                                showAddCodeModal(codeElement.textContent);
+                            }else{
+                                navigator.clipboard.writeText(codeElement.textContent)
+                                .then(() => {
+                                    // Change button text to indicate success
+                                    button.innerHTML = '<i class="fas fa-check"></i> &nbsp; Copied!';
+                                    setTimeout(() => {
+                                        button.innerHTML = '<i class="fas fa-clipboard"></i> &nbsp; Copy Code';
+                                    }, 2000); // Reset the button text after 2 seconds
+                                })
+                                .catch((err) => {
+                                    console.error('Failed to copy text: ', err);
+                                });
+                            }
+                            
+                        } else {
+                            // Fallback for browsers without navigator.clipboard API
+                            const textarea = document.createElement('textarea');
+                            textarea.value = codeElement.textContent;
+                            document.body.appendChild(textarea);
+                            textarea.select();
+                            try {
+
+                                if(task==="copy"){
+                                    document.execCommand('copy');
+                                    button.innerHTML = '<i class="fas fa-check"></i> &nbsp; Copied!';
+                                    setTimeout(() => {
+                                        button.innerHTML = '<i class="fas fa-clipboard"></i> &nbsp; Copy Code';
+                                    }, 2000);
+                                }else if(task==="create"){
+                                createFile(button.dataset.filename,codeElement.textContent);
+                            }else if (task==="add"){
+                                //console.log("called copy clipboard",codeElement,codeElement.textContent);
+                                showAddCodeModal(codeElement.textContent);
+                            }else{
+                                document.execCommand('copy');
+                                button.innerHTML = '<i class="fas fa-check"></i> &nbsp; Copied!';
+                                setTimeout(() => {
+                                        button.innerHTML = '<i class="fas fa-clipboard"></i> &nbsp; Copy Code';
+                                    }, 2000);
+                            }
+
+                            } catch (err) {
+                                console.error('Fallback: Could not copy text', err);
+                            }
+                            document.body.removeChild(textarea);
+                        }
+                    }
+
+        function extractFileSubstring(inputString) {
+                        let extractedSubstring = '';
+                        let newString = inputString;
+                    
+                        // Check if the string starts with "##FILE:"
+                        if (inputString.startsWith('##FILE:')) {
+                            // Find the end index of the substring, which is the position of the next ":"
+                            const endIndex = inputString.indexOf(':', 7); // start searching after "##FILE:"
+                    
+                            // Extract the substring and remove it from the original string
+                            if(endIndex===-1){
+                                extractedSubstring = '';
+                                newString=inputString.slice(6);
+                                return { extractedSubstring, newString }
+                            }
+                            extractedSubstring = inputString.substring(0, endIndex + 1);
+                            extractedSubstring=extractedSubstring.replace(/^##FILE:|:$/g, '');
+                            newString = inputString.slice(endIndex + 1).trim();
+                        }
+                    
+                        return { extractedSubstring, newString };
+        }
+
+
+        function ParseMessage(text){
+        const renderer = new marked.Renderer();
+        renderer.code = (code, language) => {
+            // Define a base class for all code blocks
+            let langBlock="language-"+code.lang
+            const escapedCode = code.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            let result=extractFileSubstring(escapedCode);
+            console.log("let's see filename",result.extractedSubstring);
+            
+            return `<div class="code-block">
+                            <div class="code-toolbarr">
+                                <div class="language-name">${code.lang}</div>
+                                <div class="toolbar-actions">
+                                    <button id="copy-code" onclick="copyToClipboard(this,'copy')"><i class="fas fa-clipboard"></i> &nbsp; Copy Code</button>
+                                    <button id="add-to-file" onclick="copyToClipboard(this,'add')"><i class="fa-solid fa-file"></i> &nbsp; Add to File</button>
+                                    <button data-filename="${result.extractedSubstring}" id="create-new-file" onclick="copyToClipboard(this,'create')"><i class="fa-solid fa-file"></i> &nbsp;Create New File</button>
+                                </div>
+                            </div>
+                            <pre class="scroll-container"><code class="${langBlock}">${result.newString}</code></pre>
+                    </div>`
+        };
+
+        // Set options for marked.js with custom renderer
+        marked.setOptions({
+            renderer: renderer,
+            gfm: true,             // Use GitHub-flavored Markdown (optional)
+            breaks: true,          // Convert line breaks into <br>
+            smartLists: true,      // Use smart lists
+            smartypants: false,    // Do not convert quotes to smart quotes
+            sanitize: false,       // Allow HTML tags
+            langPrefix: ''         // Prevent marked.js from adding its own lang class
+        });
+        const htmlContent = marked.parse(text);
+        return htmlContent;
+    }
+
+    
+    function showFile(file_name,type){
+        vscode.postMessage({
+                            command:'show_file',
+                            value:{'file_name':file_name,'type':type}
+                        });
+    }
+
+    function acceptAll(btnId){
+        const btn=document.getElementById(btnId+'accept-all');
+        vscode.postMessage({
+                            command:'accept_all',
+                            value:''
+                        });
+        const rejectBtn=document.getElementById(btnId+'reject-all');
+        rejectBtn.style.display='none';
+        btn.style.background='transparent';
+        btn.style.color='#a3a2a2';
+        btn.innerHTML='Accepted all';
+    }
+
+    function rejectAll(btnId){
+        const btn=document.getElementById(btnId+'reject-all');
+        vscode.postMessage({
+                            command:'reject_all',
+                            value:''
+                        });
+        const acceptBtn=document.getElementById(btnId+'accept-all');
+        acceptBtn.style.display='none';
+        btn.style.background='transparent';
+        btn.style.color='#a3a2a2';
+        btn.innerHTML='Rejected all';
+    }
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+            switch(message.command){
+
+                    
+                case 'fill_text':
+                    try{
+                        textarea.removeAttribute('disabled');
+                        const response=message.value;
+                        const aiMessageDiv=document.getElementById(response["session_id"]+'chat-message-main-ai-msg');
+                        //console.log(response,"ai chat ohhh!");
+                        if(response["type"]!=null){
+                            if(response["type"]==='BOTTOM_LOG'){
+                            console.log("let's see if called",response);
+                            const bottomLog=document.getElementById(response["session_id"]+'bottom_log');
+                            bottomLog.innerHTML = `
+                                <div class="accept-or-reject-changes-div">
+                                    <div>
+                                        ${response["value"]}
+                                        ${response["value"] !== 'Completed' ? '<span class="dots"></span>' : ''}
+                                    </div>
+                                    ${response["value"] === 'Completed' ? `
+                                        <div class="accept-or-reject-changes-btn-div">
+                                            <button id=${response["session_id"]+'accept-all'} onclick="acceptAll('${response["session_id"]}')" class="accept-changes-btn">Accept all&nbsp;<i class="fa fa-check" aria-hidden="true"></i></button>
+                                            <button id=${response["session_id"]+'reject-all'} onclick="rejectAll('${response["session_id"]}')" class="reject-changes-btn">Reject all&nbsp;<i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `;
+                            
+                            }
+
+                            if(response["type"]==='ERROR'){
+                                const bottomLog=document.getElementById(response["session_id"]+'bottom_log');
+                                bottomLog.innerHTML = `
+                                    <div class="accept-or-reject-changes-div">
+                                        <div>
+                                            An Error Ocurred,try again.
+                                        </div>
+                                        <div class="accept-or-reject-changes-btn-div">
+                                                <button id=${response["session_id"]+'accept-all'} onclick="reSend()" class="accept-changes-btn">Regenerate</button>
+                                        </div>
+                                    </div>
+                                `;
+                            }
+                            
+                            if(response["type"]==='WRITE'){
+                                const checkIfExists=document.getElementById(response['session_id']+response["file_name"]+'progress');
+                                console.log("debug WRITE",response["state"],checkIfExists);
+                                if(response["state"]==='EXECUTING' && checkIfExists===null){
+                                    const ext=getFileExtension(response["file_name"]);
+                                    let newFileProgress=document.createElement('div');
+                                    newFileProgress.classList.add('file-progress-div');
+                                    newFileProgress.id=response['session_id']+response["file_name"]+'progress';
+                                    newFileProgress.innerHTML=`
+                                    <div class="spinner"></div>
+                                    <div class="file-progress-name-div">
+                                        <i class=${fileExtensionToIcon[ext]}></i>  
+                                        <div class="file-progress-name-write">${response["file_name"]}</div>
+                                    </div>
+                                    `;
+                                    aiMessageDiv.appendChild(newFileProgress);
+                                }else{
+                                    //CREATE FILE
+                                    const ext=getFileExtension(response["file_name"]);
+                                    let newFileProgress=document.getElementById(response['session_id']+response["file_name"]+'progress');
+                                    newFileProgress.innerHTML=`
+                                    <i class="fa-solid fa-check file-progress-write"></i>
+                                    <div class="file-progress-name-div">
+                                        <i class=${fileExtensionToIcon[ext]}></i>  
+                                        <div onclick="showFile('${response["file_name"]}','${response["type"]}')" class="file-progress-name-write">${response["file_name"]}</div>
+                                    </div>
+                                    `;
+                                }
+                            }
+                            if(response["type"]==='UPDATE'){
+                                const checkIfExists=document.getElementById(response['session_id']+response["file_name"]+'progress');
+                                if(response["state"]==='EXECUTING' && checkIfExists===null){
+                                    const ext=getFileExtension(response["file_name"]);
+                                    let newFileProgress=document.createElement('div');
+                                    newFileProgress.classList.add('file-progress-div');
+                                    newFileProgress.id=response['session_id']+response["file_name"]+'progress';
+                                    newFileProgress.innerHTML=`
+                                    <div class="spinner"></div>
+                                    <div class="file-progress-name-div">
+                                        <i class=${fileExtensionToIcon[ext]}></i>  
+                                        <div class="file-progress-name-update">${response["file_name"]}</div>
+                                    </div>
+                                    `;
+                                    aiMessageDiv.appendChild(newFileProgress);
+                                }else{
+                                    //CREATE FILE
+                                    console.log(response['session_id']+response["file_name"]+'progress',"called the shit");
+                                    const ext=getFileExtension(response["file_name"]);
+                                    let newFileProgress=document.getElementById(response['session_id']+response["file_name"]+'progress');
+                                    newFileProgress.innerHTML=`
+                                    <i class="fa-solid fa-check file-progress-update"></i>
+                                    <div class="file-progress-name-div">
+                                        <i class=${fileExtensionToIcon[ext]}></i>  
+                                        <div onclick="showFile('${response["file_name"]}','${response["type"]}')" class="file-progress-name-update">${response["file_name"]}</div>
+                                    </div>
+                                    `;
+                                }
+                            }
+                    }
+
+                    if(response["message"]!=null){
+                        //console.log(response,"bruh wtf now?");
+                        const parsed=ParseMessage(response["message"]["value"]);
+                        let message=document.getElementById(response["question_id"]);
+                        if(message!==null){
+                           message.innerHTML=parsed; 
+                        }else{
+                            message=document.createElement('div');
+                            message.style.width='100%';
+                            message.id=response["question_id"];
+                            message.innerHTML=parsed;
+                            aiMessageDiv.appendChild(message);
+                            aiMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                        }
+
+                        Prism.highlightAll();
+
+                    }
+                        
+                    }catch(err){
+                        vscode.postMessage({
+                            command:'log_event',
+                            value:{
+                                name: err.name || 'Error',      // Error name, e.g., "TypeError"
+                                message: err.message || '',    // Error message
+                                stack: err.stack || '',        // Stack trace (if available)
+                            }
+                        });
+                    }
+                    
+
+                case 'reflect_upload':
+                    const modal=document.getElementById('file-upload-modal');
+                    modal.innerHTML=`
+                    <button id="close-modal-btn" class="modal-close-btn" onclick="closeModal()">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <div class="picked-folder">
+                        <i class="fas fa-folder"></i>
+                        <div>${message.value}</div>
+                    </div>
+                    <input id="file-name-form" class="new-file-name-input" placeholder="Enter the name of the new file"/>
+                    <button id="map-folder-file" class="clone-upload-file-btn">Done</button>
+                    `;
+                    document.getElementById('map-folder-file').addEventListener('click', ()=>{
+                        const doneInput=document.getElementById('file-name-form');
+                        vscode.postMessage({
+                                command: "update_new_file",
+                                value: doneInput.value
+                            });
+                        closeModal();
+                    });
+                    break;
+                
+                case 'attach_uploaded_file':
+                    const topChatInput=document.getElementById('top-chat-div');
+                    const newFile=document.createElement('button');
+                    newFile.id=`${message.value}-btn`;
+                    newFile.classList.add('btn-item');
+                    const ext=getFileExtension(message.value);
+                    newFile.innerHTML=`<i class=${fileExtensionToIcon[ext.toLowerCase()] || "devicon-default-plain"} aria-hidden="true"></i>&nbsp;&nbsp;${getLastPartOfPath(message.value)}&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>`;
+                    newFile.addEventListener('click', () => {
+                            vscode.postMessage({
+                                command: "remove_file",
+                                value: message.value
+                            });
+                            topChatInput.removeChild(newFile);
+                            console.log(`Clicked: ${message.value}`);
+                        });
+                    topChatInput.style.padding='5px';
+                    topChatInput.appendChild(newFile);
+
+                    break;
+
+                
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu</title>
+    <link rel="icon" href="bot.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    :root {
+      /* Core colors from theme */
+      --editor-background: #1E1E1E;
+      --editor-foreground: #D4D4D4;
+      --button-background: #007ACC;
+      --button-foreground: #FFFFFF;
+      --input-background: #3C3C3C;
+      --input-foreground: #9399B2; 
+      --panel-background: #252526;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Poppins";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--editor-background);
+      color: var(--input-foreground);
+    }
+    .menuBody {
+      height: 100vh;
+      width: 100%;
+      padding: 0 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /*justify-content: center;*/
+      background-color: var(--editor-background);
+    }
+    .menuHeader {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px; /* Fixed height for header */
+      background-color: var(--editor-background); /* Dark header */
+      display: flex;
+      align-items: center;
+      z-index: 20; /* Ensure it stays on top */
+      /*box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);  Subtle shadow */
+      padding: 10px;
+      box-sizing: border-box;
+      color: var(--input-foreground);
+    }
+    .headerLogoDiv {
+      display: flex;
+      align-items: center;
+    }
+    .headerLogo {
+      width: 24px;
+      height: 24px;
+      margin-right: 3px;
+    }
+
+    .headerSettingsDiv {
+      margin-left: auto; /* Push the settings icon to the extreme right */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 15px; /* Add some padding to the right */
+    }
+
+    .headerSettingsIcon {
+      font-size: 24px;
+      color: var(--input-foreground);
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .headerSettingsIcon:hover {
+      color: var(--button-background); /* Change color on hover */
+    }
+
+    .menuBodyHeader {
+      margin-top: 80px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: var(--input-foreground);
+    }
+
+
+    .menuItemDiv {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .menuItem {
+      width: 100%;
+      min-height: 60px;
+      border: 1px solid var(--button-background);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+      padding: 8px;
+      max-width: 300px;
+      text-transform: capitalize;
+      color: var(--input-foreground);
+    }
+    h5 {
+        font-size: 16px;
+    }
+    .menuItemDiv h5 {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .menuItemDiv h5 span{
+      color: var(--input-foreground) ;
+      cursor: pointer;
+      font-weight: 900;
+      transition: all .3s;
+
+    }
+    .menuItemDiv h5 span:hover{
+      color:  var(--input-foreground)  ;
+
+
+    }
+   
+    .menuItem:hover {
+      background-color: var(--button-background);
+      color: var(--button-foreground);
+    }
+
+    .newTag {
+      padding: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      background: var(--button-background);
+      color: var(--button-foreground);
+      margin: 5px;
+      margin-left: 8px;
+    }
+
+    .pop-up-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+    }
+
+    .pop-up-modal {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      background-color: var(--editor-background);
+      padding: 40px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+      color: var(--input-foreground);
+    }
+
+    .pop-up-modal-header {
+      font-weight: bold;
+      color: var(--input-foreground);
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .pop-up-modal-body-text {
+      text-align: center;
+      font-size: 14px;
+      color: #bdbdbd;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .pop-up-modal-body-text ul {
+      list-style-type: disc;
+      margin: 10px 0 20px 20px;
+      color: #d1c4e9;
+      text-align: left;
+    }
+
+    .pop-up-modal-body-text li {
+      margin: 5px 0;
+    }
+
+    .pop-up-modal-upgrade-btn {
+      width: 60%;
+      border-radius: 8px;
+      border: none;
+      background-color: var(--button-background);
+      color: var(--button-foreground);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 0;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pop-up-modal-upgrade-btn:hover {
+      background-color: var(--button-background);
+    }
+
+    .pop-up-modal-cancel-btn {
+      width: 60%;
+      border-radius: 8px;
+      border: none;
+      background-color: #cf1b1b;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pop-up-modal-cancel-btn:hover {
+      background-color: #a51414;
+    }
+
+    @media (min-width: 850px) {
+      .menuBodyHeader {
+        width: 60%;
+      }
+     
+      .pop-up-modal {
+        width: 50%;
+        padding: 20px;
+      }
+
+      .pop-up-modal-body-text {
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .menuBodyHeader h5{
+        text-align: left;
+      }
+     
+     
+   
+    }
+   
+    @media (max-width: 250px) {
+      
+      .menuItemDiv h5{
+        font-size: .8rem;
+        text-align: left;
+
+
+      }
+      
+     
+      .newTag, .menuItem {
+        font-size: .8rem;
+        font-weight: 400;
+      }
+   
+    }
+
+  </style>
+
+  <body>
+    <div id="pop-up-overlay" class="pop-up-overlay">
+      <div class="pop-up-modal" id="pop-up-modal">
+        <div class="pop-up-modal-header" id="pop-up-modal-header">
+          Unlock the Full Power of Sixth AI!
+        </div>
+        <div class="pop-up-modal-body-text" id="pop-up-modal-body-text">
+          <p>
+            Upgrade to our premium plan for just <strong>$9.99</strong> and
+            enjoy:
+          </p>
+          <ul>
+            <li>
+              <strong>Unlimited AI Chat</strong> for instant assistance and
+              solutions.
+            </li>
+            <li>
+              <strong>Multi-File Editing</strong> to streamline complex
+              projects.
+            </li>
+            <li>
+              <strong>Codebase Indexing</strong> to help Sixth AI understand
+              your project and generate more accurate, tailored code.
+            </li>
+          </ul>
+          <p>
+            Take your coding to the next level with exclusive tools and
+            personalized support designed to supercharge your workflow.
+          </p>
+        </div>
+        <button class="pop-up-modal-upgrade-btn" onclick="upgrade()">
+          Upgrade Now
+        </button>
+        <button class="pop-up-modal-cancel-btn" onclick="removePopUp()">
+          Cancel
+        </button>
+      </div>
+    </div>
+    <div class="menuHeader">
+      <div class="headerLogoDiv">
+        <img
+          id="headerLogo"
+          class="headerLogo"
+          src="../../resources/sixthLogo.png"
+        />
+        <h2>Sixth</h2>
+      </div>
+      <div class="headerSettingsDiv">
+        <i class="fas fa-cog headerSettingsIcon" onclick="loadSettings()"></i>
+      </div>
+    </div>
+    <div class="menuBody">
+      <div class="menuBodyHeader">
+        <h2>Code Smarter with Sixth AI</h2>
+        <h5 style="font-weight: 400; font-size: 16px; text-align: center;">
+          Redefine your workflow with Sixth AI
+          Chat, edit, and navigate your code like never before. Start using Sixth AI today for 10x Productivity!
+        </h5>
+      </div>
+      <div class="menuItemDiv">
+        <div onclick="clicked('chat')" class="menuItem">Sixth AI Chat</div>
+        <div onclick="clicked('glyde')" class="menuItem">Click here to build and host complete web apps with a single prompt for free!</div>
+        <div onclick="clicked('code_indexing')" class="menuItem">
+          Codebase Indexing
+        </div>
+        <h5>
+          Don't know where to start?<br /> check out our
+           <span class="user-guide" onclick="clicked('user_guide')" > User Guide
+            <i class="fas fa-arrow-right"></i>
+
+          </span>
+        </h5>
+      </div>
+    </div>
+    <script>
+      vscode = acquireVsCodeApi();
+      function upgrade() {
+        vscode.postMessage({
+          command: "upgrade",
+          value: "",
+        });
+      }
+
+      function removePopUp() {
+        const modalPopup = document.getElementById("pop-up-overlay");
+        if (modalPopup) {
+          modalPopup.style.display = "none";
+        }
+      }
+
+      function clicked(whatClicked) {
+        vscode.postMessage({
+          command: "clicked",
+          value: whatClicked,
+        });
+      }
+      window.addEventListener("message", (event) => {
+        console.log("Received message:", event.data);
+        const message = event.data;
+        switch (message.command) {
+          case "bill_user":
+            const modalPopup = document.getElementById("pop-up-overlay");
+            if (modalPopup) {
+              modalPopup.style.display = "flex";
+            }
+            break;
+          case "add_logo":
+            const logoImg = document.getElementById("headerLogo");
+            logoImg.src = message.value;
+        }
+      });
+
+      function loadSettings() {
+        console.log("running oh");
+        vscode.postMessage({
+          command: "clicked",
+          value: "LOAD_SETTINGS",
+        });
+      }
+
+      // Add this at the start of your script section
+      const themeColors = THEME_COLORS_JSON;
+      document.documentElement.style.setProperty('--editor-background', themeColors['editor.background']);
+      document.documentElement.style.setProperty('--editor-foreground', themeColors['editor.foreground']);
+      document.documentElement.style.setProperty('--button-background', themeColors['button.background']);
+      document.documentElement.style.setProperty('--button-foreground', themeColors['button.foreground']);
+      document.documentElement.style.setProperty('--input-background', themeColors['input.background']);
+      document.documentElement.style.setProperty('--input-foreground', themeColors['input.foreground']);
+      document.documentElement.style.setProperty('--panel-background', themeColors['panel.background']);
+    </script>
+  </body>
+</html>

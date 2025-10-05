@@ -1,0 +1,2425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+
+    <title>Paywall Screen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #18191F;
+            height: 100vh;
+            background-size: contain;
+            background-position: top;
+            display: flex;
+            justify-content: center;
+            overflow-y: scroll; /* Enable vertical scrolling */
+            scrollbar-width: none; /* For Firefox - hide scrollbar */
+            justify-content: center;
+            flex-direction: row;
+            width: 100vw;
+        }
+
+        .background-image{
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/Registration.png?alt=media&token=e7be7196-3aff-4806-93c9-6347b55c9d72');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .main{
+            width: 100%;
+            height: 95%;
+            min-width: 100vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0px;
+            position: absolute;
+            top: 0;
+            padding-top: 1.6rem;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            margin: 0px;
+            padding: 0px;
+            font-weight: 550;
+           font-family: 'Poppins';
+            margin-top: 24px;
+            color: #FDE4FF;
+        }
+
+        p {
+            font-size: 0.6rem;
+        }
+
+        .container {
+            width: 40%;
+            /* Wider on smaller screens */
+            height: 94%;
+            background-color: #18191F;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            stroke: #6B5FC0;
+            border: 2px solid #6D28D9;
+            scrollbar-width: none; /* For Firefox - hide scrollbar */
+
+        }
+
+
+
+        @media (max-width: 1200px) {
+            .container {
+                width: 45%;
+                /* Wider on smaller screens */
+                height: 91%;
+                margin-top: 0px;
+                background-color: #18191F;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                box-shadow: 10px 10px 30px 10px #E005FF;
+                border-radius: 12px;
+                stroke: #6B5FC0;
+                border: 1px solid #E005FF;
+                scrollbar-width: none; /* For Firefox - hide scrollbar */
+            }
+            .container .continue-button{
+                background-color: #6D28D9;
+                color: #FDE4FF;
+                padding: 10px 25px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                width: 86%;
+                margin-top: 8px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+
+        @media (max-width: 1199px) {
+            .container {
+                width: 60%;
+                /* Wider on smaller screens */
+                height: 93%;
+                margin-top: 0px;
+                background-color: #18191F;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                box-shadow: 10px 10px 30px 10px #E005FF;
+                border-radius: 12px;
+                stroke: #6B5FC0;
+                border: 1px solid #E005FF;
+                scrollbar-width: none; /* For Firefox - hide scrollbar */
+            }
+            .container .continue-button{
+                background-color: #6D28D9;
+                color: #FDE4FF;
+                padding: 10px 25px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                width: 83%;
+                margin-top: 8px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+       
+        @media (max-width: 899px) {
+            .container {
+                width: 60%;
+                /* Wider on smaller screens */
+                height: 95%;
+                margin-top: 0px;
+                background-color: #18191F;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                box-shadow: 10px 10px 30px 10px #E005FF;
+                border-radius: 12px;
+                stroke: #6B5FC0;
+                border: 1px solid #E005FF;
+                scrollbar-width: none; /* For Firefox - hide scrollbar */
+            }
+            .container .pricing-section .continue-button{
+                background-color: #6D28D9;
+                color: #FDE4FF;
+                padding: 10px 25px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                width: 87%;
+                margin-top: 8px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .container {
+                width: 80%;
+                /* Wider on smaller screens */
+                height: 92%;
+                margin-top: 0px;
+                background-color: #18191F;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                box-shadow: 10px 10px 30px 10px #E005FF;
+                border-radius: 12px;
+                stroke: #6B5FC0;
+                border: 1px solid #E005FF;
+                scrollbar-width: none; /* For Firefox - hide scrollbar */
+            }
+            .container .pricing-section .continue-button{
+                background-color: #6D28D9;
+                color: #FDE4FF;
+                padding: 10px 25px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                width: 77%;
+                margin-top: 8px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            .container .pricing-section{
+                padding-left: 10px;
+            }
+            .container .pricing-card h2 {
+                font-size: 10px;
+            }
+            .container .pricing-card span {
+                font-size: 12px;
+                padding-top: 0px;
+            }
+            .container  .pricing-card {
+                border-radius: 12px;
+                padding: 4px;
+                padding-left: 16px;
+                margin: 0 10px;
+                width: 80%;
+                text-align: left;
+                color: #FDE4FF;
+                cursor: pointer;
+                max-height: 80px;
+                height: 75px;
+                user-select: none; 
+
+            }
+            .container .selected-plan {
+                position: relative;
+                display: inline-block;
+                padding: 10px 20px;
+                border-radius: 10px;
+                z-index: 1;
+            }
+
+            .container .selected-plan::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: inherit;
+                background: linear-gradient(to right, #E005FF, #A73CFF);
+                z-index: -1;
+                padding: 4px; /* Border thickness */
+                -webkit-mask: 
+                    linear-gradient(#fff 0 0) content-box, 
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor; 
+                mask-composite: exclude;
+                height: 74px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                width: 80%;
+                /* Wider on smaller screens */
+                height: 85%;
+                margin-top: 0px;
+                background-color: #18191F;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                box-shadow: 10px 10px 30px 10px #E005FF;
+                border-radius: 12px;
+                stroke: #6B5FC0;
+                border: 1px solid #E005FF;
+                scrollbar-width: none; /* For Firefox - hide scrollbar */
+            }
+
+            .container .pricing-section .continue-button{
+                background-color: #6D28D9;
+                color: #FDE4FF;
+                padding: 6px 25px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 12px;
+                width: 69%;
+                margin-top: 8px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container .pricing-section{
+                padding-left: 8px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+           
+            .container .pricing-section .pricing-cards {
+                display: flex;
+                flex-direction: column-reverse;
+                margin-bottom: 0px;
+                justify-content: center;
+                align-items: center;
+              
+            }
+            .container .pricing-card h2 {
+                font-size: 10px;
+            }
+            .container .pricing-card span {
+                font-size: 12px;
+                padding-top: 0px;
+            }
+           
+            .container  .pricing-card {
+                border-radius: 12px;
+                padding: 4px;
+                padding-left: 16px;
+                margin: 0 10px;
+                width: 76%;
+                text-align: left;
+                color: #FDE4FF;
+                cursor: pointer;
+                max-height: 80px;
+                height: 75px;
+                user-select: none; 
+                padding-bottom: 0px;
+                margin-bottom: 8px;
+            }
+            .container .selected-plan {
+                position: relative;
+                display: inline-block;
+                padding: 10px 20px;
+                border-radius: 10px;
+                z-index: 1;
+                width: 70%;
+                max-height: 60px;
+            }
+
+            .container .selected-plan::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: inherit;
+                background: linear-gradient(to right, #E005FF, #A73CFF);
+                z-index: -1;
+                padding: 4px; /* Border thickness */
+                -webkit-mask: 
+                    linear-gradient(#fff 0 0) content-box, 
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor; 
+                mask-composite: exclude;
+            }
+            .container .pricing-section .title-desc{
+                font-size: 14px;
+                text-align: center;
+            }
+            .container .pricing-section .sixth-logo-desc{
+                color: #FDE4FF; 
+                padding-bottom:1px; 
+                padding-left:4px; 
+                margin: 0px; 
+                font-weight: 800; 
+                font-size: 14px; 
+                margin-bottom: 12px;
+            }
+            .container .pricing-section .title-div{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                width: 100vw;
+                margin-bottom: 0px;
+                padding-bottom: 0px;
+            }
+            .container .pricing-section .person_review{
+                width: 16px;
+                height: 16px;
+                border-radius: 25px;
+                margin-right: 8px;
+            }
+
+            .container .pricing-section .review_section{
+                margin-top: 0px;
+                padding:0px;
+            }
+
+            .container .pricing-section .review_div {
+                font-size: 12px;
+                padding-block: 0px;
+                overflow: hidden;
+                user-select: none;
+                --gap: 20px;
+                display: flex;
+                margin-top: 0px;
+                justify-content: left;
+            }
+
+            .container .pricing-section .review_content {
+                min-width: 100%;
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                animation: scroll 600s linear infinite;
+                clip-path: inset(0);
+            }
+
+            .container .pricing-section .review_item {
+                border-radius:24px;
+                width: 260px;
+                padding: .35rem 0.5rem;
+                font-weight: 500;
+                color: #FDE4FF;
+                font-size: 0.7em;
+                background: #18191F;
+                border: 2px solid rgba(84, 84, 197, .6);
+               font-family: 'Poppins';
+                display: flex;
+                flex-direction: row;	
+                align-items: center;		
+                position: relative;
+                margin-left: 8px;
+            }
+
+            
+
+            .container .pricing-section .review_item_small {
+                border-radius:24px;
+                min-width: 220px;
+                padding: .7rem 1rem;
+                font-weight: 400;
+                color: #FDE4FF;
+                font-size: 0.7em;
+                background: #150816;
+                border: 1px solid rgba(84, 84, 197, .6);
+               font-family: 'Poppins';
+                display: flex;
+                flex-direction: row;
+                align-items: center;			
+            }
+            .container .pricing-section .sixth-logo-small{
+                width: 16px;
+                height: 16px;
+                padding-bottom: 3.5px;
+            }
+
+            .container .carousel-wrap {
+                background-color: #2A2737;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 34%;
+                align-items: center;
+            }
+
+            .container .carousel-buttons{
+                top: 36%;
+            }
+            .container .content-text{
+                top: 33%;
+            }
+
+            .container .content-text .text3{
+                font-size: 14px;
+            }
+        }
+
+       
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            color: #FDE4FF;
+            padding: 0px;
+            height: 100%;
+            padding-bottom: 8px;
+            min-width: 100%;
+            background-color: #18191F;
+            align-items: flex-start;
+        }
+
+        .carousel .slide {
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
+            background: #2A2737;
+            display: flex;
+        }
+
+        .carousel video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #2A2737;
+            border-radius: 12px;
+        }
+
+        .carousel .text {
+            padding-top: 64px;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 8px;
+            padding-bottom: 16px;
+            background-color: #2A2737;
+            background: transparent;
+            position: absolute;
+            top: 44%;
+        }
+
+        .content-description {
+            font-size: 18px;
+            color: #F1E4FF;
+            line-height: 2.5rem;
+        }
+
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            padding-top: 8px;
+            padding-bottom: 16px;
+            background-color: #2A2737;
+            background: transparent;
+            position: absolute;
+            top: 40.9%;
+        }
+
+        #b1 {
+            background-color: #FDE4FF;
+            opacity: 70%;
+            border: none;
+            width: 36px;
+            height: 4px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 4px;
+
+        }
+
+        #b2 {
+            background-color: #FDE4FF;
+            opacity: 70%;
+            border: none;
+            width: 16px;
+            height: 3px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 4px;
+
+        }
+
+        #b3 {
+            background-color: #FDE4FF;
+            opacity: 70%;
+            border: none;
+            width: 16px;
+            height: 3px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 4px;
+
+        }
+
+        .pricing-section {
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 16px;
+            background-color: #18191F;
+            width: 95%;
+            justify-content: center;
+            border-radius: 24px 24px 12px 12px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text3{
+            font-size: 16px;
+            color: #F1E4FF;
+           font-family: 'Poppins';
+        }
+
+        @media (max-width: 900px) {
+            .pricing-section {
+                text-align: center;
+                padding: 20px;
+                background-color: #18191F;
+                border-radius: 24px 24px 12px 12px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+            }
+            .container .continue-button{
+                background-color: #6D28D9;
+                color: #FDE4FF;
+                padding: 10px 25px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                width: 87%;
+                margin-top: 16px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        
+
+        .pricing-section h2 {
+            margin-bottom: 20px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-direction: row;
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        .pricing-card {
+            border-radius: 12px;
+            padding: 8px;
+            padding-left: 16px;
+            margin: 0 10px;
+            width: 80%;
+            text-align: left;
+            color: #FDE4FF;
+            cursor: pointer;
+            max-height: 80px;
+            height: 75px;
+            user-select: none; 
+
+        }
+
+        .pricing-card h3 {
+            user-select: none; 
+            font-size: 0.75rem;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+            
+        }
+
+        @media (max-width:710px) {
+            .container .pricing-card h3 {
+                user-select: none; 
+                font-size: 0.69rem;
+                font-weight: 800;
+            }
+        }
+
+        @media (max-width:392px) {
+            .container .pricing-card h3 {
+                user-select: none; 
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width:385px) {
+            .container .pricing-card h3 {
+                user-select: none; 
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width:365px) {
+            .container .pricing-card h3 {
+                user-select: none; 
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width:580px) {
+            .container .pricing-card h3 {
+                user-select: none; 
+                font-size: 0.65rem;
+            }
+            .container .pricing-card .plan-one{
+                margin-top: 16px;
+            }
+        }
+
+        .pricing-card:hover {
+            background-color: #2b152d;
+        }
+
+        .pricing-card p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #FDE4FF;
+            font-size: 0.8rem;
+            user-select: none; 
+        }
+
+        .pricing-card span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FDE4FF;
+            font-size: 1.0rem;
+            user-select: none; 
+
+        }
+
+     
+
+        .selected-plan {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .selected-plan::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            background: linear-gradient(to right, #E005FF, #A73CFF);
+            z-index: -1;
+            padding: 4px; /* Border thickness */
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; 
+            mask-composite: exclude;
+            height: 88px;
+        }
+
+        .continue-button {
+            background-color: #6D28D9;
+            color: #FDE4FF;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 87%;
+            margin-top: 16px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+       
+
+        .continue-button:hover {
+          animation: fade-color 0.4s ease forwards;
+        }
+
+
+        @keyframes fade-color {
+            0% {
+                background-color: #6D28D9; /* Starting color */
+            }
+            50% {
+                background-color: #0e0c12; /* Midpoint color */
+            }
+            100% {
+                background-color: #E005FF; /* Final color */
+            }
+        }
+
+
+        .carousel-wrap {
+            background-color: #2A2737;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 42%;
+            align-items: center;
+        }
+
+        .selected {
+            width: 60px;
+            background-color: #6B5FC0;
+            height: 16px;
+            color: #FFFFFF;
+            border-radius: 30px;
+            font-size: 0.54rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-left: 16px;
+            margin-top: 10px;
+            animation: shake-small 0.6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .content-text{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            background-color: #2A2737;
+            background: transparent;
+            position: absolute;
+            top: 37%;
+            left: 0;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .person_review{
+            width: 24px;
+            height: 24px;
+            border-radius: 25px;
+            margin-right: 8px;
+    	}
+
+	    .review_section{
+			margin-top: 0px;
+            padding:0px;
+		}
+
+		.review_div {
+			font-size: 15px;
+			padding-block: 0px;
+			overflow: hidden;
+			user-select: none;
+			--gap: 20px;
+			display: flex;
+			margin-top: 0px;
+            justify-content: left;
+
+		}
+
+		.review_content {
+			min-width: 100%;
+			display: flex;
+            width: 100%;
+            flex-direction: row;
+			align-items: center;
+			animation: scroll 600s linear infinite;
+            clip-path: inset(0);
+		}
+
+		.review_item {
+			border-radius:24px;
+			width: 350px;
+			padding: .7rem 1rem;
+			font-weight: 500;
+			color: #FDE4FF;
+			font-size: 0.7em;
+			background: #18191F;
+			border: 2px solid rgba(84, 84, 197, .6);
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			display: flex;
+			flex-direction: row;	
+			align-items: center;		
+            position: relative;
+            margin-left: 8px;
+		}
+
+		.trusted_by_1{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.2rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			height: 60px;
+			margin-bottom: 8px;
+		}
+
+		.trusted_by_2{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.6rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			height: 60px;
+			margin-top: 8px;
+		}
+
+		.trusted_by_3{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.2rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			height: 60px;
+			margin-top: 8px;
+		}
+
+		.trusted_by_4{
+			color: #FDE4FF;
+			font-weight: 700;
+			font-size: 1.6rem;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			text-align: center;
+			font-size: 1.2rem;
+			margin-top: 8px;
+		}
+
+
+		.review_text{
+			
+		}
+
+		.review_item_small {
+			border-radius:24px;
+			min-width: 220px;
+			padding: .7rem 1rem;
+			font-weight: 400;
+			color: #FDE4FF;
+			font-size: 0.7em;
+			background: #150816;
+			border: 1px solid rgba(84, 84, 197, .6);
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+			display: flex;
+			flex-direction: row;
+			align-items: center;			
+		}
+
+		.scrolling-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            animation: scrollText 0.1s linear infinite;
+        }
+
+        @keyframes scrollText {
+			0% {
+                transform: translateX(100%);
+            }
+			
+			20% {
+                transform: translateX(100%);
+            }
+            25% {
+                transform: translateX(75%);
+            }
+			45% {
+                transform: translateX(75%);
+            }
+            50% {
+                transform: translateX(50%);
+            }
+			70% {
+				transform: translateX(50%);
+			}
+			75%{
+				transform: translateX(25%);
+			}
+			95% {
+				transform: translateX(25%);
+			}
+			100% {
+				transform: translateX(0%);
+			}
+			
+			0% {
+                transform: translateX(100%);
+            }
+			
+        }
+        @keyframes scroll {
+            to {
+                transform: translateX(calc(-100% - var(--gap)));
+            }
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes shake-small {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            50% { transform: translateX(4px); }
+            75% { transform: translateX(-4px); }
+            100% { transform: translateX(0); }
+        }
+    .gradient-border {
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    .gradient-border::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      background: linear-gradient(to right, #E005FF, #A73CFF);
+      z-index: -1;
+      padding: 1.6px; /* Border thickness */
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; 
+      mask-composite: exclude;
+    }
+    .title-desc{
+            margin-top:8px; 
+            font-size: 24px; 
+            max-width: 290px; 
+            text-align: end; 
+            font-weight: 800;
+        }
+    .title-div{
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            display: flex; 
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .main-wrapper{
+            width: 100%;
+            height: 100%;
+        }
+
+    .sixth-logo-desc{
+        color: #FDE4FF; 
+        padding-bottom:1px; 
+        padding-left:4px; 
+        margin: 0px; 
+        font-weight: 800; 
+        font-size: 24px; 
+        margin-bottom: 12px;
+    }
+    .sixth-logo-small{
+        width: 22px;
+        height: 22px;
+    }
+    button:disabled{
+        cursor: not-allowed;
+    }
+    h3:disabled{
+        cursor: not-allowed;
+    }
+    .sub_text{
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #6D28D9;
+        font-size: 0.8rem;
+        user-select: none; 
+        cursor: pointer;
+    }
+    .sub_text:hover{
+        color: #FDE4FF;
+    }
+    .redirection_span{
+        color: #FDE4FF;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+        font-size: 13px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        margin-top: 8px;
+        cursor: pointer;
+        display: none;
+    }
+    .click_here:hover{
+        text-decoration: underline;
+        font-weight: 800;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body class="background-image">
+    <div class="main-wrapper">
+        <header style="z-index: 100; width: 100vw; display: flex;flex-direction: column;margin-bottom: 0px;padding-bottom: 0px;">
+
+            <div class="header" style="z-index: 100; margin-left: 24px; padding-top: 8px; margin-bottom: 0px;padding-bottom: 0px;">
+              <svg
+                width="100"
+                height="50"
+                viewBox="0 0 123 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M30.2567 39.4665C24.8258 43.3273 18.0436 42.7252 13.3081 38.0044C11.8422 36.5431 11.0335 36.5268 9.49109 37.9277C7.16913 40.0367 4.05159 39.9635 1.78988 37.7469C-0.186653 35.8098 -0.558978 32.3323 0.971879 29.7637C1.2531 29.2918 1.27486 28.958 0.99758 28.4745C-0.324568 26.1689 -0.343021 23.8314 1.00522 21.5287C1.26356 21.0875 1.2763 20.7746 1.02935 20.3197C-0.683373 17.1644 -0.222355 14.1374 2.30384 11.7323C7.60106 6.689 15.2719 6.76441 20.6043 11.9122C22.2081 13.4605 22.8978 13.4814 24.5613 12.0319C26.8976 9.99621 29.9575 10.0586 32.1296 12.1861C34.1846 14.1989 34.5742 17.5446 33.0229 20.2246C32.7257 20.7381 32.736 21.0855 33.0294 21.5964C34.3153 23.8351 34.3206 26.1183 33.0623 28.3796C32.8193 28.8163 32.675 29.1466 32.96 29.6734C34.6951 32.8815 34.2241 35.8948 31.6402 38.3264C31.2194 38.7224 30.7546 39.0627 30.2567 39.4665ZM26.5092 36.802C27.635 36.2914 28.6121 35.5366 29.4876 34.6209C30.0339 34.0496 30.129 33.3268 29.9309 32.5798C29.7328 31.8331 29.1895 31.4418 28.5171 31.293C27.8061 31.1357 27.2887 31.5748 26.7946 32.044C25.2886 33.4741 23.5509 34.0244 21.5774 33.6873C20.1905 33.4503 19.0902 32.6671 18.0676 31.6478C14.1485 27.741 8.37365 27.719 4.75535 31.5578C3.89153 32.4743 3.78411 33.6063 4.48157 34.4431C5.18962 35.2925 6.16386 35.3707 7.05489 34.468C9.67788 31.8104 13.5595 32.2232 16.0181 34.7965C18.9831 37.8998 22.5528 38.4168 26.5092 36.802ZM9.10712 12.6012C7.49524 13.0705 6.04129 13.861 4.79562 15.0907C4.41218 15.4692 4.11745 15.8984 4.04871 16.4613C3.94541 17.3071 4.23198 18.0021 4.91485 18.4036C5.65824 18.8407 6.38756 18.7046 7.03434 18.0987C8.15012 17.0534 9.38325 16.3472 10.9009 16.2564C12.9071 16.1364 14.5335 16.9214 15.9896 18.3888C19.7739 22.2027 25.3604 22.2707 29.1047 18.6039C30.0821 17.6466 30.2873 16.4417 29.6213 15.5694C28.8871 14.6077 27.841 14.6384 26.7665 15.6531C24.2441 18.035 20.7948 18.0151 18.3855 15.5327C15.7855 12.8539 12.7614 11.8501 9.10712 12.6012ZM26.7937 23.8513C23.9001 26.3488 20.7808 26.1996 18.0738 23.4498C16.2158 21.5624 14.0252 20.5742 11.4705 20.5527C8.85344 20.5306 6.58771 21.4893 4.68555 23.4312C3.84478 24.2896 3.79319 25.339 4.45215 26.1674C5.12474 27.0128 6.20408 27.1777 6.94843 26.3778C9.55535 23.5764 13.6213 24.0405 16.1042 26.6683C19.7453 30.5219 25.5854 30.4006 29.2038 26.7173C30.1239 25.7806 30.2884 24.5817 29.6104 23.7537C28.889 22.8726 27.875 22.874 26.7937 23.8513Z"
+                  fill="#F5EFFF"
+                />
+                <path
+                  d="M46.67 33.24C45.21 33.24 43.91 32.99 42.77 32.49C41.63 31.99 40.73 31.31 40.07 30.45C39.41 29.57 39.04 28.59 38.96 27.51H44.03C44.09 28.09 44.36 28.56 44.84 28.92C45.32 29.28 45.91 29.46 46.61 29.46C47.25 29.46 47.74 29.34 48.08 29.1C48.44 28.84 48.62 28.51 48.62 28.11C48.62 27.63 48.37 27.28 47.87 27.06C47.37 26.82 46.56 26.56 45.44 26.28C44.24 26 43.24 25.71 42.44 25.41C41.64 25.09 40.95 24.6 40.37 23.94C39.79 23.26 39.5 22.35 39.5 21.21C39.5 20.25 39.76 19.38 40.28 18.6C40.82 17.8 41.6 17.17 42.62 16.71C43.66 16.25 44.89 16.02 46.31 16.02C48.41 16.02 50.06 16.54 51.26 17.58C52.48 18.62 53.18 20 53.36 21.72H48.62C48.54 21.14 48.28 20.68 47.84 20.34C47.42 20 46.86 19.83 46.16 19.83C45.56 19.83 45.1 19.95 44.78 20.19C44.46 20.41 44.3 20.72 44.3 21.12C44.3 21.6 44.55 21.96 45.05 22.2C45.57 22.44 46.37 22.68 47.45 22.92C48.69 23.24 49.7 23.56 50.48 23.88C51.26 24.18 51.94 24.68 52.52 25.38C53.12 26.06 53.43 26.98 53.45 28.14C53.45 29.12 53.17 30 52.61 30.78C52.07 31.54 51.28 32.14 50.24 32.58C49.22 33.02 48.03 33.24 46.67 33.24ZM59.1685 14.52C58.2685 14.52 57.5285 14.26 56.9485 13.74C56.3885 13.2 56.1085 12.54 56.1085 11.76C56.1085 10.96 56.3885 10.3 56.9485 9.78C57.5285 9.24 58.2685 8.97 59.1685 8.97C60.0485 8.97 60.7685 9.24 61.3285 9.78C61.9085 10.3 62.1985 10.96 62.1985 11.76C62.1985 12.54 61.9085 13.2 61.3285 13.74C60.7685 14.26 60.0485 14.52 59.1685 14.52ZM61.7185 16.26V33H56.5885V16.26H61.7185ZM75.3362 33L72.1262 28.35L69.4262 33H63.8762L69.3962 24.45L63.7262 16.26H69.4862L72.6962 20.88L75.3962 16.26H80.9462L75.3362 24.69L81.0962 33H75.3362ZM92.4029 28.65V33H89.7929C87.9329 33 86.4829 32.55 85.4429 31.65C84.4029 30.73 83.8829 29.24 83.8829 27.18V20.52H81.8429V16.26H83.8829V12.18H89.0129V16.26H92.3729V20.52H89.0129V27.24C89.0129 27.74 89.1329 28.1 89.3729 28.32C89.6129 28.54 90.0129 28.65 90.5729 28.65H92.4029ZM105.55 16.08C107.47 16.08 109.01 16.72 110.17 18C111.33 19.26 111.91 21 111.91 23.22V33H106.81V23.91C106.81 22.79 106.52 21.92 105.94 21.3C105.36 20.68 104.58 20.37 103.6 20.37C102.62 20.37 101.84 20.68 101.26 21.3C100.68 21.92 100.39 22.79 100.39 23.91V33H95.2604V10.8H100.39V18.51C100.91 17.77 101.62 17.18 102.52 16.74C103.42 16.3 104.43 16.08 105.55 16.08Z"
+                  fill="#F5EFFF"
+                />
+              </svg>
+            </div>
+          </header>
+
+    <div class="main" style="margin-top: 0px;">
+        <div class="container">
+            <!-- Carousel -->
+    
+            <div class="content-text"style="z-index: 1000;">
+                <span class="text3" id="text3" class="content-description" style="margin-left: 20px;"> Powerful Code Assistant</span>
+            </div>
+    
+            <div class="carousel-wrap">
+                <div class="carousel" id="carousel">
+                    <div class="slide"
+                        style="background-color: #F1E4FF;opacity: 0.1; position: absolute; top: 10; width: 500%; height: 1000%;">
+    
+                    </div>
+                    <div class="slide">
+                        <img src="https://github.com/precious112/Pstore_backend/blob/master/media/media/edited_needed_one_edit-ezgif.com-optimize.gif?raw=true" alt="chatbot" class="onboarding-gif">
+                        </video>
+                    </div>
+                    <div class="slide"
+                        style="display: flex; justify-content: center; align-items: center; flex-direction: row; width: 100%;">
+                        <video autoplay loop muted style="object-fit: crop; width: 50%;">
+                            <source
+                                src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/Library%20_%20Loom%20-%2018%20September%202024%20(online-video-cutter.com).mp4?alt=media&token=ea87ee97-44a9-4d9c-ba22-569b789275f2"
+                                type="video/mp4">
+                        </video>
+                       
+                    </div>
+                    <div class="slide">
+                        <video autoplay loop muted>
+                            <source
+                                src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/Library%20_%20Loom%20-%2011%20May%202024.mp4?alt=media&token=8592e20d-ea43-446c-b4b2-90e560177aca"
+                                type="video/mp4">
+                        </video>
+                       
+                    </div>
+                </div>
+    
+                <div class="carousel-buttons">
+                    <div id="b1" style="background: #FDE4FF; opacity: 1.0;" onclick="showSlide(0)"></div>
+                    <div id="b2" onclick="showSlide(1)"></div>
+                    <div id="b3" onclick="showSlide(2)"></div>
+                </div>
+            </div>
+    
+            <div>
+    
+            </div>
+            <!-- Carousel Buttons -->
+            <!-- Pricing Section -->
+            <div class="pricing-section">
+                <div class="title-div" >
+                        
+                    <h2 class="title-desc">
+                        Unlimited access to 
+                    </h2>
+                    <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+                        font-size: 18px;
+                        font-weight: 700;
+                        line-height: 30px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        display: flex;
+                        background-color: transparent;
+                        width: fit-content;
+                        flex-direction: row;
+                        justify-content: left;
+                        margin-left: 8px;
+                        align-items: center;
+                        ">
+                        <div class="sixth-logo-small-div">
+                            <svg class="sixth-logo-small" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M30.2567 31.4665C24.8258 35.3273 18.0436 34.7252 13.3081 30.0044C11.8422 28.5431 11.0335 28.5268 9.49109 29.9277C7.16913 32.0367 4.05159 31.9635 1.78988 29.7469C-0.186653 27.8098 -0.558978 24.3323 0.971879 21.7637C1.2531 21.2918 1.27486 20.958 0.99758 20.4745C-0.324568 18.1689 -0.343021 15.8314 1.00522 13.5287C1.26356 13.0875 1.2763 12.7746 1.02935 12.3197C-0.683373 9.16444 -0.222355 6.13743 2.30384 3.73232C7.60106 -1.311 15.2719 -1.23559 20.6043 3.91225C22.2081 5.46051 22.8978 5.48136 24.5613 4.03185C26.8976 1.99621 29.9575 2.05858 32.1296 4.18611C34.1846 6.1989 34.5742 9.54463 33.0229 12.2246C32.7257 12.7381 32.736 13.0855 33.0294 13.5964C34.3153 15.8351 34.3206 18.1183 33.0623 20.3796C32.8193 20.8163 32.675 21.1466 32.96 21.6734C34.6951 24.8815 34.2241 27.8948 31.6402 30.3264C31.2194 30.7224 30.7546 31.0627 30.2567 31.4665ZM26.5092 28.802C27.635 28.2914 28.6121 27.5366 29.4876 26.6209C30.0339 26.0496 30.129 25.3268 29.9309 24.5798C29.7328 23.8331 29.1895 23.4418 28.5171 23.293C27.8061 23.1357 27.2887 23.5748 26.7946 24.044C25.2886 25.4741 23.5509 26.0244 21.5774 25.6873C20.1905 25.4503 19.0902 24.6671 18.0676 23.6478C14.1485 19.741 8.37365 19.719 4.75535 23.5578C3.89153 24.4743 3.78411 25.6063 4.48157 26.4431C5.18962 27.2925 6.16386 27.3707 7.05489 26.468C9.67788 23.8104 13.5595 24.2232 16.0181 26.7965C18.9831 29.8998 22.5528 30.4168 26.5092 28.802ZM9.10712 4.60121C7.49524 5.0705 6.04129 5.86104 4.79562 7.0907C4.41218 7.46922 4.11745 7.89843 4.04871 8.46134C3.94541 9.30714 4.23198 10.0021 4.91485 10.4036C5.65824 10.8407 6.38756 10.7046 7.03434 10.0987C8.15012 9.05337 9.38325 8.34718 10.9009 8.25638C12.9071 8.13636 14.5335 8.92139 15.9896 10.3888C19.7739 14.2027 25.3604 14.2707 29.1047 10.6039C30.0821 9.6466 30.2873 8.44175 29.6213 7.5694C28.8871 6.60772 27.841 6.63839 26.7665 7.65311C24.2441 10.035 20.7948 10.0151 18.3855 7.53275C15.7855 4.8539 12.7614 3.85009 9.10712 4.60121ZM26.7937 15.8513C23.9001 18.3488 20.7808 18.1996 18.0738 15.4498C16.2158 13.5624 14.0252 12.5742 11.4705 12.5527C8.85344 12.5306 6.58771 13.4893 4.68555 15.4312C3.84478 16.2896 3.79319 17.339 4.45215 18.1674C5.12474 19.0128 6.20408 19.1777 6.94843 18.3778C9.55535 15.5764 13.6213 16.0405 16.1042 18.6683C19.7453 22.5219 25.5854 22.4006 29.2038 18.7173C30.1239 17.7806 30.2884 16.5817 29.6104 15.7537C28.889 14.8726 27.875 14.874 26.7937 15.8513Z"
+                                    fill="#FDE4FF" />
+                            </svg>
+                        </div>
+                        <span
+                            class="sixth-logo-desc">sixth</span>
+                    </div>
+                </div>
+               
+                <div class="review_section">
+                <div class="review_div">
+                <div class="review_content">
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji7.png?alt=media&token=1dc5be73-0411-44e8-b2f6-b578e7808329"/>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review_text"> Beginner Friendly, and awesome vscode extension </span> 
+                        </div>
+                        
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji1.png?alt=media&token=231ec74e-3778-40b1-9df5-11702de56abb"/>
+                        <span class="review_text"> The suggestions are spot on and hardly ever mess up. </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji8.png?alt=media&token=4cfc408b-8580-46f1-85fd-f7eda61fcfb4"/>
+                        
+                        <span class="review_text"> Love the fact that it auto-syncs with my code!!! </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji3.png?alt=media&token=8220086c-1f6f-4328-b236-87f8ed71ac7e"/>
+                        <span> Nice vscode extension!, the chatbot is really helpful </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji0.png?alt=media&token=d3b285f6-9a5a-4b9c-a694-bf9d8456f11f"/>
+                        <span class="review_text"> Really like using the tool to debug and fix my code </span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji2.png?alt=media&token=0b37c21b-a1a1-43ff-98e4-0f51aeb39f09"/>
+                        <span class="review_text"> Completed my assignments overnight thanks to this</span> 
+                    </div>
+                    <div class="review_item">
+                        <img class="person_review" src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/memoji5.png?alt=media&token=470c1e11-07ba-4828-9fcd-7adacd6403c5"/>		
+                        <span class="review_text"> I synced it with my Jira board and now, i love it even more </span> 
+                    </div>
+    
+                
+                </div>
+    
+                </div>
+    
+                
+                </div>
+                <span class="redirection_span" id="redirection_link">
+                    Having trouble paying?<span style="color:#E005FF; cursor: pointer;margin-left: 4px;" class="click_here"  onclick="onClick('redirect_link', 'redirect_link')">  click here</span>
+                </span>
+                <div class="pricing-cards">
+                    <div class="pricing-card gradient-border" id="monthly-plan"
+                        onclick="selectPlan('monthly-plan')">
+                        <h3 class="plan-one" style="font-weight: 500;">Unlimited Monthly access </h3>
+                        <p><span>$9.99</span>/month</p>
+                    </div>
+                    <div class="pricing-card selected-plan" id="yearly-plan"
+                        onclick="selectPlan('yearly-plan')">
+                        <div style="display: flex;flex-direction: row; align-items: center;margin-bottom: 0px;padding-bottom: 0px;">
+                            <h3 style="font-size: 16;font-weight: 500;padding-bottom: 0px;margin-bottom: 2px;"> Unlimited Yearly access</h3>
+                            <div class="selected">
+                                Save 60%
+                            </div>
+                        </div>
+                        <p><span><span style="text-decoration: line-through 2.2px;">$119.99</span> $49.99</span>/year</p>
+                    </div>
+                </div>
+    
+                <div class="continue-button" id="submit" onclick="sendpricing()">
+                    <span style="margin-right: 0px; padding-right: 0px;">
+                        Continue
+                    </span> 
+                    <svg class="shake-small" fill="#FDE4FF" width="36px" height="24px" viewBox="0 0 24 24" id="right-arrow" xmlns="http://www.w3.org/2000/svg" class="icon line"><path id="primary" d="M3,12H21m-3,3,3-3L18,9" style="fill: none; stroke: rgb(253, 228, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5;"></path></svg>
+                </div>
+                <h3 id="sub_text" class="sub_text" onclick="sendCheckSubscription()">Already have a subscription? Click here</h3>
+            </div>
+        </div>
+    
+    </div>
+
+    </div>
+    
+
+ 
+    <script>
+
+        const slides = document.querySelectorAll('.slide');
+        const buttons = document.querySelectorAll('.carousel-buttons button');
+        const text3 = document.getElementById('text3');
+        var plan = "year"
+
+
+        let currentSlide = 0;
+
+
+        const b1 = document.getElementById("b1")
+        const b2 = document.getElementById("b2")
+        const b3 = document.getElementById("b3")
+
+        var index = 0
+        setInterval(() => {
+            showSlide(index)
+            index = index > 1 ? 0 : index + 1
+        }, 7000)
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+            switch (message.command) {
+                case "onDone":
+                    var button = document.getElementById("submit")
+                    button.disabled = false;
+                    button.style.background = "#6D28D9"
+                    var redirection = document.getElementById("redirection_link")
+                    redirection.style.display="flex"
+                    break
+            }
+        })
+
+
+        function showSlide(index) {
+
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(-${index * 100}%)`;
+                
+            });
+
+            if (index === 0) {
+                b1.style.width = "36px"
+                b1.style.height = "4px"
+                b1.style.background = "#FDE4FF"
+                b1.style.opacity = "1.0"
+                b2.style.width = "16px"
+                b2.style.background = "#FDE4FF"
+                b2.style.height = "3px"
+                b2.style.opacity = "0.5"
+                b3.style.width = "16px"
+                b3.style.background = "#FDE4FF"
+                b3.style.opacity = "0.5"
+                b3.style.height = "3px"
+                text3.textContent = "Powerful Code Assistant"
+                text3.style.marginLeft="20px"
+                return
+            }
+            if (index === 1) {
+                b2.style.width = "36px"
+                b2.style.background = "#FDE4FF"
+                b2.style.opacity = "1.0"
+                b2.style.height = "4px"
+                b1.style.width = "16px"
+                b1.style.background = "#FDE4FF"
+                b1.style.opacity = "0.5"
+                b1.style.height = "4px"
+                b3.style.width = "16px"
+                b3.style.background = "#FDE4FF"
+                b3.style.opacity = "0.5"
+                b3.style.height = "3px"
+                text3.textContent = "Boost your productivity"
+                text3.style.marginLeft="20px"
+                return
+            }
+
+            if (index === 2) {
+                b3.style.width = "36px"
+                b3.style.background = "#FDE4FF"
+                b3.style.opacity = "1.0"
+                b3.style.height = "4px"
+                b2.style.width = "16px"
+                b2.style.background = "#FDE4FF"
+                b2.style.opacity = "0.5"
+                b2.style.height = "3px"
+                b1.style.width = "16px"
+                b1.style.background = "#FDE4FF"
+                b1.style.opacity = "0.5"
+                b2.style.height = "3px"
+                text3.textContent = "Integrates smoothly with your workflow"
+                text3.style.marginRight="0px"
+                
+                return
+            }
+        }
+
+        function selectPlan(id) {
+           
+            var monthly = document.getElementById("monthly-plan")
+            var yearly = document.getElementById("yearly-plan")
+            if (id === "monthly-plan") {
+                monthly.classList.add("selected-plan")
+                monthly.classList.remove("gradient-border")
+                plan = "month"
+                yearly.classList.remove("selected-plan")
+                yearly.classList.add("gradient-border")
+                yearly.style.backgroundColor = 'transparent;'
+            } else {
+                monthly.classList.remove("selected-plan")
+                monthly.classList.add("gradient-border")
+                 monthly.style.backgroundColor = 'transparent'
+                yearly.classList.remove("gradient-border")
+                yearly.classList.add("selected-plan")
+                plan = "year"
+            }
+        }
+
+        vscode = acquireVsCodeApi();
+        function sendpricing() {
+            var buttons = document.getElementById("submit")
+            buttons.disabled = true;
+            buttons.style.backgroundColor ="#918D92"
+            vscode.postMessage({
+                command: "redirect_to_payment",
+                value: plan
+            })
+        }
+
+        function sendCheckSubscription(){
+            var btn = document.getElementById("sub_text")
+            btn.disabled = true;
+            btn.style.color ="#918D92"
+            vscode.postMessage({
+                command: "check_sub_info",
+                value: plan
+            })
+        }
+
+        function onClick(action, value){
+            vscode.postMessage({
+                command: action, 
+                value: value
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>

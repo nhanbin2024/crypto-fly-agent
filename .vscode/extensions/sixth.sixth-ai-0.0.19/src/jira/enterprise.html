@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chatbot</title>
+        <link rel="icon" href="bot.png" />
+        <style>
+            body {
+                background-color: #18191F;
+            }
+            .title{
+                color: white;
+                font-size: 24px;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-weight: 720;
+                width: 80%;
+                text-align: center;
+                padding-left: 48px;
+            }
+            span {
+                color: white;
+                font-size: 16px;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-weight: 400;
+                line-height: 24px;
+                text-align: center;
+            }
+            .main{
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            .title-block {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-top: 24px;
+            }
+            .upgrade-button {
+                background-color: #8C30F5;
+                width:180px;
+                height: 42px;
+                color: white;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 24px;
+                font-size: 14px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .upgrade-button:hover{
+                background-color: #a566ee;
+            }
+            .feature-div{
+                margin-top: 24px;
+                width: 100%;
+            }
+            .feature{
+                width: 45%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main" style="display: flex; flex-direction: column;">
+            <div class="title-block">
+                <div style="display: flex;width: 100%; margin-top: 24px;">
+                    <span class="title" >Switch to Enterprise</span>
+                    <div class="upgrade-button" onclick="onClick('upgrade_to_jira_enterprise', 'STUDENT_GPT')">
+                        Switch now
+                    </div>
+                </div>
+            </div>
+            <span style="margin-top: 64px;"> Increase your productivity by 75%, reduce cost spent on implementing a new partner API, fixing a bug, maintaining old codebase or implmenting a new feature<br></span>
+        
+            <div class="feature-div" style="margin-top: 64px; display: flex; flex-direction: row;">
+                <div class="feature" style="margin-right: 36px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                        <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 42C15.6 42 8 34.4 8 25C8 15.6 15.6 8 25 8C34.4 8 42 15.6 42 25C42 34.4 34.4 42 25 42ZM25 10C16.7 10 10 16.7 10 25C10 33.3 16.7 40 25 40C33.3 40 40 33.3 40 25C40 16.7 33.3 10 25 10Z" fill="#8C30F5"/>
+                            <path d="M19.8 19.5996C20.1 18.7996 20.4 18.1996 21 17.6996C21.5 17.1996 22.1 16.7996 22.9 16.4996C23.7 16.1996 24.5 16.0996 25.4 16.0996C26.1 16.0996 26.8 16.1996 27.4 16.3996C28 16.5996 28.6 16.8996 29.1 17.2996C29.6 17.6996 30 18.1996 30.2 18.7996C30.5 19.3996 30.6 20.0996 30.6 20.7996C30.6 21.7996 30.4 22.5996 30 23.2996C29.6 23.9996 29 24.5996 28.4 25.2996L27.1 26.5996C26.8 26.8996 26.5 27.1996 26.4 27.4996C26.2 27.7996 26.1 28.1996 26.1 28.5996C26 28.9996 26 29.2996 26 30.0996H24.4C24.4 29.2996 24.4 28.9996 24.5 28.3996C24.6 27.8996 24.8 27.3996 25 26.8996C25.2 26.4996 25.5 26.0996 25.9 25.6996C26.3 25.2996 26.8 24.8996 27.3 24.2996C27.8 23.7996 28.2 23.2996 28.5 22.7996C28.8 22.2996 29 21.5996 29 20.9996C29 20.4996 28.9 19.9996 28.7 19.5996C28.5 19.1996 28.2 18.7996 27.9 18.4996C27.6 18.1996 27.2 17.9996 26.7 17.7996C26.2 17.5996 25.8 17.4996 25.3 17.4996C24.6 17.4996 24 17.5996 23.5 17.8996C23 18.0996 22.5 18.4996 22.2 18.8996C21.9 19.2996 21.6 19.7996 21.4 20.3996C21.2 20.9996 21 21.2996 21 21.9996H19.4C19.4 21.0996 19.5 20.3996 19.8 19.5996ZM26 31.9996V33.9996H24V31.9996H26Z" fill="#8C30F5"/>
+                        </svg>
+                        <span style="margin-left: 8px; text-align: left;">
+                           Dedicated GPT for managing Jira project, implement sprints Seamlessly
+                        </span>
+                    </div>
+                    <div>
+                        <span style="padding-top: 160px; opacity: 70%;">
+                            State of the art GPT4 to manage your Jira Projects, creatue issues, Manage your team, track your progress between teams and timeline
+                        </span>
+                    </div>
+                   
+                    
+                </div>
+                <div class="feature">
+                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                        <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 42C15.6 42 8 34.4 8 25C8 15.6 15.6 8 25 8C34.4 8 42 15.6 42 25C42 34.4 34.4 42 25 42ZM25 10C16.7 10 10 16.7 10 25C10 33.3 16.7 40 25 40C33.3 40 40 33.3 40 25C40 16.7 33.3 10 25 10Z" fill="#8C30F5"/>
+                            <path d="M19.8 19.5996C20.1 18.7996 20.4 18.1996 21 17.6996C21.5 17.1996 22.1 16.7996 22.9 16.4996C23.7 16.1996 24.5 16.0996 25.4 16.0996C26.1 16.0996 26.8 16.1996 27.4 16.3996C28 16.5996 28.6 16.8996 29.1 17.2996C29.6 17.6996 30 18.1996 30.2 18.7996C30.5 19.3996 30.6 20.0996 30.6 20.7996C30.6 21.7996 30.4 22.5996 30 23.2996C29.6 23.9996 29 24.5996 28.4 25.2996L27.1 26.5996C26.8 26.8996 26.5 27.1996 26.4 27.4996C26.2 27.7996 26.1 28.1996 26.1 28.5996C26 28.9996 26 29.2996 26 30.0996H24.4C24.4 29.2996 24.4 28.9996 24.5 28.3996C24.6 27.8996 24.8 27.3996 25 26.8996C25.2 26.4996 25.5 26.0996 25.9 25.6996C26.3 25.2996 26.8 24.8996 27.3 24.2996C27.8 23.7996 28.2 23.2996 28.5 22.7996C28.8 22.2996 29 21.5996 29 20.9996C29 20.4996 28.9 19.9996 28.7 19.5996C28.5 19.1996 28.2 18.7996 27.9 18.4996C27.6 18.1996 27.2 17.9996 26.7 17.7996C26.2 17.5996 25.8 17.4996 25.3 17.4996C24.6 17.4996 24 17.5996 23.5 17.8996C23 18.0996 22.5 18.4996 22.2 18.8996C21.9 19.2996 21.6 19.7996 21.4 20.3996C21.2 20.9996 21 21.2996 21 21.9996H19.4C19.4 21.0996 19.5 20.3996 19.8 19.5996ZM26 31.9996V33.9996H24V31.9996H26Z" fill="#8C30F5"/>
+                        </svg>
+                        <span style="margin-left: 8px; text-align: left;">
+                            Implement partner APIs and SDKs in seconds
+                        </span>
+                    </div>
+                    <div>
+                        <span style="padding-top: 160px; opacity: 70%;">
+                            Implementing a new partner API is as simple as uploading a link to their documentation, or pdf file and our GPT4 models reads it for you and uses it as context to implement your Jira sprints
+                        </span>
+                    </div>
+                   
+                    
+                </div>    
+            </div>
+
+            </div><div class="feature-div" style="margin-top: 64px; display: flex; flex-direction: row; margin-left: 16px;">
+                <div class="feature" style="margin-right: 36px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                        <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 42C15.6 42 8 34.4 8 25C8 15.6 15.6 8 25 8C34.4 8 42 15.6 42 25C42 34.4 34.4 42 25 42ZM25 10C16.7 10 10 16.7 10 25C10 33.3 16.7 40 25 40C33.3 40 40 33.3 40 25C40 16.7 33.3 10 25 10Z" fill="#8C30F5"/>
+                            <path d="M19.8 19.5996C20.1 18.7996 20.4 18.1996 21 17.6996C21.5 17.1996 22.1 16.7996 22.9 16.4996C23.7 16.1996 24.5 16.0996 25.4 16.0996C26.1 16.0996 26.8 16.1996 27.4 16.3996C28 16.5996 28.6 16.8996 29.1 17.2996C29.6 17.6996 30 18.1996 30.2 18.7996C30.5 19.3996 30.6 20.0996 30.6 20.7996C30.6 21.7996 30.4 22.5996 30 23.2996C29.6 23.9996 29 24.5996 28.4 25.2996L27.1 26.5996C26.8 26.8996 26.5 27.1996 26.4 27.4996C26.2 27.7996 26.1 28.1996 26.1 28.5996C26 28.9996 26 29.2996 26 30.0996H24.4C24.4 29.2996 24.4 28.9996 24.5 28.3996C24.6 27.8996 24.8 27.3996 25 26.8996C25.2 26.4996 25.5 26.0996 25.9 25.6996C26.3 25.2996 26.8 24.8996 27.3 24.2996C27.8 23.7996 28.2 23.2996 28.5 22.7996C28.8 22.2996 29 21.5996 29 20.9996C29 20.4996 28.9 19.9996 28.7 19.5996C28.5 19.1996 28.2 18.7996 27.9 18.4996C27.6 18.1996 27.2 17.9996 26.7 17.7996C26.2 17.5996 25.8 17.4996 25.3 17.4996C24.6 17.4996 24 17.5996 23.5 17.8996C23 18.0996 22.5 18.4996 22.2 18.8996C21.9 19.2996 21.6 19.7996 21.4 20.3996C21.2 20.9996 21 21.2996 21 21.9996H19.4C19.4 21.0996 19.5 20.3996 19.8 19.5996ZM26 31.9996V33.9996H24V31.9996H26Z" fill="#8C30F5"/>
+                        </svg>
+                        <span style="margin-left: 8px; text-align: left;">
+                            Dedicated dashboard
+                        </span>
+                    </div>
+                    <div>
+                        <span style="padding-top: 160px; opacity: 70%;">
+                            Get a dedicated dashboard to track usage, implemented sprint, uploaded documents and customize who has access to your Jira project.
+                        </span>
+                    </div>
+                   
+                    
+                </div>
+                <div class="feature">
+                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                        <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 42C15.6 42 8 34.4 8 25C8 15.6 15.6 8 25 8C34.4 8 42 15.6 42 25C42 34.4 34.4 42 25 42ZM25 10C16.7 10 10 16.7 10 25C10 33.3 16.7 40 25 40C33.3 40 40 33.3 40 25C40 16.7 33.3 10 25 10Z" fill="#8C30F5"/>
+                            <path d="M19.8 19.5996C20.1 18.7996 20.4 18.1996 21 17.6996C21.5 17.1996 22.1 16.7996 22.9 16.4996C23.7 16.1996 24.5 16.0996 25.4 16.0996C26.1 16.0996 26.8 16.1996 27.4 16.3996C28 16.5996 28.6 16.8996 29.1 17.2996C29.6 17.6996 30 18.1996 30.2 18.7996C30.5 19.3996 30.6 20.0996 30.6 20.7996C30.6 21.7996 30.4 22.5996 30 23.2996C29.6 23.9996 29 24.5996 28.4 25.2996L27.1 26.5996C26.8 26.8996 26.5 27.1996 26.4 27.4996C26.2 27.7996 26.1 28.1996 26.1 28.5996C26 28.9996 26 29.2996 26 30.0996H24.4C24.4 29.2996 24.4 28.9996 24.5 28.3996C24.6 27.8996 24.8 27.3996 25 26.8996C25.2 26.4996 25.5 26.0996 25.9 25.6996C26.3 25.2996 26.8 24.8996 27.3 24.2996C27.8 23.7996 28.2 23.2996 28.5 22.7996C28.8 22.2996 29 21.5996 29 20.9996C29 20.4996 28.9 19.9996 28.7 19.5996C28.5 19.1996 28.2 18.7996 27.9 18.4996C27.6 18.1996 27.2 17.9996 26.7 17.7996C26.2 17.5996 25.8 17.4996 25.3 17.4996C24.6 17.4996 24 17.5996 23.5 17.8996C23 18.0996 22.5 18.4996 22.2 18.8996C21.9 19.2996 21.6 19.7996 21.4 20.3996C21.2 20.9996 21 21.2996 21 21.9996H19.4C19.4 21.0996 19.5 20.3996 19.8 19.5996ZM26 31.9996V33.9996H24V31.9996H26Z" fill="#8C30F5"/>
+                        </svg>
+                        <span style="margin-left: 8px; text-align: left;">
+                           Single Sign On
+                        </span>
+                    </div>
+                    <div>
+                        <span style="padding-top: 160px; opacity: 70%;">
+                            Created to support SSO making sure your business integrates smoothly with this solution!!!
+                        </span>
+                    </div>
+                   
+                    
+                </div>    
+            </div>
+
+            <div style="margin-top: 48px; display: flex; justify-content: center; width: 100%; flex-direction: column;"> 
+                <span>Have any questions?</span>
+                <span><span style="color: #8C30F5;">Contact us</span> here so we can help you</span>
+            </div>
+        </div>
+    </body>
+    <script>
+         vscode = acquireVsCodeApi();
+
+         function onClick(command, value){
+            vscode.postMessage({
+                command: command, 
+                value: value
+            })
+         }
+    </script>
+
+</html>

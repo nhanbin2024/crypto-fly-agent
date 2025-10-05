@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Board with Columns and Drag-and-Drop</title>
+    <style>
+        /* Reset default margin and padding */
+        body {
+            margin: 0;
+            padding-top: 24px;
+            background-color: white;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: scroll;
+        }
+
+        /* Style for the board container */
+        .board {
+            width: 500%;
+            display: flex;
+            margin-top: 32px;
+        }
+
+        /* Style for each column */
+        .column {
+            width: 250px;
+            padding: 10px;
+            border: 0px solid #ccc;
+            border-radius: 10px;
+            background-color: #F7F8F9;
+            color: #646F84;
+            font-family: sans-serif;
+            margin-left: 48px;
+        }
+
+        /* Style for column title */
+        .column h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: start;
+            color: #646F84;
+            font-weight: 600;
+            line-height: 10px;
+            margin-bottom: 36px;
+            margin-left: 16px;
+
+        }
+
+        span {
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: start;
+            color: #646F84;
+            font-weight: 400;
+            line-height: 10px;
+            margin-left: 4px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+        /* Style for sprint */
+        .sprint {
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #E1E4E8;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: move;
+            color: #1B2B4B;
+            font-size: 15px;
+            font-weight: 400;
+            width: 300px;
+        }
+        .sprint-text{
+            padding: 8px;
+            margin-bottom: 8px;
+            color: #1B2B4B;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        .sprint-text:hover{
+           text-decoration: underline;
+        }
+        .sprint:hover{
+            background-color: #E9EBEE;
+        }
+
+        /* Highlight dragging sprint */
+        .dragging {
+            opacity: 0.5;
+            background-color: #2684FF;
+        }
+        .reload-button{
+            padding-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #007bff;
+            background-color: transparent;
+            border: none;
+            border-radius:4px;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+            max-height: 100px;
+            text-decoration:underline;
+        }
+        .reload-button:hover{
+            text-decoration:underline;
+        }
+        
+        .shining-button {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 24px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius:4px;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+            max-height: 100px;
+            animation: glowing 1500ms infinite;
+        }
+        .shining-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300%;
+            height: 300%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .shining-button:hover::before {
+            opacity: 1;
+            width: 150%;
+            height: 150%;
+        }
+
+        @keyframes glowing {
+            0% {
+                box-shadow: 0 0 0 0 #8C30F5;
+            }
+            50% {
+                box-shadow: 0 0 20px 15px rgba(0, 123, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+            }
+        }
+
+        .glow-on-hover {
+            animation: glowing 1500ms infinite;
+        }
+        .overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				backdrop-filter: blur(8px);
+				z-index: 9999; /* Ensure the overlay appears above other content */
+			}
+
+			/* Style for the spinner */
+			.spinner {
+				border: 4px solid rgba(255, 255, 255, 0.3); /* Light gray border */
+				border-top: 4px solid #ffffff; /* White border on top */
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				animation: spin 1s linear infinite; /* Animation to rotate the spinner */
+			}
+
+			/* Keyframes for the spinner animation */
+			@keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+
+            
+
+    </style>
+</head>
+<body>
+    <div class="overlay" id="loadingOverlay" style="display: flex;">
+        <div class="spinner"></div>
+    </div>	
+    <div style="display: flex;justify-content: space-between; padding-right: 16px;">
+        <div style="margin-left: 16px; display: flex; align-items: center;"> 
+            <div aria-label="Jira" role="img" class="css-12mte9y" style="--logo-color: #2684FF; --logo-fill: currentColor;">
+                <svg viewBox="0 0 32 32" height="24" width="24"  xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+                  <defs>
+                    <linearGradient x1="94.092%" x2="56.535%" y1="6.033%" y2="43.087%" id="uid109">
+                      <stop stop-color="#0052CC" offset="18%"></stop>
+                      <stop stop-color="#2684FF" offset="100%"></stop>
+                    </linearGradient>
+                  </defs>
+                  <g stroke="none" stroke-width="1" fill-rule="nonzero">
+                    <path fill="#2684FF" d="M26.0406546,5 L14.9983562,5 C14.9983562,6.32163748 15.5233746,7.58914413 16.4579134,8.52368295 C17.3924523,9.45822178 18.6599589,9.98324022 19.9815964,9.98324022 L22.0151159,9.98324022 L22.0151159,11.9465283 C22.0168782,14.6974491 24.2474348,16.9265768 26.9983562,16.9265762 L26.9983562,5.95770152 C26.9983562,5.42877757 26.5695786,5 26.0406546,5 Z"></path>
+                    <path fill="url(#uid109)" d="M20.0420436,11 L9,11 C9.00176139,13.7504065 11.2309666,15.9796117 13.9813731,15.9813731 L16.0154337,15.9813731 L16.0154337,17.9451836 C16.0154337,19.2671728 16.5405919,20.5350167 17.4753794,21.4698042 C18.4101669,22.4045917 19.6780108,22.9297499 21,22.9297499 L21,11.9579564 C21,11.4288917 20.5711083,11 20.0420436,11 Z"></path>
+                    <path fill="url(#uid109)" d="M14.0420436,17 L3,17 C3.00176275,19.7516528 5.23291286,21.9813736 7.98456626,21.9813731 L10.0250133,21.9813731 L10.0250133,23.9451836 C10.0250082,26.6943468 12.2508419,28.9244664 15,28.9297499 L15,17.9579564 C15,17.4288917 14.5711083,17 14.0420436,17 Z"></path>
+                  </g>
+                </svg>
+            </div>
+            <span class="span" style="margin-right: 5px; padding-top: 12px; font-size: 17px;">Jira</span>  
+            <button id = "reload-button" class="reload-button" style="margin-left: 8px; user-select: none;">
+                Reload Jira Sprints
+            </button> 
+            <button id = "reload-button" class="reload-button" style="margin-left: 8px; user-select: none;"  onclick="showJiraEnterprise()">
+                Switch Jira Project
+            </button>
+
+            
+            <p id = "shining-button" class="shining-button" style="margin-left: 16px; user-select: none; background-color: #8C30F5" onclick="showJiraEnterprise()">
+               Upgrade to Enterprise ⚡
+            </p>
+        </div>
+        
+    </div>
+    
+   
+    <div class="board" id="board">  
+
+    </div>
+
+    <script>
+        vscode = acquireVsCodeApi();
+        var currentlyDraggiing = "";
+        vscode.postMessage({
+            command:"log_event",
+            value: "I am working"
+        })
+        var JIRA_COLUMNS = [];
+        var ISSUES = [];
+
+        function showJiraEnterprise(){
+            vscode.postMessage({
+                command: "show_jira_enterprise", 
+                value: "show_jira_enterprise"
+            })
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+           window.addEventListener('message', event => {
+				const message = event.data;
+				switch (message.command){
+					case "display_sprints":
+                        var data  = message.value;
+                        ISSUES = data.issues;
+                        JIRA_COLUMNS = data.allCategories;
+                        displayJiraSprints()
+					break
+				}
+			});
+            vscode.postMessage({
+                command:"log_event",
+                value: ISSUES
+            })
+        
+
+        
+
+        const reloadButton = document.getElementById("reload-button");
+        reloadButton.addEventListener('click',()=>{reloadJiraSprints();});
+
+
+        function displayJiraSprints(){
+            var loading = document.getElementById("loadingOverlay");
+            loading.style.display = "none";
+            JIRA_COLUMNS.forEach(column=>{
+            const loading = document.getElementById("loadingOverlay");
+            loading.style.display = "none";
+                createColumn(column.name, column.name);
+            })
+            ISSUES.forEach(issue=>{
+                createSprint(issue, document.getElementById(issue.fields.status.name))
+            })
+            const sprints = document.querySelectorAll('.sprint');
+        
+            sprints.forEach(sprint => {
+                sprint.addEventListener('dragstart', dragStart);
+                sprint.addEventListener('click',()=>{ onSprintClicked(sprint)});
+            });
+
+            const columns = document.querySelectorAll('.column');
+
+            columns.forEach(column => {
+                column.addEventListener('dragover', dragOver);
+                column.addEventListener('drop', (e)=>{
+                   drop(e, column)
+                });
+            });
+
+        }
+
+        function onSprintClicked(sprint){
+            log("I detected A CLICKEVBEBEENDSNDDNDN")
+            vscode.postMessage({
+                command: "sprint_selected",
+                value: sprint
+            })
+        }
+
+        function dragStart(event) {
+            log("Drag start and id is "+event.target.id);
+            currentlyDraggiing = event.target.id;
+            event.dataTransfer.setData('text/plain', event.target.id);
+            event.target.classList.add('dragging');
+        }
+
+        function log(message){
+            vscode.postMessage({
+                command: "log_event", 
+                value: message
+            })
+        }
+
+
+
+        function reloadJiraSprints(){
+            const loading = document.getElementById("loadingOverlay");
+            loading.style.display = "flex";
+            const board = document.getElementById("board");
+            board.innerHTML = "";
+            vscode.postMessage({
+                command:"log_event",
+                value: "BUTTONNNNNNA A I am working"
+            })
+            vscode.postMessage({
+                command: "reload_jira_sprint", 
+                value: "reload"
+            })
+        }
+        
+        function createSprint(issue, column){
+            const maindiv = document.createElement("div");
+            maindiv.className = "sprint";
+            maindiv.draggable = true;
+            maindiv.id = issue.id;
+            maindiv.style.display = "flex";
+            maindiv.style.flexDirection="column";
+            const summary = document.createElement("span");
+            const maxCharacters = 30; // Maximum number of characters before truncation
+
+            
+            if (issue.fields.summary.length > maxCharacters) {
+                // Truncate the text and append ellipsis
+                const truncatedText = issue.fields.summary.substring(0, maxCharacters) + '...';
+                summary.textContent = truncatedText;
+            }else{
+                summary.textContent = issue.fields.summary;
+            }
+            summary.className="sprint-text";
+            summary.style.paddingLeft="0px";
+            maindiv.appendChild(summary);
+
+            const checkMarkAndKey = document.createElement("div");
+            checkMarkAndKey.style.display="flex";
+            checkMarkAndKey.style.alignItems="center";
+            const checkmark = document.createElement("div");
+            checkmark.innerHTML=checkMark();
+            checkMarkAndKey.append(checkmark);
+            const projectKey = document.createElement("span");
+            projectKey.textContent = issue.key;
+            projectKey.className="sprint-text";
+            projectKey.style.paddingLeft="0px";
+            projectKey.style.fontSize="14px";
+            projectKey.style.marginTop="4px";
+            projectKey.style.fontWeight="500";
+            checkMarkAndKey.appendChild(projectKey);
+            maindiv.appendChild(checkMarkAndKey);
+            maindiv.addEventListener('dragstart', dragStart);
+            maindiv.addEventListener('click', ()=>{ onSprintClicked(issue)});
+            column.appendChild(maindiv)
+        }
+
+        function createColumn(name, id){
+            const div = document.createElement("div");
+            div.id = id;
+            div.className = "column";
+            div.style.width = `320px`;
+            const  h3 = document.createElement("h3");
+            h3.textContent = name;
+            div.appendChild(h3);
+           
+            const board = document.getElementById("board");
+            board.appendChild(div);
+        }
+
+        function checkMark(){
+            return `<svg fill="#64ACE3" height="24px" width="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 27.855 27.855" xml:space="preserve">
+<g>
+	<path d="M27.604,6.751L14.176,20.18c-0.338,0.336-0.885,0.336-1.223,0l-0.27-0.27l0,0l-0.293-0.293l-1.268-1.268l-0.018-0.027
+		L5.297,12.47c-0.336-0.336-0.336-0.885,0-1.221l1.83-1.828c0.338-0.339,0.883-0.339,1.221,0l5.223,5.262L24.551,3.7
+		c0.338-0.337,0.885-0.337,1.221,0l1.832,1.832C27.939,5.867,27.939,6.415,27.604,6.751z"/>
+	<path d="M21.795,22.613c0,0.973-0.793,1.766-1.768,1.766H3.535c-0.975,0-1.768-0.793-1.768-1.766V5.241
+		c0-0.973,0.793-1.766,1.768-1.766h16.492c0.975,0,1.768,0.793,1.768,1.766l0,0l1.256-1.162c0.203-1.43-1.242-2.369-3.024-2.369
+		H3.535C1.582,1.71,0,3.29,0,5.241v17.372c0,1.951,1.582,3.533,3.535,3.533h16.492c1.953,0,3.535-1.582,3.535-3.533V12.257
+		l-1.768,1.924L21.795,22.613L21.795,22.613z"/>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+</g>`;
+        }
+    
+        function dragOver(event) {
+            log("Drag over has  happened");
+            event.preventDefault();
+        }
+
+        function drop(event, column) {
+            log("HEHEHEHEHE  Dropped over ");
+            event.preventDefault();
+            
+            const sprintId = event.dataTransfer.getData('text/plain');
+            const draggedSprint = document.getElementById(currentlyDraggiing);
+            column.appendChild(draggedSprint);
+            var issue = ISSUES.filter(issuess=>issuess.id===currentlyDraggiing)[0];
+            var status = JIRA_COLUMNS.filter(col=>col.name===column.id);
+            log(`Currently dragging issue dragging  ${status.length} ${column.id}`);
+            draggedSprint.classList.remove('dragging');
+            vscode.postMessage({
+                command: "update_issue_status",
+                value: {
+                    issue_id: issue.id, 
+                    new_status_id: status[0].name
+                }
+            })
+        
+            currentlyDraggiing = "";
+        }
+    });
+    </script> <!-- Link to external JavaScript file -->
+</body>
+</html>

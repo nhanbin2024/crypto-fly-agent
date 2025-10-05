@@ -1,0 +1,104 @@
+{
+	"name": "react-native-text-watcher",
+	"displayName": "React Native Text Watcher",
+	"description": "Detects and Warns you unwrapped text strings in React Native projects.",
+	"version": "1.0.3",
+	"author": {
+		"name": "Sugam Subedi",
+		"email": "sugamsubedi234@gmail.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://www.github.com/supSugam/react-native-text-watcher"
+	},
+	"capabilities": {
+		"languages": [
+			{
+				"id": "typescriptreact",
+				"extensions": [
+					".tsx"
+				]
+			},
+			{
+				"id": "javascriptreact",
+				"extensions": [
+					".jsx"
+				]
+			}
+		]
+	},
+	"icon": "logo.png",
+	"keywords": [
+		"react-native",
+		"text-watcher",
+		"react-native-text-watcher",
+		"react-native-text",
+		"react-native-text-detection",
+		"text-warning"
+	],
+	"homepage": "https://www.github.com/supSugam/react-native-text-watcher",
+	"publishConfig": {
+		"access": "public"
+	},
+	"publisher": "supSugam",
+	"readme": "README.md",
+	"bugs": {
+		"url": "https://www.github.com/supSugam/react-native-text-watcher/issues"
+	},
+	"engines": {
+		"vscode": "^1.89.0"
+	},
+	"categories": [
+		"Linters",
+		"Debuggers",
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:typescriptreact",
+		"onLanguage:javascriptreact"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "react-native-text-watcher.manageCustomTextComponents",
+				"title": "RN Text Watcher: Manage Custom Text Components"
+			},
+			{
+				"command": "react-native-text-watcher.changeSeverityType",
+				"title": "RN Text Watcher: Change Severity Type (Warning/Error/Info/Hint)"
+			}
+		],
+		"configuration": {
+			"title": "React Native Text Watcher",
+			"properties": {
+				"react-native-text-watcher.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/Disable React Native Text Watcher"
+				}
+			}
+		}
+	},
+	"main": "./out/extension.js",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/node": "18.x",
+		"@types/vscode": "^1.89.0"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^9.0.1"
+	},
+	"__metadata": {
+		"installedTimestamp": 1756448028942,
+		"targetPlatform": "undefined",
+		"size": 1629767
+	}
+}

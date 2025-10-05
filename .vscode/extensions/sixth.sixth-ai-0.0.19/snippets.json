@@ -1,0 +1,30 @@
+{
+	"Integrate react paystack": {
+		"prefix": "Paystack",
+		"body": [
+			"const paymentForm = document.getElementById('paymentForm');",
+            "paymentForm.addEventListener('submit', payWithPaystack, false);\n",
+            "function payWithPaystack(e) {",
+            "  e.preventDefault();",
+            "  let handler = PaystackPop.setup({",
+            "    key: Sixth.get_secure_key('PAYSTACK_PUBLIC_KEY', ''),",
+            "    email: document.getElementById('email-address').value,",
+            "    amount: document.getElementById('amount').value * 100,",
+            "    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you\n",
+            "    // label: 'Optional string that replaces customer email'",
+            "    onClose: function(){",
+            "      alert('Window closed.');",
+            "    },",
+            "    callback: function(response){",
+            "      let message = 'Payment complete! Reference: ' + response.reference;",
+            "      alert(message);",
+            "    }",
+            "  });\n",
+            "  handler.openIframe();",
+            "}",
+            "$1"
+		],
+		"description": "Integrate react paystack",
+        
+	}
+}

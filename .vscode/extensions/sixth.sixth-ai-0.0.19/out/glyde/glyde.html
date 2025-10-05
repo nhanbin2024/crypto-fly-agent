@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Glyde</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://app.glyde.world/?user_id=GLYDE_APIKEY"></iframe>
+
+    <script>
+        const vscode = acquireVsCodeApi();
+
+        window.addEventListener('message', event => {
+            // Ensure the message is from the expected origin for security
+            if (event.origin === 'https://app.glyde.world') {
+                const message = event.data;
+                if (message.command === 'openUrl' && message.value) {
+                    // Send the URL to the VS Code extension
+                    vscode.postMessage({
+                        command: 'openNewExternalPanel', // Command name handled by glydeProvider.ts
+                        url: message.value
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

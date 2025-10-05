@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Settings</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #150816;
+            color: #FDE3FF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #150816;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #FDE3FF;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-button i {
+            margin-right: 0px;
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            text-align: left;
+            color: #F1E4FF;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            color: #F1E4FF;
+        }
+
+        .account-status {
+            font-size: 14px;
+            font-weight: normal;
+            color: #F1E4FF;
+            opacity: 0.7;
+            margin-left: 10px;
+        }
+
+        .account-email {
+            font-size: 14px;
+            color: #F1E4FF;
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+
+        .account-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .account-actions button {
+            background-color: #A73CFF;
+            border: none;
+            color: #F1E4FF;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .account-actions button:hover {
+            background-color: #8609ed;
+            transform: scale(1.05);
+        }
+
+        .account-actions button i {
+            margin-left: 0px;
+            font-size: 18px;
+        }
+
+        .upgrade-button {
+            background-color: #2a6099;
+        }
+
+        .upgrade-button:hover {
+            background-color: #3879b8;
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a2a2a; /* Slightly different background */
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .toggle-label {
+            font-size: 14px;
+            color: #F1E4FF;
+            margin-right: 15px; /* Space between label and switch */
+            flex-grow: 1; /* Allow label to take available space */
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px; /* Adjusted width */
+            height: 24px; /* Adjusted height */
+            flex-shrink: 0; /* Prevent switch from shrinking */
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #555; /* Off color */
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; /* Knob height */
+            width: 18px; /* Knob width */
+            left: 3px; /* Start position */
+            bottom: 3px; /* Position from bottom */
+            background-color: white;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #A73CFF; /* On color */
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px); /* Move knob to the right (width - knob_width - 2*left) */
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 24px; /* Make the container round */
+        }
+
+        .slider.round:before {
+            border-radius: 50%; /* Make the knob round */
+        }
+
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 400px;
+            box-sizing: border-box;
+            color: #F1E4FF;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #3e4452;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: #F1E4FF;
+            box-sizing: border-box;
+        }
+
+        .modal-content button {
+            background-color: #2a6099;
+            border: none;
+            color: #F1E4FF;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: #3879b8;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .account-actions {
+                flex-direction: column;
+                gap: 20px;  /* More space between buttons */
+            }
+
+            .account-actions button {
+                width: 100%;  /* Full width for better tap area */
+                font-size: 18px; /* Larger font for mobile */
+                padding: 15px 0; /* Taller buttons for better touch targets */
+            }
+
+            .account-actions button i {
+                margin-left: 10px;
+                font-size: 18px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .toggle-container {
+                padding: 8px 12px;
+            }
+
+            .toggle-label {
+                font-size: 13px;
+            }
+
+            .switch {
+                width: 45px;
+                height: 22px;
+            }
+
+            .slider:before {
+                height: 16px;
+                width: 16px;
+                left: 3px;
+                bottom: 3px;
+            }
+
+            input:checked + .slider:before {
+                 transform: translateX(23px); /* Adjusted translation */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button id="backButton" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1>General</h1>
+        </div>
+
+        <div class="section account-section">
+            <h2 class="section-title">Account <span id="plan-string" class="account-status">Standard Tier</span></h2>
+            <p class="account-email">You are currently signed in with <span id="user-email">fran.aubry@gmail.com</span>.</p>
+            <div class="account-actions">
+                <button class="upgrade-button" id="upgradeButton">
+                    <i class="fas fa-rocket"></i> Upgrade to Pro
+                </button>
+                <button class="manage-button" id="manageButton">
+                    <i class="fas fa-cog"></i> Manage
+                </button>
+                <button class="logout-button">
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Menu Settings Section -->
+        <div class="section main-menu-settings-section">
+            <h2 class="section-title">Main Menu Settings</h2>
+            <p>Customize the appearance of the main menu upon startup.</p>
+            <div class="toggle-container">
+                <label class="toggle-label" for="showMainMenuOnLoadToggle">Show main menu on startup</label>
+                <label class="switch">
+                    <input type="checkbox" id="showMainMenuOnLoadToggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="manageModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Account Info</h2>
+            <input type="text" id="user-name" placeholder="Enter your name" />
+            <input type="text" id="user-email-input" placeholder="Enter your email" />
+            <button id="editButton">Edit</button>
+        </div>
+    </div>
+
+    <script>
+        const vscode = acquireVsCodeApi();
+        const mainMenuToggle = document.getElementById('showMainMenuOnLoadToggle');
+        
+
+        // Open Modal
+        document.getElementById('manageButton').addEventListener('click', () => {
+            const manageModal = document.getElementById('manageModal');
+            manageModal.style.display = 'flex';
+        });
+
+        // Close Modal
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('manageModal')) {
+                document.getElementById('manageModal').style.display = 'none';
+            }
+        };
+
+        document.getElementById('upgradeButton').addEventListener('click', () => {
+            vscode.postMessage({
+                command: 'upgrade',
+                value: ''
+            });
+        });
+
+        document.getElementById('editButton').addEventListener('click', () => {
+            
+            const nameInput = document.getElementById('user-name');
+            const emailInput = document.getElementById('user-email-input');
+            if(nameInput&&emailInput){
+                const name=nameInput.value;
+                const email=emailInput.value;
+                console.log(name,email,"nawa")
+                vscode.postMessage({
+                command: 'SEND_PROFILE_EDIT_DATA',
+                value: { name, email }
+            });
+
+            // Optionally, close the modal after sending the data
+            document.getElementById('manageModal').style.display = 'none';
+            }
+
+        });
+
+        // Placeholder for back button functionality
+        //const vscode = acquireVsCodeApi();
+        document.getElementById('backButton').addEventListener('click', () => {
+            vscode.postMessage({
+                command: 'UpdateHTML',
+                value: 'back'
+            });
+        });
+
+        // --- Main Menu Toggle Listener ---
+        if (mainMenuToggle) {
+            mainMenuToggle.addEventListener('change', (event) => {
+                const showOnLoad = event.target.checked;
+                vscode.postMessage({
+                    command: 'setMainMenuOnLoad', // Command to update the setting
+                    value: showOnLoad // The boolean value (true/false)
+                });
+            });
+        }
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+        switch (message.command) {
+            case 'LOAD_EMAIL':
+                const email=message.value;
+                const emailSpan=document.getElementById('user-email');
+                emailSpan.textContent=email;
+                break;
+            case 'LOAD_SUBSCRIBER':
+                const subscriber=message.value;
+                if(!subscriber){
+                    const plan=document.getElementById('plan-string');
+                    plan.textContent='free plan';
+                }else{
+                    const upgradeBtn=document.getElementById('upgradeButton');
+                    upgradeBtn.style.display='none';
+                }
+
+            case 'LOAD_AUTO_OPEN_MAIN_MENU':
+                mainMenuToggle.checked=message.value;
+        };
+        });
+    </script>
+</body>
+</html>

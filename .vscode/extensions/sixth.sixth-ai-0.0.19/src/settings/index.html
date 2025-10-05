@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen List</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #150816;
+      color: #F1E4FF;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch; /* Stretch items to fill the container */
+      height: 100%;
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    ul {
+      list-style: none;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #A73CFF;
+    }
+
+    li i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    li span {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="list-container">
+    <h1>Settings</h1>
+    <ul>
+      <li data-value="general">
+        <i class="fas fa-cogs"></i>
+        <span>General</span>
+      </li>
+      <!--<li data-value="features">
+        <i class="fas fa-star"></i>
+        <span>Features</span>
+      </li>-->
+      <!--<li data-value="chat">
+        <i class="fas fa-comments"></i>
+        <span>Chat</span>
+      </li>-->
+      <li data-value="codebase_indexing">
+        <i class="fas fa-project-diagram"></i>
+        <span>Codebase Indexing</span>
+      </li>
+      <li data-value="help_guide">
+        <i class="fas fa-question-circle"></i>
+        <span>Help Guide</span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // Access the VSCode API
+    const vscode = acquireVsCodeApi();
+
+    // Get all list items
+    const listItems = document.querySelectorAll('li');
+
+    // Add click event listeners to each list item
+    listItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const value = item.dataset.value; // Get the data-value attribute
+        vscode.postMessage({
+          command: 'UpdateHTML',
+          value: value
+        });
+      });
+    });
+  </script>
+</body>
+</html>

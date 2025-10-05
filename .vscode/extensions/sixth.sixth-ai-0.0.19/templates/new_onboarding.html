@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <style>
+      body {
+        background: #150816;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        overflow: scroll;
+      }
+
+      .center {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        text-align: center;
+      }
+
+      .start{
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        display: flex;
+        text-align: center;
+      }
+      
+      .groupcenter {
+        display: flex;
+        overflow: hidden;
+        justify-content: start;
+        align-items: flex-start;
+      }
+
+      .groupcenter h1 {
+        margin: 0;
+      }
+
+      .svg {
+        margin: 4%;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+       
+      }
+
+      h2 {
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
+
+      main {
+        width: 50%;
+        min-height: 70%;
+        max-height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.6);
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+        border-radius: 40px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 5rem;
+        align-items: center;
+        padding-bottom: 4rem;
+      }
+
+      button { 
+        font-size: 1rem;
+        font-weight: 200;
+        color: white;
+        background: #5454c5;
+        border-radius: 8px;
+        text-decoration: none;
+        max-width: 900px;
+        cursor: pointer;
+        margin: 10px auto;
+        width: 80%;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        border-color: transparent;
+      }
+
+      button:hover{
+        border: 2px solid #3482db;
+      }
+
+      .rankingButton {
+        padding: 1.5rem 3rem;
+        font-size: 2rem;
+      }
+
+      .purpleButton {
+        width: 80%;
+        background: transparent;
+        border: 2px solid #5454c5;
+      }
+
+      .header {
+        background-color: transparent;
+        margin: 1rem 1%;
+      }
+
+      .stepsContent {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: flex-end;
+        margin-top: 64px;
+      }
+
+      .languages {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+        height: 65vh;
+        overflow: hidden;
+        overflow-y: scroll;
+      }
+
+      /* width */
+      .languages ::-webkit-scrollbar {
+        width: 0px;
+        border-radius: 1rem;
+      }
+
+      textarea {
+        border-radius: 10px;
+        max-width: 900px;
+        width: 75%;
+        font-size: 1rem;
+        min-height: 40px;
+        outline: none;
+        color: white;
+        padding: 1rem;
+        background: transparent;
+        border: 2px solid #5454c5;
+      }
+
+      input {
+        border-radius: 10px;
+        max-width: 900px;
+
+        width: 60%;
+        font-size: 1.6rem;
+        min-height: 50px;
+        outline: none;
+        color: white;
+        padding: 1rem;
+        background: transparent;
+        border: 2px solid #5454c5;
+      }
+
+      .textbox {
+        display: none;
+        align-items: center;
+        text-align: center;
+        min-width: 100%;
+        flex-direction: column;
+      }
+
+      .content {
+        display: flex !important;
+        flex-direction: column;
+        gap: 2rem;
+        width: 90%;
+        margin: auto 5%;
+      }
+
+      .courseDiv {
+        padding: 0.5rem 2rem 2.5rem;
+        border-radius: 10px;
+        background: #464247b2;
+      }
+
+      .rankingHeader {
+        display: flex;
+        justify-content: end;
+      }
+
+      .lessonDiv {
+        padding: 0.6rem 2rem 2rem;
+        border-radius: 10px;
+        opacity: 0.7;
+        background: #464247b2;
+      }
+
+      .lessonDiv h2 {
+        margin: 0.4rem auto;
+        font-weight: 600;
+      }
+
+      .lessonDiv p {
+        font-weight: 400;
+        font-size: 1.4rem;
+        margin: 0;
+      }
+
+      .activeLessonDiv {
+        padding: 0.6rem 2rem 2rem;
+        border-radius: 10px;
+        opacity: 1;
+        margin: 1rem auto;
+        background: #464247b2;
+      }
+
+      .activeLessonDiv h2 {
+        margin: 0.4rem auto;
+        font-weight: 600;
+      }
+
+      .activeLessonDiv p {
+        font-weight: 400;
+        font-size: 1.4rem;
+        margin: 0;
+      }
+
+      .lessonHead {
+        display: inline-flex;
+        gap: 2%;
+        width: 100%;
+      }
+
+      .xp {
+        border: 1px solid #b7a9d0;
+        width: fit-content;
+        border-radius: 20px;
+        padding: 0.4rem 1rem;
+      }
+
+      .xp p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .lessonButtonDiv {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: inline-flex;
+      }
+
+      .lessonButton:hover {
+        background: #5454c5;
+      }
+
+      .lessonButton {
+        width: 100%;
+        font-size: 1.6rem;
+        background: rgba(99, 156, 217, 1);
+        margin: 1rem auto 0;
+        padding: 0.8rem;
+        gap: 10px;
+        max-width: 1500px;
+        border-radius: 8px;
+      }
+
+      .bar {
+        height: 12px;
+        width: 100%;
+        margin: 0;
+        background: #918d92b2;
+        padding: 0;
+        border-radius: 20px;
+      }
+
+      .barFill {
+        background: #5454c5;
+        height: 12px;
+        width: 30px;
+        border-radius: 20px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .courseContentDiv {
+        margin: 1.8rem;
+      }
+
+      .inlineItems {
+        display: inline-flex;
+        gap: 8%;
+        width: 100%;
+      }
+
+      /* width */
+      ::-webkit-scrollbar {
+        width: 5px;
+        border-radius: 1rem;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: none;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #a9a8a8;
+        cursor: pointer;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7d7d7d;
+        width: 20px;
+        cursor: pointer;
+      }
+      .wrapper{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/Rectangle%202441.png?alt=media&token=43f1e4de-0861-45ab-819c-8407368189cd');
+        z-index: 1000;
+      }
+      .page{
+        max-width: 70%;
+      }
+
+      .stepsDiv{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      button:disabled{
+        background: #918D92;
+        cursor: not-allowed;
+      }
+      .textbox6::placeholder {
+        color: #888; /* Set placeholder color (gray) */
+        font-style: italic; /* Optional: make the placeholder text italic */
+      }
+      .progress-container {
+        position: relative;
+        width: 120px;
+        height: 120px;
+      }
+      .pg-svg {
+      }
+      .circle-background {
+        fill: none;
+        stroke: #e6e6e6;
+        stroke-width: 10;
+      }
+      .circle-progress {
+        fill: none;
+        stroke: #4caf50; /* Green color */
+        stroke-width: 10;
+        stroke-linecap: round;
+        stroke-dasharray: 440; /* Circumference of the circle */
+        stroke-dashoffset: 440; /* Initially no progress */
+        transition: stroke-dashoffset 1s ease;
+      }
+      .circle-text {
+        font-size: 24px;
+        fill: #333;
+        font-weight: bold;
+        text-anchor: middle;
+        dominant-baseline: middle;
+      }
+      .get-started{
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/Rectangle%202441.png?alt=media&token=43f1e4de-0861-45ab-819c-8407368189cd');
+        width: 100%;
+        height: auto;
+      }
+
+      .horiz-progress-container {
+      width: 100%;  /* Full width of container */
+      background-color: #e0e0e0; /* Light grey background */
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .horiz-progress-bar {
+      height: 30px; /* Height of the progress bar */
+      width: 50%; /* 50% filled (half) */
+      background-color: #4caf50; /* Green color */
+      text-align: center;
+      line-height: 30px; /* Center the text vertically */
+      color: white;
+      border-radius: 20px;
+    }
+    </style>
+  </head>
+
+  <body style="overflow-y: auto; overflow-x:hidden;scrollbar-width :none;">
+   
+    <header style="z-index: 100; overflow-y: hidden;">
+      <img 
+      src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/Registration.png?alt=media&token=e7be7196-3aff-4806-93c9-6347b55c9d72" 
+      style="display: flex;position: absolute; width: 100%; height: 120%; z-index: -10;overflow-y: hidden;"
+      />
+
+      <div class="header" style="z-index: 100; ;
+       ">
+        <svg
+          width="100"
+          height="50"
+          viewBox="0 0 123 50"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M30.2567 39.4665C24.8258 43.3273 18.0436 42.7252 13.3081 38.0044C11.8422 36.5431 11.0335 36.5268 9.49109 37.9277C7.16913 40.0367 4.05159 39.9635 1.78988 37.7469C-0.186653 35.8098 -0.558978 32.3323 0.971879 29.7637C1.2531 29.2918 1.27486 28.958 0.99758 28.4745C-0.324568 26.1689 -0.343021 23.8314 1.00522 21.5287C1.26356 21.0875 1.2763 20.7746 1.02935 20.3197C-0.683373 17.1644 -0.222355 14.1374 2.30384 11.7323C7.60106 6.689 15.2719 6.76441 20.6043 11.9122C22.2081 13.4605 22.8978 13.4814 24.5613 12.0319C26.8976 9.99621 29.9575 10.0586 32.1296 12.1861C34.1846 14.1989 34.5742 17.5446 33.0229 20.2246C32.7257 20.7381 32.736 21.0855 33.0294 21.5964C34.3153 23.8351 34.3206 26.1183 33.0623 28.3796C32.8193 28.8163 32.675 29.1466 32.96 29.6734C34.6951 32.8815 34.2241 35.8948 31.6402 38.3264C31.2194 38.7224 30.7546 39.0627 30.2567 39.4665ZM26.5092 36.802C27.635 36.2914 28.6121 35.5366 29.4876 34.6209C30.0339 34.0496 30.129 33.3268 29.9309 32.5798C29.7328 31.8331 29.1895 31.4418 28.5171 31.293C27.8061 31.1357 27.2887 31.5748 26.7946 32.044C25.2886 33.4741 23.5509 34.0244 21.5774 33.6873C20.1905 33.4503 19.0902 32.6671 18.0676 31.6478C14.1485 27.741 8.37365 27.719 4.75535 31.5578C3.89153 32.4743 3.78411 33.6063 4.48157 34.4431C5.18962 35.2925 6.16386 35.3707 7.05489 34.468C9.67788 31.8104 13.5595 32.2232 16.0181 34.7965C18.9831 37.8998 22.5528 38.4168 26.5092 36.802ZM9.10712 12.6012C7.49524 13.0705 6.04129 13.861 4.79562 15.0907C4.41218 15.4692 4.11745 15.8984 4.04871 16.4613C3.94541 17.3071 4.23198 18.0021 4.91485 18.4036C5.65824 18.8407 6.38756 18.7046 7.03434 18.0987C8.15012 17.0534 9.38325 16.3472 10.9009 16.2564C12.9071 16.1364 14.5335 16.9214 15.9896 18.3888C19.7739 22.2027 25.3604 22.2707 29.1047 18.6039C30.0821 17.6466 30.2873 16.4417 29.6213 15.5694C28.8871 14.6077 27.841 14.6384 26.7665 15.6531C24.2441 18.035 20.7948 18.0151 18.3855 15.5327C15.7855 12.8539 12.7614 11.8501 9.10712 12.6012ZM26.7937 23.8513C23.9001 26.3488 20.7808 26.1996 18.0738 23.4498C16.2158 21.5624 14.0252 20.5742 11.4705 20.5527C8.85344 20.5306 6.58771 21.4893 4.68555 23.4312C3.84478 24.2896 3.79319 25.339 4.45215 26.1674C5.12474 27.0128 6.20408 27.1777 6.94843 26.3778C9.55535 23.5764 13.6213 24.0405 16.1042 26.6683C19.7453 30.5219 25.5854 30.4006 29.2038 26.7173C30.1239 25.7806 30.2884 24.5817 29.6104 23.7537C28.889 22.8726 27.875 22.874 26.7937 23.8513Z"
+            fill="#F5EFFF"
+          />
+          <path
+            d="M46.67 33.24C45.21 33.24 43.91 32.99 42.77 32.49C41.63 31.99 40.73 31.31 40.07 30.45C39.41 29.57 39.04 28.59 38.96 27.51H44.03C44.09 28.09 44.36 28.56 44.84 28.92C45.32 29.28 45.91 29.46 46.61 29.46C47.25 29.46 47.74 29.34 48.08 29.1C48.44 28.84 48.62 28.51 48.62 28.11C48.62 27.63 48.37 27.28 47.87 27.06C47.37 26.82 46.56 26.56 45.44 26.28C44.24 26 43.24 25.71 42.44 25.41C41.64 25.09 40.95 24.6 40.37 23.94C39.79 23.26 39.5 22.35 39.5 21.21C39.5 20.25 39.76 19.38 40.28 18.6C40.82 17.8 41.6 17.17 42.62 16.71C43.66 16.25 44.89 16.02 46.31 16.02C48.41 16.02 50.06 16.54 51.26 17.58C52.48 18.62 53.18 20 53.36 21.72H48.62C48.54 21.14 48.28 20.68 47.84 20.34C47.42 20 46.86 19.83 46.16 19.83C45.56 19.83 45.1 19.95 44.78 20.19C44.46 20.41 44.3 20.72 44.3 21.12C44.3 21.6 44.55 21.96 45.05 22.2C45.57 22.44 46.37 22.68 47.45 22.92C48.69 23.24 49.7 23.56 50.48 23.88C51.26 24.18 51.94 24.68 52.52 25.38C53.12 26.06 53.43 26.98 53.45 28.14C53.45 29.12 53.17 30 52.61 30.78C52.07 31.54 51.28 32.14 50.24 32.58C49.22 33.02 48.03 33.24 46.67 33.24ZM59.1685 14.52C58.2685 14.52 57.5285 14.26 56.9485 13.74C56.3885 13.2 56.1085 12.54 56.1085 11.76C56.1085 10.96 56.3885 10.3 56.9485 9.78C57.5285 9.24 58.2685 8.97 59.1685 8.97C60.0485 8.97 60.7685 9.24 61.3285 9.78C61.9085 10.3 62.1985 10.96 62.1985 11.76C62.1985 12.54 61.9085 13.2 61.3285 13.74C60.7685 14.26 60.0485 14.52 59.1685 14.52ZM61.7185 16.26V33H56.5885V16.26H61.7185ZM75.3362 33L72.1262 28.35L69.4262 33H63.8762L69.3962 24.45L63.7262 16.26H69.4862L72.6962 20.88L75.3962 16.26H80.9462L75.3362 24.69L81.0962 33H75.3362ZM92.4029 28.65V33H89.7929C87.9329 33 86.4829 32.55 85.4429 31.65C84.4029 30.73 83.8829 29.24 83.8829 27.18V20.52H81.8429V16.26H83.8829V12.18H89.0129V16.26H92.3729V20.52H89.0129V27.24C89.0129 27.74 89.1329 28.1 89.3729 28.32C89.6129 28.54 90.0129 28.65 90.5729 28.65H92.4029ZM105.55 16.08C107.47 16.08 109.01 16.72 110.17 18C111.33 19.26 111.91 21 111.91 23.22V33H106.81V23.91C106.81 22.79 106.52 21.92 105.94 21.3C105.36 20.68 104.58 20.37 103.6 20.37C102.62 20.37 101.84 20.68 101.26 21.3C100.68 21.92 100.39 22.79 100.39 23.91V33H95.2604V10.8H100.39V18.51C100.91 17.77 101.62 17.18 102.52 16.74C103.42 16.3 104.43 16.08 105.55 16.08Z"
+            fill="#F5EFFF"
+          />
+        </svg>
+      </div>
+    </header>
+    <div style="">
+
+    </div>
+    <div style="width: 100%; height: 100%; display: flex; justify-content: center;">
+      <main>
+        <div id="stepsDiv" style="width: 80%;">
+          <div id="1"">
+            <div class="center">
+              <div>
+                
+              </div>
+              <div class="center" style="margin-right: 36px;">
+                <svg
+                width="65"
+                height="40"
+                viewBox="0 0 1 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M30.2567 39.4665C24.8258 43.3273 18.0436 42.7252 13.3081 38.0044C11.8422 36.5431 11.0335 36.5268 9.49109 37.9277C7.16913 40.0367 4.05159 39.9635 1.78988 37.7469C-0.186653 35.8098 -0.558978 32.3323 0.971879 29.7637C1.2531 29.2918 1.27486 28.958 0.99758 28.4745C-0.324568 26.1689 -0.343021 23.8314 1.00522 21.5287C1.26356 21.0875 1.2763 20.7746 1.02935 20.3197C-0.683373 17.1644 -0.222355 14.1374 2.30384 11.7323C7.60106 6.689 15.2719 6.76441 20.6043 11.9122C22.2081 13.4605 22.8978 13.4814 24.5613 12.0319C26.8976 9.99621 29.9575 10.0586 32.1296 12.1861C34.1846 14.1989 34.5742 17.5446 33.0229 20.2246C32.7257 20.7381 32.736 21.0855 33.0294 21.5964C34.3153 23.8351 34.3206 26.1183 33.0623 28.3796C32.8193 28.8163 32.675 29.1466 32.96 29.6734C34.6951 32.8815 34.2241 35.8948 31.6402 38.3264C31.2194 38.7224 30.7546 39.0627 30.2567 39.4665ZM26.5092 36.802C27.635 36.2914 28.6121 35.5366 29.4876 34.6209C30.0339 34.0496 30.129 33.3268 29.9309 32.5798C29.7328 31.8331 29.1895 31.4418 28.5171 31.293C27.8061 31.1357 27.2887 31.5748 26.7946 32.044C25.2886 33.4741 23.5509 34.0244 21.5774 33.6873C20.1905 33.4503 19.0902 32.6671 18.0676 31.6478C14.1485 27.741 8.37365 27.719 4.75535 31.5578C3.89153 32.4743 3.78411 33.6063 4.48157 34.4431C5.18962 35.2925 6.16386 35.3707 7.05489 34.468C9.67788 31.8104 13.5595 32.2232 16.0181 34.7965C18.9831 37.8998 22.5528 38.4168 26.5092 36.802ZM9.10712 12.6012C7.49524 13.0705 6.04129 13.861 4.79562 15.0907C4.41218 15.4692 4.11745 15.8984 4.04871 16.4613C3.94541 17.3071 4.23198 18.0021 4.91485 18.4036C5.65824 18.8407 6.38756 18.7046 7.03434 18.0987C8.15012 17.0534 9.38325 16.3472 10.9009 16.2564C12.9071 16.1364 14.5335 16.9214 15.9896 18.3888C19.7739 22.2027 25.3604 22.2707 29.1047 18.6039C30.0821 17.6466 30.2873 16.4417 29.6213 15.5694C28.8871 14.6077 27.841 14.6384 26.7665 15.6531C24.2441 18.035 20.7948 18.0151 18.3855 15.5327C15.7855 12.8539 12.7614 11.8501 9.10712 12.6012ZM26.7937 23.8513C23.9001 26.3488 20.7808 26.1996 18.0738 23.4498C16.2158 21.5624 14.0252 20.5742 11.4705 20.5527C8.85344 20.5306 6.58771 21.4893 4.68555 23.4312C3.84478 24.2896 3.79319 25.339 4.45215 26.1674C5.12474 27.0128 6.20408 27.1777 6.94843 26.3778C9.55535 23.5764 13.6213 24.0405 16.1042 26.6683C19.7453 30.5219 25.5854 30.4006 29.2038 26.7173C30.1239 25.7806 30.2884 24.5817 29.6104 23.7537C28.889 22.8726 27.875 22.874 26.7937 23.8513Z"
+                  fill="#F5EFFF"
+                />
+               
+              </svg>
+                <h1 style="text-align: center;">
+                  Welcome to Sixth AI
+              </div>
+            </div>
+
+            <div class="center" style="padding-top: 8px;">
+              <h2 style="text-align: center; max-width: 80%;">
+                Sixth AI provides you with chatbot and AI agents to generate and explain code, create tests, generate fixes, create documentation, and more
+              </h2>
+            </div>
+            
+            <div class="center" style="width: 100%; display: flex;justify-content: center;" >
+              <dotlottie-player src="https://lottie.host/4cf99350-a955-4e01-bd2c-73945dc53232/DQbjFegvCo.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+            </div>
+            
+            <div class="center" onclick="loadNextStep()">
+              <button>Let's get started</button>
+            </div>
+          </div>
+          
+          <div id="2" style="display: none; width: 100%;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer; margin-right: 16px;" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h1>Do you have any experience with coding?</h1>
+                <h2>We use this to customize your experience</h2>
+              </div>
+            </div>
+            
+            <div class="center stepsContent">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 24px;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <div class="center">
+                  <button id="purpleButton1" class="purpleButton" onclick="onButtonClicked('purpleButton1', 2, true)">
+                    I have no experience
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton2" class="purpleButton" onclick="onButtonClicked('purpleButton2', 2, true)">
+                    I have some experience
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton3" class="purpleButton" onclick="onButtonClicked('purpleButton3', 2, true)">
+                    I have intermediate experience
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton4" class="purpleButton" onclick="onButtonClicked('purpleButton4', 2, true)">
+                    I am a master at what i do
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="continue2" class="purpleButton3" onclick="loadNextStep()" disabled>
+                   Continue
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="3" style="display: none;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h1>What is your most frequently used programming language?</h1>
+                <h2>
+                  This helps us better optimize or AI models for your progamming
+                  language
+                </h2>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                <div class="center">
+                  <button id="purpleButton23" onclick="onButtonClicked('purpleButton23', 3)" class="purpleButton">
+                    JavaScript
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton43" onclick="onButtonClicked('purpleButton43', 3)"  class="purpleButton">
+                    C ++
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton53" onclick="onButtonClicked('purpleButton53', 3)" class="purpleButton">
+                    Python
+                  </button>
+                </div>
+                <div class="center">
+                  <button onclick="loadOthers()" class="purpleButton">
+                    Others
+                  </button>
+                </div>
+                <div class="textbox center" id="textbox3">
+                  <textarea id="purpleButton63" placeholder="my language" onclick="enableButton('purpleButton63', 3)"> </textarea>
+                </div>
+
+                <button  id="continue3" onclick="loadNextStep()" disabled>Continue</button>
+              </div>
+            </div>
+          </div>
+          
+          <div id="4" style="display: none; max-height: 500px;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>
+                  Have you used any AI coding agent before? 
+                </h1>
+                <h2>
+                  Cursor, Copilot
+                  e.t.c
+                </h2>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                <div class="center">
+                  <button id="purpleButton14" onclick="onButtonClicked('purpleButton14', 4, true)" class="purpleButton">
+                    Yes
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton24" onclick="onButtonClicked('purpleButton24', 4, true)"  class="purpleButton">
+                    No
+                  </button>
+                </div>
+                <button  id="continue4" onclick="loadNextStep()" disabled>Continue</button>
+              </div>
+            </div>
+          </div>
+          
+          <div id="5" style="display: none;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>Sixth AI is more than just a chatbot! It also helps you stay productive</h1>
+              </div>
+            </div>
+            <div class="center">
+                <dotlottie-player src="https://lottie.host/36bf7ea8-73ba-429e-b3eb-1144d48728cd/hjmqpSo15W.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+            </div>
+  
+            <div class="center" onclick="loadNextStep()">
+              <button>Continue</button>
+            </div>
+          </div>
+          
+          <div id="6" style="display: none;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h1>What is your main stack?</h1>
+                <h2>
+                  We use this information to recommend answers that specific to
+                  your stack
+                </h2>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                <div class="center">
+                  <button id="purpleButton15" onclick="onButtonClicked('purpleButton15', 5)" class="purpleButton">
+                    Frontend
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton25" onclick="onButtonClicked('purpleButton25', 5)" class="purpleButton">
+                    Backend
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton35" onclick="onButtonClicked('purpleButton35', 5)"  class="purpleButton">
+                    Mobile
+                  </button>
+                </div>
+  
+                <div class="center">
+                  <button onclick="loadOthers()" class="purpleButton">
+                    Others
+                  </button>
+                </div>
+                <div class="textbox center" id="textbox6">
+                  <textarea placeholder="my language"> </textarea>
+                  <button onclick="loadNextStep()">Continue</button>
+                </div>
+
+                <button  id="continue5" onclick="loadNextStep()" disabled>Continue</button>
+              </div>
+            </div>
+          </div>
+          
+          <div id="7" style="display: none;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h1>
+                  Which of these better suites your reason for installing Sixth ?
+                </h1>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                <div class="center">
+                  <button id="purpleButton17" onclick="onButtonClicked('purpleButton17', 7)" onclick="loadOthers()" class="purpleButton">
+                    Debugging
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton27" onclick="onButtonClicked('purpleButton27', 7)" onclick="loadOthers()" class="purpleButton">
+                    Project Implementation
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton37" onclick="onButtonClicked('purpleButton37', 7)" class="purpleButton">
+                    Learning
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton47" onclick="onButtonClicked('purpleButton47', 7)" class="purpleButton">
+                    Pair coding assistant
+                  </button>
+                </div>
+                <button  id="continue7" onclick="loadNextStep()" disabled>Continue</button>
+              </div>
+            </div>
+          </div>
+          
+          <div id="8" style="display: none;  max-height: 500px;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>Would you be interested in learning any new stack?</h1>
+  
+                <h2>
+                  Our AI could be really helpful in recommending new materials
+                </h2>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                <div class="center">
+                  <button id="purpleButton18" onclick="onButtonClicked('purpleButton18', 8,true)"  class="purpleButton">
+                    Yes
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton28" onclick="onButtonClicked('purpleButton28', 8,true)" class="purpleButton">
+                    No
+                  </button>
+                </div>
+                <button  id="continue8" onclick="loadNextStep()" disabled>Continue</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="9" style="display: none;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>Sixth AI supports over 40+ languages and is loved by over 100k+ developers </h1>
+              </div>
+            </div>
+            <div class="center">
+                <dotlottie-player src="https://lottie.host/5fe997c5-1856-45a3-a5ef-93dd389d1f88/t6UOC2iFQg.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+            </div>
+  
+            <div class="center" onclick="loadNextStep()">
+              <button>Continue</button>
+            </div>
+          </div>
+
+          <div id="10" style="display: none;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>Meet Glyde, your AI companion for seamless development</h1>
+              </div>
+            </div>
+            <div class="center">
+                <video width="400" height="300" autoplay muted loop>
+                    <source src="https://firebasestorage.googleapis.com/v0/b/sixth-v2.appspot.com/o/Glyde%20Portfolio%20Demo.mp4?alt=media&token=66a05173-567a-4471-876a-31afbecb07ab" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+  
+            <div class="center" style="flex-direction: column; width: 100%;">
+              <button onclick="tryGlydeNow()">Try out now</button>
+              <button class="purpleButton" onclick="loadNextStep()">Continue with registration</button>
+            </div>
+          </div>
+
+          <div id="11" style="display: none; max-height: 500px;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>
+                  Would you be open to our AI model training on your codebase to
+                  increase it's performance?
+                </h1>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                <div class="center">
+                  <button id="purpleButton111" onclick="onButtonClicked('purpleButton111', 11,true)" class="purpleButton">
+                    Yes
+                  </button>
+                </div>
+                <div class="center">
+                  <button id="purpleButton211" onclick="onButtonClicked('purpleButton211', 11,true)" class="purpleButton">
+                    No
+                  </button>
+                </div>
+                <button  id="continue11" onclick="loadNextStep()" disabled>Continue</button>
+              </div>
+            </div>
+          </div>
+  
+          <div id="13" style="display: none;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>
+                  Join the community              
+                </h1>
+                <h2>
+                 If you haven't already 😉
+                </h2>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                <div class="center">
+                  <button onclick="loadNextStep()" class="purpleButton">
+                    Discord
+                  </button>
+                </div>
+                <div class="center">
+                  <button onclick="loadNextStep()" class="purpleButton">
+                    Reddit
+                  </button>
+                  
+                </div>
+                 <div class="center">
+                  <button onclick="loadNextStep()" class="purpleButton">
+                    Instagram
+                  </button>
+                  
+                </div>
+                 <div class="center">
+                  <button onclick="loadNextStep()" class="purpleButton">
+                    LinkedIn
+                  </button>
+                  
+                </div>
+                 <div class="center">
+                  <button onclick="loadNextStep()" class="purpleButton">
+                    Twitter
+                  </button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="12" style="display: none; max-height: 500px;">
+            <div class="center groupcenter">
+              <div class="back" style="cursor: pointer">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                    fill="#F5EFFF"
+                  />
+                </svg>
+              </div>
+              <div style="width: 100%">
+                <h1>
+                  Whats your github?
+                </h1>
+                <h2>
+                  Let's get your followers and recognition!
+                </h2>
+              </div>
+            </div>
+  
+            <div class="center stepsContent">
+              <div class="languages">
+                
+                 <div class=" center" id="textbox6">
+                  <input placeholder="github url here" style="width: 73%; font-size: 1rem;max-height: 48px;"/>                
+                </div>
+                <button  id="continue12" onclick="loadNextStep()">Skip</button>
+            </div>
+          </div>       
+        </div>
+        <div id="14" style="display: none;">
+          <div class="center groupcenter">
+            <div class="back" style="cursor: pointer" onclick="loadPreviousStep()">
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 36 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24.93 4.48445C24.7558 4.30983 24.5489 4.1713 24.3211 4.07677C24.0933 3.98225 23.8491 3.93359 23.6025 3.93359C23.3559 3.93359 23.1117 3.98225 22.8839 4.07677C22.6561 4.1713 22.4492 4.30983 22.275 4.48445L9.81 16.9494C9.67095 17.0882 9.56063 17.253 9.48536 17.4345C9.41008 17.616 9.37134 17.8105 9.37134 18.0069C9.37134 18.2034 9.41008 18.3979 9.48536 18.5794C9.56063 18.7608 9.67095 18.9257 9.81 19.0644L22.275 31.5294C23.01 32.2644 24.195 32.2644 24.93 31.5294C25.665 30.7944 25.665 29.6094 24.93 28.8744L14.07 17.9994L24.945 7.12445C25.665 6.40445 25.665 5.20445 24.93 4.48445Z"
+                  fill="#F5EFFF"
+                />
+              </svg>
+            </div>
+            <div style="width: 100%">
+              <h1>All Done! </h1>
+              <h2>
+               Thanks for trusting us, we promise to keep your data safe with us! Now let's start coding
+               </h2>
+            </div>
+          </div>
+          <div class="center">
+            <dotlottie-player src="https://lottie.host/d1c30c94-59a7-4ff7-a9ca-9b6f2b73ea1b/qWRI55BcEW.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+          </div>
+
+          <div class="center" onclick="loadNextStep()">
+            <button>Next</button>
+          </div>
+        </div>
+
+        <div id="15" style="display: none;">
+          <div class="center">
+            <h1>
+              We are setting everything <br/> up for you
+            </h1>
+          </div>
+          <div class="center">
+            <dotlottie-player src="https://lottie.host/08da4618-b413-47a4-b6cb-81169f53452d/jTbR3dQPaM.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+          </div>
+          <div class="center">
+            <h2 id="loading-illusion">
+              Downloading AI Agents...
+            </h2>
+          </div>
+        </div>
+        <div id="16" style="display: none;">
+          <div style="max-height: 550px; overflow-y: scroll; scrollbar-width: none;">
+            <div class="center">
+              <h1>
+                Congratulations <br/>your AI agent has been set up! 
+              </h1>
+            </div>
+            <div class="center">
+              <h2 style="font-size: 1.1rem;">
+                By our algorithms calculation you should notice the following improvement:
+              </h2>
+            </div>
+              <div class="center" style="margin-top: 2rem;">
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                  <h2 style="text-align: center;font-size: 1rem;">
+                   Code quality
+                  </h2>
+                  <svg class="pg-svg" width="135" height="135" viewBox="0 0 150 150">
+                    <circle class="circle-background" cx="75" cy="75" r="70"></circle>
+                    <circle id="code-quality" class="circle-progress" cx="75" cy="75" r="70"></circle>
+                    <text id="code-quality-text"  class="circle-text" x="75" y="75">0%</text>
+                  </svg>
+                </div>
+                
+    
+                <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 2rem;">
+                  <h2 style="text-align: center;font-size: 1rem;">
+                   Coding speed
+                  </h2>
+                  <svg class="pg-svg" width="135" height="135" viewBox="0 0 150 150">
+                    <circle class="circle-background" cx="75" cy="75" r="70"></circle>
+                    <circle id="coding-speed" class="circle-progress" cx="75" cy="75" r="70"></circle>
+                    <text id="coding-speed-text" class="circle-text" x="75" y="75">0%</text>
+                  </svg>
+                </div>
+                
+              </div>
+    
+              <div class="center" style="margin-top: 1rem; margin-left: 24px;">
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                  <h2 style="text-align: center;font-size: 1rem; margin-bottom: 24px;">
+                    Bug fix rate
+                  </h2>
+                  <svg class="pg-svg" width="135" height="135" viewBox="0 0 150 150">
+                    <circle class="circle-background" cx="75" cy="75" r="70"></circle>
+                    <circle id="bug-fix" class="circle-progress" cx="75" cy="75" r="70"></circle>
+                    <text id="bug-fix-text" class="circle-text" x="75" y="75">0%</text>
+                  </svg>
+                </div>
+                
+    
+                <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 2rem; align-items: center;">
+                  <h2 style="text-align: center;font-size: 1rem; margin-bottom: 0.2rem;">
+                    Feature completion <br/> rate
+                  </h2>
+                  <svg class="pg-svg" width="135" height="135" viewBox="0 0 150 150">
+                    <circle class="circle-background" cx="75" cy="75" r="70"></circle>
+                    <circle id="feature-completion" class="circle-progress" cx="75" cy="75" r="70"></circle>
+                    <text id="feature-completion-text" class="circle-text" x="75" y="75">0%</text>
+                  </svg>
+                </div>
+                
+              </div>  
+              <div class="center">
+                <div style="background-color: #e6e6e6; display: flex; flex-direction: row; padding-top: 12px; padding-bottom: 12px; padding-left: 24px;padding-right: 24px; margin-top: 2.0rem; width: 35%; border-radius: 18px; border: 0.5px solid #efeff9;">
+                  <div style="display: flex; background-color: #F5F2F2; padding:12px; width: 30px; height: 30px;  border-radius: 12px;">
+                    <svg fill="#E66293" height="26px" width="26px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                      viewBox="0 0 282.772 282.772" xml:space="preserve">
+                    <g>
+                      <path d="M61.472,143.036H23.881c-4.971,0-9,4.029-9,9v94.185c0,4.971,4.029,9,9,9h37.591c4.971,0,9-4.029,9-9v-94.185
+                        C70.472,147.065,66.443,143.036,61.472,143.036z M52.472,237.22H32.881v-76.185h19.591V237.22z"/>
+                      <path d="M132.238,93.194H94.648c-4.971,0-9,4.029-9,9V246.22c0,4.971,4.029,9,9,9h37.591c4.971,0,9-4.029,9-9V102.194
+                        C141.238,97.224,137.209,93.194,132.238,93.194z M123.238,237.22h-19.591V111.194h19.591V237.22z"/>
+                      <path d="M203.005,150.471h-37.591c-4.971,0-9,4.029-9,9v86.749c0,4.971,4.029,9,9,9h37.591c4.971,0,9-4.029,9-9v-86.749
+                        C212.005,154.5,207.976,150.471,203.005,150.471z M194.005,237.22h-19.591v-68.749h19.591V237.22z"/>
+                      <path d="M273.772,96.516H236.18c-4.971,0-9,4.029-9,9V246.22c0,4.971,4.029,9,9,9h37.591c4.971,0,9-4.029,9-9V105.516
+                        C282.772,100.545,278.742,96.516,273.772,96.516z M264.772,237.22H245.18V114.516h19.591V237.22z"/>
+                      <path d="M178.918,112.796c3.276,2.381,7.739,2.28,10.905-0.246l67.269-53.682l-0.298,8.847c-0.167,4.968,3.724,9.131,8.692,9.298
+                        c0.104,0.003,0.206,0.005,0.309,0.005c4.831,0,8.826-3.833,8.99-8.697l1.061-31.466c0.083-2.491-0.869-4.905-2.631-6.667
+                        c-1.762-1.763-4.184-2.719-6.667-2.631l-31.466,1.061c-4.968,0.167-8.859,4.331-8.692,9.298c0.167,4.967,4.314,8.85,9.298,8.692
+                        l8.261-0.278l-59.993,47.876l-68.22-49.585c-2.988-2.172-7-2.298-10.117-0.317L4.176,108.734
+                        c-4.196,2.665-5.437,8.227-2.772,12.422c1.715,2.7,4.628,4.176,7.605,4.176c1.65,0,3.321-0.454,4.817-1.404l96.276-61.15
+                        L178.918,112.796z"/>
+                    </g>
+                    </svg>
+                  </div>
+                  <div style="display: flex;flex-direction: column; margin-left: 8px; min-width: 70%; justify-content: left;">
+                    <h2 style="font-size: 0.6rem; color: #150816; text-align: left;">
+                      Expected productivity increase
+                    </h2>
+                    <progress value="70" max="100" style="width: 100%;" ></progress>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+         
+
+          <div class="center" style="margin-top: 2rem;">
+            <button onclick="sendMessage('redirect_to_one_time', 'redirect_to_one_time')">Finish</button>
+          </div>
+        </div>
+      </main>
+    </div>
+   
+  </body>
+
+  <script>
+    var step = 1;
+    var states = {
+
+    } 
+    var continueButtonIds = {
+      2: "continue2",
+      3:  "continue3",
+      4: "continue4",
+      5: "continue5",
+      6: "continue6",
+      7: "continue7",
+      8: "continue8",
+      9: "continue9",
+      10: "continue10",
+      11: "continue11",
+      12: "continue12",
+      13: "continue13",
+      14: "continue14",
+      15: "continue15",
+    };
+
+    function tryGlydeNow() {
+        vscode.postMessage({
+            command: "onboarding_launch_glyde"
+        });
+    }
+
+    function setPercentages(){
+      setProgress("code-quality", 60, "#4caf50")
+      setProgress("coding-speed", 75, "#D39569")
+      setProgress("bug-fix", 70, "#D96669")
+      setProgress("feature-completion", 55, "#7096D4")
+    }
+
+    setPercentages()
+
+    var loadingTexts = [
+      "Downloading AI Agents...",
+      "Downloading AI Agents.",
+      "Downloading AI Agents..",
+      "Downloading AI Agents...",
+      "Downloading AI Agents....",
+      "Downloading AI Agents.",
+      "Downloading AI Agents..",
+      "Downloading AI Agents...",
+      "Downloading AI Agents....",
+      "Downloading AI Agents.",
+      "Installing dependencies.",
+      "Installing dependencies..",
+      "Installing dependencies...",
+      "Installing dependencies....",
+      "Installing dependencies.",
+      "Configuring VS Code.",
+      "Configuring VS Code..",
+      "Configuring VS Code...",
+      "Configuring VS Code....",
+      "Creating Chat Interface.",
+      "Creating Chat Interface..",
+      "Enabling multi-file edit.",
+      "Enabling multi-file edit..",
+      "Enabling multi-file edit...",
+      "Getting user analytics.",
+      "Getting user analytics..",
+      "Getting user analytics...",
+      "Getting user analytics....",
+      "Cleaning up setup task.",
+      "Cleaning up setup task..",
+      "Finalizing setup process.",
+      "Finalizing setup process..",
+      "Finalizing setup process..."
+    ]
+    function loadSteps() {
+      const container = document.getElementById("stepsDiv");
+      if (step === 15) {
+          console.log("INDEX SIS SSSS ")
+          startLoading()
+        }
+      for (let index = 1; index <= 16; index++) {
+        const stepsDiv = document.getElementById(index);
+        if (stepsDiv != null)
+          if (index != step) stepsDiv.style.display = "none";
+          else stepsDiv.style.display = "block";
+      }
+    }
+    
+    function loadOthers() {
+      const container = document.getElementById("textbox" + step);
+      container.style.display = "flex";
+    }
+
+    function enableButton(id, step){
+      const button = document.getElementById(id);
+      var continuebutton = document.getElementById(continueButtonIds[step])
+      continuebutton.disabled = false;
+    }
+    function onButtonClicked(id, step, oneOption=false) {
+      const button = document.getElementById(id);
+      var continuebutton = document.getElementById(continueButtonIds[step])
+      continuebutton.disabled = false;
+      if (oneOption){
+        var step = document.getElementById(step)
+        var buttons = step.querySelectorAll(".purpleButton")
+        console.log("Buttons are ", buttons)
+        // Loop through each element and change the style
+        buttons.forEach(button => {
+          button.style.backgroundColor = "transparent";
+          //border: 2px solid #5454c5;
+          button.style.border = "2px solid #5454c5"
+          states[button.id] = false;
+        });
+      }
+      if (!states[id]){
+        states[id] = true;
+        button.style.backgroundColor = "#8C30F5";
+        //border: 2px solid #5454c5;
+        button.style.border = "2px solid #8C30F5"
+      }else{
+        states[id] = false;
+        button.style.backgroundColor = "transparent";
+        //border: 2px solid #5454c5;
+        button.style.border = "2px solid #5454c5"
+      }
+    }
+
+    function startLoading(){
+      console.log("Loading started was callewd")
+      var loadingIndex = 1
+      var thiss = true
+      const loadingIndicator = document.getElementById("loading-illusion");
+      const interValId = setInterval(()=>{
+        console.log("Loading index is", loadingIndex)
+        if (loadingIndex < loadingTexts.length){
+          loadingIndicator.innerHTML = loadingTexts[loadingIndex]
+          loadingIndex++
+        }else{
+          // if (thiss){
+            loadNextStep();
+          //   thiss = false 
+          // }
+          clearInterval(interValId);
+          return
+        }
+      }, 700)
+    }
+    function sendMessage(command, value){
+      vscode.postMessage({
+        command: command, 
+        value: value
+      })
+    }
+
+    function onSocialsClicked(social){
+      switch(social){
+        case "discord":
+          window.open("https://discord.gg/your-server-id", "_blank");
+          break;
+        case "reddit":
+          window.open("https://www.reddit.com/r/your-subreddit", "_blank");
+          break;
+        case "instagram":
+          window.open("https://www.instagram.com/your-username", "_blank");
+          break;
+        case "linkedin":
+          window.open("https://www.linkedin.com/company/your-company", "_blank");
+          break;
+        case "twitter":
+          window.open("https://www.twitter.com/your-username", "_blank");
+          break;
+        default:
+          console.log("Invalid social media")
+      }
+      loadNextStep();
+    }
+    
+    function loadPreviousStep() {
+      step -= 1;
+      if (step <= 0) step = 1;
+
+      console.log(step);
+      loadSteps();
+    }
+
+    function loadNextStep() {
+      step += 1;
+      console.log("Steps called ", step)
+      
+      loadSteps();
+    }
+
+    function setProgress(id, percentage, color) {
+      const circle = document.getElementById(id);
+      const text = document.getElementById(`${id}-text`);
+      const radius = 70;
+      const circumference = 2 * Math.PI * radius;
+      circle.style.stroke=color;
+
+      const offset = circumference - (percentage / 100) * circumference;
+      circle.style.strokeDashoffset = offset;
+
+      // Update the percentage text
+      text.textContent = `${percentage}%`;
+    }
+
+    // Animate to 60% initially
+  </script>
+</html>
